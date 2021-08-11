@@ -5,8 +5,8 @@ To ensure we follow a clean and efficient development methodology, we will follo
 
 ```
 master
-> feature
->> task
+    ┣━━ feature
+           ┗━━ task
 ```
 
 ### Branch Rules
