@@ -5,8 +5,8 @@ To ensure we follow a clean and efficient development methodology, we will follo
 
 ```
 master
-  |-- feature
-      |-- task
+> feature
+>> task
 ```
 
 ### Branch Rules
@@ -22,7 +22,16 @@ master
 #### Master
 
 The Master Branch will be used as the final product.
+
+<div class="panel panel-danger">
+**Danger**
+{: .panel-heading}
+<div class="panel-body">
+
 * IMPORTANT NOTE - No direct changes will be made on this branch**
+
+</div>
+</div>
 
 #### Feature
 
