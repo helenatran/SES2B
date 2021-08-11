@@ -1,4 +1,4 @@
-# SES2A
+# SES2B
 
 ## Build and Deployment Rules
 To ensure we follow a clean and efficient development methodology, we will follow the three-tier branch approach when applying changes. This includes the following:
