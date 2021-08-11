@@ -22,16 +22,7 @@ master
 #### Master
 
 The Master Branch will be used as the final product.
-
-<div class="panel panel-danger">
-**Danger**
-{: .panel-heading}
-<div class="panel-body">
-
-* IMPORTANT NOTE - No direct changes will be made on this branch**
-
-</div>
-</div>
+* <b>IMPORTANT NOTE</b> - No direct changes will be made on this branch**
 
 #### Feature
 
