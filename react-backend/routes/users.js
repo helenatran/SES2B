@@ -56,7 +56,7 @@ router.post('/insert-user', function(req, res, next) {
 	
 		const db = client.db(dbName);
 		
-		db.collection('users').insertOne(item, function(err, result){
+		db.collection('users').insertOne(item, function(err, result){ // Inserts the new item into the database
 			console.log("account added");
 			assert.equal(null, err);
 		});
