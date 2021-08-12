@@ -33,3 +33,7 @@ The Feature Branch will stem off the Master Branch and will act as a topic branc
 The Task Branch will act as the child branch of the Feature Branch to which content can be added. Different goals MUST be spread across other Task Branches. Once the goal is met, branches will be merged into the feature branch via an approved Pull Request (PR). For example:
 * Task 1: Create a Login button - Once completed and the PR is approved, this will be merged into the 'feature-login' branch
 * Task 2: Change the font size on the login screen - Once completed and the PR is approved, this will also be merged into the 'feature-login' branch. 
+
+### Misc Information
+
+Enter Misc information here - testing
