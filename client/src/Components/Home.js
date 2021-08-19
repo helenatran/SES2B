@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import './Home.css';
+import {withRouter} from 'react-router-dom';
 
-//importing visual assets
-import loading from '../Assets/loading-buffering.svg';
+//importing functional components
+import Navbar from './Navbar.js';
+import Footer from './Footer.js';
+import Loading from '../Utils/Loading.js'
 
 class Home extends Component {
   constructor(props){
@@ -15,7 +18,8 @@ class Home extends Component {
       username: '',
       password: '',
       validForm: false,
-      loading: true
+      loading: true,
+      status: null
     };
 
     //Required, else the functions don't work, javascript nuances
@@ -24,9 +28,12 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    fetch('/users/get-users')
+    // fetch('/users/get-users')
+    //   .then(res => res.json())
+    //   .then(users => this.setState({ users })) //Simple assignment to the users state
+    fetch('/users/login-status')
       .then(res => res.json())
-      .then(users => this.setState({ users })) //Simple assignment to the users state
+      .then(status => this.setState({ status }))
       .then(loading => this.setState({ loading: false })); //disables the loading spinner
   }
 
@@ -78,48 +85,45 @@ class Home extends Component {
   
 
   render() {
-    return (
-      <div className="App">
-        <div className="Home-header">
-          <h1>Users</h1>
-          <LoadingUserDetails Loading={this.state.loading} />
-          {/*Simple list of users from database fetch*/}
-          {this.state.users.map(user =>
-            <div key={user.id}>{user.username}</div>
-          )}
-          <form onSubmit={this.handleSubmit}>
-            <input
-              autoFocus
-              placeholder="Username"
-              name="username"
-              type="text"
-              value={this.state.username} // Appending the value to the state
-              onChange={this.handleChange} // Calls the funcion that handles the validation check
-            />
-            <button type="submit">
-              Login
-            </button>
-          </form>
-        </div>
-      </div>
-
-    );
-  }
-}
-
-function LoadingUserDetails(props) {
-  // Renders the loading spinner until
-  // database served data has been rendered
-  const Loading = props.Loading;
-  if (Loading) {
-    return (
+    return(
       <div>
-        <img src={loading} className="loading spinner" alt="loading..." />
+        <Navbar />
+        <div className="App">
+          <div className="Home-header">
+            {/* 
+              Simple rendering of the loading menu while the server updates 
+              the state of the application
+            */}
+            {this.state.loading ? (
+              // This is an inline if statement from react -> 
+              // https://reactjs.org/docs/conditional-rendering.html
+              <Loading Loading = {this.state.loading} />
+            ) : (
+              <div>
+                {/* 
+                  Handles logon states and returns the auth error 
+                  page if user is not logged in, else returns the 
+                  home screen
+                */}
+                {this.state.status ? ( 
+                  //This is also another inline if statement
+                  <div className="App"> 
+                    <div className="Home-header"> 
+                      Welcome User
+                    </div>
+                  </div>
+                ) : (
+                  <div>{this.props.history.push('/autherr')}</div> //Pushing to error page if user not logged in
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+        <Footer />
       </div>
     );
   }
-  else return <div></div> ;
 }
 
-export default Home;
+export default withRouter(Home);
 

@@ -9,6 +9,19 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+//Express Session Imports
+var session = require('express-session');
+
+const test = 1000 * 6000 
+// Express Sessions Setup
+app.set('trust proxy', 1) // trust first proxy
+app.use(session({
+  secret: 'SES2Bsecretkeywowthisisasecretkey',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false } // for development only, set to true for https cookie setup
+}))
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
