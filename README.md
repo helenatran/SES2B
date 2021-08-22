@@ -80,4 +80,4 @@ $ npm install
 ```
 
 ##### Gif Example
-![demo gif](client/demo.gif)
+![demo gif](demo.gif)
