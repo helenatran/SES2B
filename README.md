@@ -73,7 +73,7 @@ $ npm install
 ##### Frontend Server Dependencies
 ```
 user@DESKTOP MINGW64 ~/Documents/app-dev/SES2B (master)
-$ cd react-backend
+$ cd client
 ...
 $ npm install
 ...
