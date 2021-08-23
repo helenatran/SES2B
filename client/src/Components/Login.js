@@ -27,7 +27,7 @@ class Login extends Component {
     const url = "/users/handle-login";
     var postBody = {
       email: this.state.email,
-			password: this.state.password
+      password: this.state.password
     };
     const requestMetadata = {
       method: 'POST',
@@ -39,8 +39,14 @@ class Login extends Component {
       .then(
         (result) => {
           console.log(result);
-					this.props.history.push('/home');
           this.setState({ loginStatus: result });
+          //If else block is for validation, if logged in then push to home, else display the error message
+          if(this.loginStatus){
+            this.props.history.push('/home');
+          }
+          else{
+            this.setState({ errorMessage: true });
+          }
         },
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
@@ -49,7 +55,6 @@ class Login extends Component {
           console.log(error);
         }
       );
-			// .then(() => this.props.history.push('/home'));
     event.preventDefault();
   }
 
@@ -95,6 +100,12 @@ class Login extends Component {
               Login
             </button>
           </form>
+          {this.state.errorMessage ? ( 
+            //This is also another inline if statement to show the error message if the state is set to true
+            <div>We encountered an error when processing your details! Please try again...</div>
+          ) : (
+            null
+          )}
         </div>
       </div>
 			)

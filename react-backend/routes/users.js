@@ -88,12 +88,12 @@ router.post('/handle-login', function (req, res, next) {
 		function (err, result) {
 			if (err) throw err; // Built in error handler
 			user = result; // For readability, classifying the result of the mongodb connection as a user
-			if (!req.body.email || !req.body.password) {
-				res.redirect('/login'); // If password and email do not exist then redirect to login page
+			if (user === undefined){
+				res.json({loginStatus: false});
 			}
 			else {
 				bcrypt.compare(req.body.password, user.password, function (err, response) { // Checking the hash stored in the database with the entered value
-					if (err) throw err; //Built in error handler
+					// if (err) throw err; //Built in error handler
 					if (response && user.email == req.body.email) { // Check if the email is the same as the one stored in the database
 
 						req.session.userid = user.email; // Sets the session to the user and assigns a cookie
