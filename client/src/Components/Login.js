@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {withRouter} from 'react-router-dom';
 import "./Login.css";
-import { Button, Form } from "react-bootstrap";
+import { Button, FormGroup, FormControl } from "react-bootstrap";
 
 class Login extends Component {
 	constructor(props){
@@ -39,10 +39,10 @@ class Login extends Component {
       .then(res => res.json())
       .then(
         (result) => {
-          console.log(result);
-          this.setState({ loginStatus: result });
+          console.log(result.loginStatus);
+          this.setState({ loginStatus: result.loginStatus });
           //If else block is for validation, if logged in then push to home, else display the error message
-          if(this.loginStatus){
+          if(this.state.loginStatus){
             this.props.history.push('/home');
           }
           else{
@@ -78,29 +78,31 @@ class Login extends Component {
 		return (
 			<div className="App">
         <div className="Home-header">
-          <Form onSubmit={this.handleLogin}>
-            <Form.Control
-              autoFocus
-							required
-              placeholder="Email"
-              name="email"
-              type="email"
-              value={this.state.email} // Appending the value to the state
-              onChange={this.handleChange} // Calls the funcion that handles the validation check
-            />
-						<Form.Control
-              autoFocus
-							required
-              placeholder="Password"
-              name="password"
-              type="password"
-              value={this.state.password} // Appending the value to the state
-              onChange={this.handleChange} // Calls the funcion that handles the validation check
-            />
-            <Button type="submit">
-              Login
-            </Button>
-          </Form>
+          <form onSubmit={this.handleLogin}>
+            <FormGroup role="form">
+              <FormControl
+                autoFocus
+                required
+                placeholder="Email"
+                name="email"
+                type="email"
+                value={this.state.email} // Appending the value to the state
+                onChange={this.handleChange} // Calls the funcion that handles the validation check
+              />
+              <FormControl
+                autoFocus
+                required
+                placeholder="Password"
+                name="password"
+                type="password"
+                value={this.state.password} // Appending the value to the state
+                onChange={this.handleChange} // Calls the funcion that handles the validation check
+              />
+              <Button type="submit">
+                Login
+              </Button>
+            </FormGroup>
+          </form>
           {this.state.errorMessage ? ( 
             //This is also another inline if statement to show the error message if the state is set to true
             <div>We encountered an error when processing your details! Please try again...</div>

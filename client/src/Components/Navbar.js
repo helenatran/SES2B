@@ -52,14 +52,12 @@ class Navbar extends Component {
             <Link to="/account">
               <img src={follow} className="App-logo" alt="Sign Up"/>
             </Link>
-            <Link> {/* Wrapped in a link for visibility and layout */}
-              <img
-                src={enter}
-                className="App-logo"
-                alt="Sign Up"
-                onClick={this.handleLogout} //Calling the logout function which also handles the redirect
-              />
-            </Link>
+            <img
+              src={enter}
+              className="App-logo"
+              alt="Sign Up"
+              onClick={this.handleLogout} //Calling the logout function which also handles the redirect
+            />
           </nav>
         </div>
       </div>
