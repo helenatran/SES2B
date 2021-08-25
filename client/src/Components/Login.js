@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {withRouter} from 'react-router-dom';
 import "./Login.css";
+import { Button, Form } from "react-bootstrap";
 
 class Login extends Component {
 	constructor(props){
@@ -77,8 +78,8 @@ class Login extends Component {
 		return (
 			<div className="App">
         <div className="Home-header">
-          <form onSubmit={this.handleLogin}>
-            <input
+          <Form onSubmit={this.handleLogin}>
+            <Form.Control
               autoFocus
 							required
               placeholder="Email"
@@ -87,7 +88,7 @@ class Login extends Component {
               value={this.state.email} // Appending the value to the state
               onChange={this.handleChange} // Calls the funcion that handles the validation check
             />
-						<input
+						<Form.Control
               autoFocus
 							required
               placeholder="Password"
@@ -96,10 +97,10 @@ class Login extends Component {
               value={this.state.password} // Appending the value to the state
               onChange={this.handleChange} // Calls the funcion that handles the validation check
             />
-            <button type="submit">
+            <Button type="submit">
               Login
-            </button>
-          </form>
+            </Button>
+          </Form>
           {this.state.errorMessage ? ( 
             //This is also another inline if statement to show the error message if the state is set to true
             <div>We encountered an error when processing your details! Please try again...</div>
