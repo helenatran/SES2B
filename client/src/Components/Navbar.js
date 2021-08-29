@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import logo from "../TeamLogo.png";
 import enter from "../Assets/enter.svg";
 import follow from "../Assets/follow.svg";
+import profile from "../Assets/profile.png";
 
 class Navbar extends Component {
   
@@ -26,11 +27,15 @@ class Navbar extends Component {
             <Link to="/signup">
               <img src={follow} className="App-logo" alt="Sign Up"/>
             </Link>
+            <Link to="/StudentProfile">
+              <img src={profile} className="App-logo" alt="Student Profile"/>
+            </Link>
             <Link to="/login">
               <img src={enter} className="App-logo" alt="about"/>
             </Link>
           </nav>
         </div>
+
       </div>
     );
   }

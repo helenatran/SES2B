@@ -1,0 +1,90 @@
+.App-header {
+  background-color: #282c34;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+
+  .app-wrapper{
+    background: #fff;
+    width: 40%;
+    height: 90%;
+    justify-content: center;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 25px;
+    box-shadow:
+  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12)
+  }
+
+  .title{
+    color: #282c34;
+    text-shadow: 0 1px 0 282c34;
+    margin-top: 1px;
+    text-align: center;
+  }
+   
+  .FName,
+  .LName,
+  .StudentID,
+  .Email,
+  .PNumber{
+    margin: 20px;
+    color: #969292;
+    font-size: 16px;
+
+  }
+
+  .label{
+    color: #282c34;
+    font-size: 24px;
+    margin-left: 10px;
+  }
+
+  .input{
+    height: 28px;
+    font-size: 20px;
+    outline: none;
+    width: 90%;
+    border-top-style: none;
+    align-items: center;
+    align-content: center;
+    border-left-style: none;
+    border-right-style:none;
+    border-bottom-style:2px solid #282c34 ;;
+    margin-bottom: 15px;
+    margin-left: 10px;
+
+  }
+
+  .submit{
+    display:flex;
+    text-transform:uppercase;
+    font-size:20px;
+    border-radius:25px;
+    color:white;
+    padding:10px 60px;
+    background: linear-gradient(to right, #0052A2,#282c34 );
+    box-shadow: rgba(0,0,0,0.3) 0px 19px 38px, rgba(0,0,0,0.22) 0px 15px 12px;
+    margin: auto;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.1s;
+    margin-top: 10px;
+  }
+
+  button:active{
+
+    transform:translateY(2px);
+  }
+  
