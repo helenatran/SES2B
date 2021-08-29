@@ -11,7 +11,8 @@
 
   .app-wrapper{
     background: #fff;
-    width: 40%;
+    width: 60%;
+    margin-left: 20%;
     height: 90%;
     justify-content: center;
     box-sizing: border-box;
@@ -25,6 +26,34 @@
   0 41.8px 33.4px rgba(0, 0, 0, 0.086),
   0 100px 80px rgba(0, 0, 0, 0.12)
   }
+
+ 
+  .Image{
+    height: 40%;
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 30%;
+    margin-bottom: 30%;
+  }
+  .left{
+    width: 50%;
+    float: right;
+    height: 100%;
+  }
+
+
+  .right{
+    width: 50%;
+    float:left;
+    background-color: #282c34;
+    min-height: 100vh;
+   
+  
+   
+  
+  }
+
 
   .title{
     color: #282c34;

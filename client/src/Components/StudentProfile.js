@@ -4,63 +4,71 @@ import ProfilePic from "../Assets/profilepic.png";
 import edit from "../Assets/edit.png";
 
 class StudentProfile extends Component {
-    // Uses Dummy Data 
+    // Uses Dummy Data git
     render(){
         return(
 
-           <div className="App-header"> 
-                 
-               <div class="container">
+            <div>
 
-                    <div className="app-wrapper">
-                        <div>
-                            <h2 className="title">Profile Page</h2>
+                <div className="right">
+                    <div className="Image">
+                       <img src={ProfilePic} ></img>
+                    </div>
+                </div>
 
-                        </div>
+            
 
-                        <form className="form=wrapper">
-                            <div classname="FName">
-                                <label className="label"> First Name</label>
-                                <input className="input" type="text" placeholder="John"></input>
-                            </div>
+                
+                <div className="left">
+                    <div className="App-header"> 
+                            
+                        <div class="container">
 
-                            <div classname="LName">
-                                <label className="label"> Last Name</label>
-                                <input className="input" type="text" placeholder="Smith"></input>
-                            </div>
+                                <div className="app-wrapper">
+                                    <div>
+                                        <h2 className="title">Profile Page</h2>
 
-                            <div classname="StudentID">
-                                <label className="label"> Student ID</label>
-                                <input className="input" type="text" placeholder="13543234"></input>
-                            </div>
+                                    </div>
 
-                            <div classname="Email">
-                                <label className="label"> Email</label>
-                                <input className="input" type="text" placeholder="JohnSmith@gmail.com"></input>
-                            </div>
+                                    <form className="form=wrapper">
+                                        <div classname="FName">
+                                            <label className="label"> First Name</label>
+                                            <input className="input" type="text" placeholder="John"></input>
+                                        </div>
 
-                            <div classname="PNumber">
-                                <label className="label"> Phone Number</label>
-                                <input className="input" type="text" placeholder="0404321567"></input>
-                            </div>
+                                        <div classname="LName">
+                                            <label className="label"> Last Name</label>
+                                            <input className="input" type="text" placeholder="Smith"></input>
+                                        </div>
 
-                            <div>
-                                <button className="submit">Save Changes</button>
-                            </div>
+                                        <div classname="StudentID">
+                                            <label className="label"> Student ID</label>
+                                            <input className="input" type="text" placeholder="13543234"></input>
+                                        </div>
+
+                                        <div classname="Email">
+                                            <label className="label"> Email</label>
+                                            <input className="input" type="text" placeholder="JohnSmith@gmail.com"></input>
+                                        </div>
+
+                                        <div classname="PNumber">
+                                            <label className="label"> Phone Number</label>
+                                            <input className="input" type="text" placeholder="0404321567"></input>
+                                        </div>
+
+                                        <div>
+                                            <button className="submit">Save Changes</button>
+                                        </div>
 
 
-                        </form>
+                                    </form>
+                                
+                            </div> 
+                                    
+                            </div></div> 
+                    </div>
 
-                        
-                </div></div>
-                        
-                   
-            </div>
-      
-
-                     
-                     
-             
+            </div>  
            
         )
     }
