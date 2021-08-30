@@ -17,10 +17,10 @@ getUsers = (req, res) => {
 // Initialising the session for the user, if the session is stil active based on the cookie then the user will be automatically logged in
 loginStatus = (req, res) => {
 	var status = false;
-  if(req.session.userid){
-    status = true;
-  }
-  res.json(status);
+	if(req.session.userid){
+		status = true;
+	}
+	res.json(status);
 }
 
 handleLogin = (req, res) => {
@@ -50,14 +50,14 @@ handleLogin = (req, res) => {
 
 handleLogout = (req, res) => {
 	req.session.destroy(function(){ // Built in express session destroy function
-    res.json({status: false}); // Setting the login status to false
-  });
+		res.json({status: false}); // Setting the login status to false
+	});
 }
 
 
 module.exports = {
     getUsers,
-		handleLogout,
-		handleLogin,
-		loginStatus
+	handleLogout,
+	handleLogin,
+	loginStatus
 }
