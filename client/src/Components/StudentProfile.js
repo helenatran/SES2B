@@ -24,46 +24,34 @@ class StudentProfile extends Component {
         const {ProfilePic} = this.state
         return(
 
-            <div>
+            <div className="page">
 
-                <div className="right">
-                
-                <div className="top">
-                    <div className="col">
-                        <div className="Image">
-                            <img src={ProfilePic} id="img" alt="img" className="Img"></img>
-                            <div className="bottom">
-                            <div className="file">
-                            <input type="file" name="image-upload" id="input" accept="image/*" onChange={this.imageHandler}/>
-                            <div className="label">
-                                <label htmlFor="input" className="image-upload" >
-                                    <i className="material-icons">add_photo_alternate</i>
-                                    Update Photo
-                                </label>
-                            </div>
-                            </div>
-                            </div>
-                    </div>
-                    </div>
-                            </div>
-
-                            <div className="bottom">
-                            <div className="file">
-                            <input type="file" name="image-upload" id="input" accept="image/*" onChange={this.imageHandler} />
-                            <div className="label">
-                                <label htmlFor="input" className="image-upload" >
-                                    <i className="material-icons">add_photo_alternate</i>
-                                    Update Photo
-                                </label>
-                            </div>
-                            </div>
-                            </div>
-                    </div>
-                    
-
+            <div className="right">
             
-
+            <div className="top">
+                <div className="col">
+                    <div className="Image">
+                        
+                        <div className="profile-wrapper">
+                            <img  src={ProfilePic} id="img" alt="img" className="Img"></img>
+                        </div>
+                        <div className="bottom">
+                        <div className="file">
+                        <input type="file" name="image-upload" id="input" accept="image/*" onChange={this.imageHandler}/>
+                        <div className="label">
+                            <label htmlFor="input" className="image-upload" >
+                                <i className="material-icons">add_photo_alternate</i>
+                                Update Photo
+                            </label>
+                        </div>
+                        </div>
+                        </div>
+                </div>
+                </div>
                 
+                    </div>
+                </div>
+        
                 <div className="left">
                     <div className="App-header"> 
                             
@@ -104,13 +92,12 @@ class StudentProfile extends Component {
                                         <div>
                                             <button className="submit">Save Changes</button>
                                         </div>
-
-
                                     </form>
                                 
-                            </div> 
+                                </div> 
                                     
-                            </div></div> 
+                        </div>
+                    </div> 
                     </div>
 
             </div>  

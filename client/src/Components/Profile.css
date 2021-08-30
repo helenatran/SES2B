@@ -32,12 +32,13 @@
     height: 70%;
     width: 70%;
     box-shadow: rgba(0,0,0,0.3) 0px 19px 38px, rgba(0,0,0,0.22) 0px 15px 12px;
+    border-radius: 300px;
   }
 
   .bottom{
-    position: absolute;
+    /* position: absolute; */
     top:66%;
-    left:22.6%;
+    left:30%;
     
   }
 
@@ -47,8 +48,11 @@
 
   .image-upload{
     margin: auto;
-    width: 200px;
-    height: 45px;
+    position: relative;
+    shape-image-threshold: initial;
+    margin-left: 59px;
+    width: 40%;
+    height: 20%;
     background: linear-gradient(to right, #0052A2,#282c34 );
     box-shadow: rgba(0,0,0,0.3) 0px 19px 38px, rgba(0,0,0,0.22) 0px 15px 12px;
     color: white;
@@ -68,11 +72,13 @@
     margin-right: 30%;
     margin-top: 20%;
     margin-bottom: 30%;
+    border-radius: 300px;
   }
   .left{
     width: 50%;
     float: right;
     height: 100%;
+    background-color:#282c34;
   }
 
 
@@ -81,6 +87,7 @@
     float:left;
     background-color: #282c34;
     min-height: 100vh;
+    background-color:#282c34;
    
   
    
@@ -150,3 +157,8 @@
     transform:translateY(2px);
   }
   
+  .profile-wrapper{
+    max-width: 500px;
+    max-height: 500px;
+    
+  }
