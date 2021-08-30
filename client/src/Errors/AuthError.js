@@ -15,12 +15,12 @@ class AuthError extends Component {
 			//Also contains a button for the user to return to login screen
 			<div className="Auth-header">
 				<img src={gandalf} alt="You shall not pass!" />
-        <Link to="/login">
-          <button>Go Back to Login</button>
-        </Link>
+				<Link to="/login">
+					<button>Go Back to Login</button>
+				</Link>
 			</div>
 		)
 	}
 }
 	
-	export default AuthError;
+export default AuthError;
