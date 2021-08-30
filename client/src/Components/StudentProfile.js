@@ -1,18 +1,42 @@
 import React, { Component } from "react";
 import "./Profile.css";
-import ProfilePic from "../Assets/profilepic.png";
+//import ProfilePic from "../Assets/profilepic.png";
 import edit from "../Assets/edit.png";
+
 
 class StudentProfile extends Component {
     // Uses Dummy Data git
+
+    state={
+        ProfilePic:'https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png'
+    }
+    
     render(){
+        const {ProfilePic} = this.state
         return(
 
             <div>
 
                 <div className="right">
-                    <div className="Image">
-                       <img src={ProfilePic} ></img>
+                
+                <div className="top">
+                    <div className="col">
+                        <div className="Image">
+                            <img src={ProfilePic} id="img" alt="img" className="Img"></img>
+                            </div>
+                    </div>
+
+                    <div className="bottom">
+                            <div className="file">
+                            <input type="file" name="image-upload" id="input" accept="image/*"/>
+                            <div className="label">
+                                <label htmlFor="input" className="image-upload" >
+                                    <i className="material-icons">add_photo_alternate</i>
+                                    Update Photo
+                                </label>
+                            </div>
+                            </div>
+                            </div>
                     </div>
                 </div>
 

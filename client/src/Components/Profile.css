@@ -13,6 +13,7 @@
     background: #fff;
     width: 60%;
     margin-left: 20%;
+    margin-bottom: 5%;
     height: 90%;
     justify-content: center;
     box-sizing: border-box;
@@ -27,13 +28,45 @@
   0 100px 80px rgba(0, 0, 0, 0.12)
   }
 
+  .Img{
+    height: 70%;
+    width: 70%;
+    box-shadow: rgba(0,0,0,0.3) 0px 19px 38px, rgba(0,0,0,0.22) 0px 15px 12px;
+  }
+
+  .bottom{
+    position: absolute;
+    top:66%;
+    left:22.6%;
+    
+  }
+
+  #input[type="file"]{
+    display: none;
+  }
+
+  .image-upload{
+    margin: auto;
+    width: 200px;
+    height: 45px;
+    background: linear-gradient(to right, #0052A2,#282c34 );
+    box-shadow: rgba(0,0,0,0.3) 0px 19px 38px, rgba(0,0,0,0.22) 0px 15px 12px;
+    color: white;
+    border-radius: 28px;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+
+  }
+
  
   .Image{
-    height: 40%;
-    width: 40%;
-    margin-left: 30%;
+    height: 70%;
+    width: 70%;
+    margin-left: 35%;
     margin-right: 30%;
-    margin-top: 30%;
+    margin-top: 20%;
     margin-bottom: 30%;
   }
   .left{
