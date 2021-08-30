@@ -11,6 +11,15 @@ class StudentProfile extends Component {
         ProfilePic:'https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png'
     }
     
+    imageHandler = (e) => {
+        const reader = new FileReader();
+        reader.onload = () =>{
+          if(reader.readyState === 2){
+            this.setState({ProfilePic: reader.result})
+          }
+        }
+        reader.readAsDataURL(e.target.files[0])
+      };
     render(){
         const {ProfilePic} = this.state
         return(
@@ -23,12 +32,9 @@ class StudentProfile extends Component {
                     <div className="col">
                         <div className="Image">
                             <img src={ProfilePic} id="img" alt="img" className="Img"></img>
-                            </div>
-                    </div>
-
-                    <div className="bottom">
+                            <div className="bottom">
                             <div className="file">
-                            <input type="file" name="image-upload" id="input" accept="image/*"/>
+                            <input type="file" name="image-upload" id="input" accept="image/*" onChange={this.imageHandler}/>
                             <div className="label">
                                 <label htmlFor="input" className="image-upload" >
                                     <i className="material-icons">add_photo_alternate</i>
@@ -38,7 +44,22 @@ class StudentProfile extends Component {
                             </div>
                             </div>
                     </div>
-                </div>
+                    </div>
+                            </div>
+
+                            <div className="bottom">
+                            <div className="file">
+                            <input type="file" name="image-upload" id="input" accept="image/*" onChange={this.imageHandler} />
+                            <div className="label">
+                                <label htmlFor="input" className="image-upload" >
+                                    <i className="material-icons">add_photo_alternate</i>
+                                    Update Photo
+                                </label>
+                            </div>
+                            </div>
+                            </div>
+                    </div>
+                    
 
             
 
