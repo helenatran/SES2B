@@ -5,8 +5,9 @@ var fs = require('fs');
 var path = require("path")
 
 const tempFolder = path.join('..','temp','recordings')
-
-// CRUD
+if (!fs.existsSync(tempFolder)){
+    fs.mkdirSync(tempFolder, {recursive: true});
+}
 
 createRecording = (req, res) => {
     try {
@@ -18,7 +19,7 @@ createRecording = (req, res) => {
                 // Delete local file
                 fs.unlink(file, (err) => {
                     if (err) {
-                        console.log(err);
+                        throw err;
                     }
                     else{
                         console.log(file+" was deleted");
@@ -39,7 +40,6 @@ createRecording = (req, res) => {
         
     }
     catch (err){
-        console.log(err);
         res.status(500).json(err);
     }
     
@@ -60,13 +60,21 @@ deleteRecording = async (req, res) => {
     const cursor = bucket.find({filename: req.params.fileName});
     var doc_id;
     await cursor.forEach(doc => {
-        console.log('1st');
         doc_id = doc._id;
     });
-    bucket.delete(doc_id);
-
-    const result = await db.collection("recording").deleteOne({recording_id: req.params.fileName});
-    res.json(["Success"]);
+    try{
+        bucket.delete(doc_id);
+        const result = await db.collection("recording").deleteOne({recording_id: req.params.fileName});
+        if (result.deletedCount === 1){
+            res.json(["Success"]);
+        }
+        else{
+            res.status(500).json(["No documents found with this name"]);
+        }
+    }
+    catch(err){
+        res.status(500).json(err)
+    }
 }
 
 module.exports = {
