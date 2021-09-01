@@ -1,5 +1,6 @@
 .App-header {
-  background-color: #282c34;
+  background-color: #fff;
+
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -52,16 +53,17 @@
     shape-image-threshold: initial;
     margin-left: 59px;
     width: 40%;
-    height: 20%;
-    background: linear-gradient(to right, #0052A2,#282c34 );
+    height: 50px;
+    background:rgb(40, 221, 160);;
     box-shadow: rgba(0,0,0,0.3) 0px 19px 38px, rgba(0,0,0,0.22) 0px 15px 12px;
     color: white;
     border-radius: 28px;
-    text-align: center;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-
+    text-overflow: clip;
+    text-align: center ;
+    -moz-text-align-last: center;
+    text-align-last: center;
+     padding-top: 5px;
+  
   }
 
  
@@ -85,9 +87,9 @@
   .right{
     width: 50%;
     float:left;
-    background-color: #282c34;
+    background-color: #fff;
     min-height: 100vh;
-    background-color:#282c34;
+    background-color:#fff;
    
   
    
@@ -142,7 +144,7 @@
     border-radius:25px;
     color:white;
     padding:10px 60px;
-    background: linear-gradient(to right, #0052A2,#282c34 );
+    background-color: rgb(40, 221, 160);
     box-shadow: rgba(0,0,0,0.3) 0px 19px 38px, rgba(0,0,0,0.22) 0px 15px 12px;
     margin: auto;
     outline: none;

@@ -5,7 +5,7 @@ import './Navbar.css';
 import { Link } from "react-router-dom";
 
 //Importing Assets
-import logo from "../TeamLogo.png";
+import logo from "../Assets/logoA.png";
 import enter from "../Assets/enter.svg";
 import follow from "../Assets/follow.svg";
 import profile from "../Assets/profile.png";
