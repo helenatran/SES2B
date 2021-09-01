@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Home.css';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 //importing functional components
 import Navbar from './Navbar.js';
@@ -8,7 +8,7 @@ import Footer from './Footer.js';
 import Loading from '../Utils/Loading.js'
 
 class Home extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     // Data to be submitted and used need to be states to 
     // ensure we don't reload the page every time there is a state change 
@@ -45,14 +45,14 @@ class Home extends Component {
     };
     const requestMetadata = {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(postBody)
     }
     fetch(url, requestMetadata)
       .then(res => res.json())
       // Reassigning user state to trigger 
       // update in react and to update the displayed data
-      .then(users => this.setState({ users })) 
+      .then(users => this.setState({ users }))
       .then(this.setState({ username: '' })) //Clearing user input
       .then(
         (result) => {
@@ -75,17 +75,17 @@ class Home extends Component {
     this.setState({
       [name]: target.value
     });
-    if (this.state.username && this.state.username > 0){
-      this.setState({validForm: true});
+    if (this.state.username && this.state.username > 0) {
+      this.setState({ validForm: true });
     }
-    else{
-      this.setState({validForm: false});
+    else {
+      this.setState({ validForm: false });
     }
   }
-  
+
 
   render() {
-    return(
+    return (
       <div>
         <Navbar />
         <div className="App">
@@ -97,7 +97,7 @@ class Home extends Component {
             {this.state.loading ? (
               // This is an inline if statement from react -> 
               // https://reactjs.org/docs/conditional-rendering.html
-              <Loading Loading = {this.state.loading} />
+              <Loading Loading={this.state.loading} />
             ) : (
               <div>
                 {/* 
@@ -105,10 +105,10 @@ class Home extends Component {
                   page if user is not logged in, else returns the 
                   home screen
                 */}
-                {this.state.status ? ( 
+                {this.state.status ? (
                   //This is also another inline if statement
-                  <div className="App"> 
-                    <div className="Home-header"> 
+                  <div className="App">
+                    <div className="Home-header">
                       Welcome User
                     </div>
                   </div>

@@ -9,7 +9,7 @@ import enter from "../Assets/enter.svg";
 import follow from "../Assets/follow.svg";
 
 class Navbar extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     //Binding function to the context of the class
     this.handleLogout = this.handleLogout.bind(this);
@@ -18,10 +18,10 @@ class Navbar extends Component {
   handleLogout(event) {
     console.log(event); //Currently for development purposes
     const url = "/users/logout";
-    var postBody = { };
+    var postBody = {};
     const requestMetadata = {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(postBody)
     }
     fetch(url, requestMetadata)
@@ -46,16 +46,16 @@ class Navbar extends Component {
       <div>
         <div className="Cluster">
           <Link to="/home">
-            <img src={logo} className="App-logo-left" alt="logo"/>
+            <img src={logo} className="App-logo-left" alt="Atlas Logo" />
           </Link>
           <nav>
             <Link to="/account">
-              <img src={follow} className="App-logo" alt="Sign Up"/>
+              <img src={follow} className="App-logo" alt="Account" />
             </Link>
             <img
               src={enter}
               className="App-logo"
-              alt="Sign Up"
+              alt="Logout"
               onClick={this.handleLogout} //Calling the logout function which also handles the redirect
             />
           </nav>

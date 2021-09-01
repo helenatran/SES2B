@@ -10,8 +10,8 @@ import Navbar from './Navbar.js';
 class Account extends Component {
 	// Placeholder code for Account page
 	// Used during setup of react-router
-	render(){
-		return(
+	render() {
+		return (
 			<div>
 				<Navbar />
 				<div className="App-header">
@@ -21,5 +21,5 @@ class Account extends Component {
 		)
 	}
 }
-	
+
 export default Account;

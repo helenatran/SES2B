@@ -3,8 +3,8 @@ import "./Footer.css";
 
 class Footer extends Component {
 	// Placeholder code for Footer page
-	render(){
-		return(
+	render() {
+		return (
 			<div>
 				<div>
 					This is the Footer
