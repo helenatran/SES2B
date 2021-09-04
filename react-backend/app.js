@@ -25,9 +25,11 @@ database.connectToServer(function(err, client){
   else{
     var indexRouter = require('./routes/index');
     var usersRouter = require('./routes/users');
+    var examAllocationRouter = require('./routes/exam_allocation');
 
     app.use('/', indexRouter);
     app.use('/users', usersRouter);
+    app.use('/exam-allocation', examAllocationRouter);
 
     // catch 404 and forward to error handler
     app.use(function(req, res, next) {
