@@ -34,6 +34,50 @@ The Task Branch will act as the child branch of the Feature Branch to which cont
 * Task 1: Create a Login button - Once completed and the PR is approved, this will be merged into the 'feature-login' branch
 * Task 2: Change the font size on the login screen - Once completed and the PR is approved, this will also be merged into the 'feature-login' branch. 
 
-### Misc Information
+***
 
-Enter Misc information here - testing
+### Installation Steps
+
+When installing the project on your machine, ensure the following requirements are met:
+
+#### Required Software
+* Node JS - ```version 14.17.5``` - [Node JS Download](https://nodejs.org/en/download/)
+* MongoDB Compass - ```version 1.28.1``` - [Mongo DB Compass Download](https://www.mongodb.com/try/download/compass)
+
+On initial launch, your folder structure should mirror this:
+
+```
+client
+    ┣━━ src
+backend
+    ┣━━ routes
+readme.md
+```
+
+#### Installing Dependencies
+
+For all cases of installation and starts, it is highly recommended that the dependency to be installed is only installed within the desired directory i.e. if it is a front-end related dependency, then you must install it within the client directory. The same philosophy applies for back-end dependencies. 
+
+##### Backend Server Dependencies
+
+In your favourite command terminal (In this case, Git Bash was used to demonstrate):
+
+```
+user@DESKTOP MINGW64 ~/Documents/app-dev/SES2B (master)
+$ cd react-backend
+...
+$ npm install
+...
+```
+
+##### Frontend Server Dependencies
+```
+user@DESKTOP MINGW64 ~/Documents/app-dev/SES2B (master)
+$ cd client
+...
+$ npm install
+...
+```
+
+##### Gif Example
+![demo gif](demo.gif)
