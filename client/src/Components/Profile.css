@@ -1,6 +1,5 @@
 .App-header {
   background-color: #fff;
-
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -10,24 +9,6 @@
 }
 
 
-  .app-wrapper{
-    background: #fff;
-    width: 60%;
-    margin-left: 20%;
-    margin-bottom: 5%;
-    height: 90%;
-    justify-content: center;
-    box-sizing: border-box;
-    border-radius: 5px;
-    padding: 25px;
-    box-shadow:
-  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-  0 12.5px 10px rgba(0, 0, 0, 0.06),
-  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-  0 100px 80px rgba(0, 0, 0, 0.12)
-  }
 
   .Img{
     height: 70%;
@@ -48,21 +29,26 @@
   }
 
   .image-upload{
-    margin: auto;
-    position: relative;
-    shape-image-threshold: initial;
-    margin-left: 59px;
-    width: 40%;
-    height: 50px;
-    background:rgb(40, 221, 160);;
+    display:flex;
+    text-transform:uppercase;
+    text-overflow: ellipsis;
+    min-width: 180px;
+    min-height: 45px;
+    font-size:14px;
+    border-radius:25px;
+    color:white;
+    padding:10px 25px;
+    background-color: rgb(40, 221, 160);
     box-shadow: rgba(0,0,0,0.3) 0px 19px 38px, rgba(0,0,0,0.22) 0px 15px 12px;
-    color: white;
-    border-radius: 28px;
-    text-overflow: clip;
-    text-align: center ;
-    -moz-text-align-last: center;
-    text-align-last: center;
-     padding-top: 5px;
+    margin-right: 40%;
+    margin-left: 5%;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.1s;
+    margin-top: 10px;
+    font-weight: 600;
+   
   
   }
 
@@ -70,22 +56,22 @@
   .Image{
     height: 70%;
     width: 70%;
-    margin-left: 35%;
-    margin-right: 30%;
+    margin-left: 30%;
+    margin-right: 25%;
     margin-top: 20%;
     margin-bottom: 30%;
     border-radius: 300px;
   }
   .left{
-    width: 50%;
+    width: 70%;
     float: right;
     height: 100%;
-    background-color:#282c34;
+    background-color:white;
   }
 
 
   .right{
-    width: 50%;
+    width: 30%;
     float:left;
     background-color: #fff;
     min-height: 100vh;
@@ -117,30 +103,28 @@
 
   .label{
     color: #282c34;
-    font-size: 24px;
+    font-size: 22px;
     margin-left: 10px;
   }
 
   .input{
-    height: 28px;
+    background-color: #ededed;
+    border: none;
+    height: 35px;
     font-size: 20px;
-    outline: none;
     width: 90%;
-    border-top-style: none;
     align-items: center;
     align-content: center;
-    border-left-style: none;
-    border-right-style:none;
-    border-bottom-style:2px solid #282c34 ;;
-    margin-bottom: 15px;
     margin-left: 10px;
+    padding: 23px;
+    margin-bottom: 1%;
 
   }
 
   .submit{
     display:flex;
     text-transform:uppercase;
-    font-size:20px;
+    font-size:18px;
     border-radius:25px;
     color:white;
     padding:10px 60px;
@@ -151,9 +135,13 @@
     border: none;
     cursor: pointer;
     transition: all 0.1s;
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-left: 2%;
   }
 
+.Exit{
+  float: right;
+}
   button:active{
 
     transform:translateY(2px);
@@ -163,4 +151,10 @@
     max-width: 500px;
     max-height: 500px;
     
+  }
+
+  .Exit{
+    margin-right: 2%;
+
+
   }

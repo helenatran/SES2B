@@ -1,5 +1,5 @@
 .Cluster {
-    border-bottom: 2px solid grey;
+    border-bottom: 2px solid #e0e0e0;
 
     background-color: #fff;
     min-height: 50px;
@@ -40,7 +40,7 @@
   }
   
   .vl {
-    border-left: 2px solid rgba(73, 73, 73, 0.418);
+    border-left: 2px solid #fafafa;
     height: 5px;
     left: 50%;
     margin-left: 4px;

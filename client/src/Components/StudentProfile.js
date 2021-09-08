@@ -58,10 +58,6 @@ class StudentProfile extends Component {
                         <div class="container">
 
                                 <div className="app-wrapper">
-                                    <div>
-                                        <h2 className="title">Profile Page</h2>
-
-                                    </div>
 
                                     <form className="form=wrapper">
                                         <div classname="FName">
@@ -74,13 +70,18 @@ class StudentProfile extends Component {
                                             <input className="input" type="text" placeholder="Smith"></input>
                                         </div>
 
+                                        <div classname="PName">
+                                            <label className="label"> Preferred Name</label>
+                                            <input className="input" type="text" placeholder="Jhonny"></input>
+                                        </div>
+
                                         <div classname="StudentID">
                                             <label className="label"> Student ID</label>
                                             <input className="input" type="text" placeholder="13543234"></input>
                                         </div>
 
                                         <div classname="Email">
-                                            <label className="label"> Email</label>
+                                            <label className="label"> Email &#8287; &#8287; &#8287;  </label>
                                             <input className="input" type="text" placeholder="JohnSmith@gmail.com"></input>
                                         </div>
 
@@ -91,9 +92,10 @@ class StudentProfile extends Component {
 
                                         <div>
                                             <button className="submit">Save Changes</button>
+                                            
                                         </div>
                                     </form>
-                                
+                                s
                                 </div> 
                                     
                         </div>
