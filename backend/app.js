@@ -31,10 +31,12 @@ database.connectToServer(function(err, client){
         var indexRouter = require('./routes/index');
         var usersRouter = require('./routes/users');
         var recordingRouter = require('./routes/recording');
+        var allocationRouter = require('./routes/exam_allocation');
+        
         app.use('/', indexRouter);
         app.use('/users', usersRouter);
         app.use('/recording', recordingRouter)
-    
+        app.use('/exam_allocation', allocationRouter)
         // catch 404 and forward to error handler
         app.use(function(req, res, next) {
           next(createError(404));
