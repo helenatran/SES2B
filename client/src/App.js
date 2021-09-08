@@ -10,6 +10,7 @@ import Navbar from "./Components/Navbar.js";
 import Login from "./Components/Login.js";
 import SignUp from "./Components/Register.js";
 import WebcamTest from "./Components/WebcamTest.js";
+import SpyOnStudentTest from "./Components/SpyOnStudentTest.js";
 import Home from "./Components/Home.js";
 
 class App extends Component {
@@ -30,6 +31,9 @@ class App extends Component {
           </Route>
           <Route path="/webcam-test">
             <WebcamTest />
+          </Route>
+          <Route path="/spy-on-student-test">
+            <SpyOnStudentTest />
           </Route>
           <Route path="/">
             <Login />
