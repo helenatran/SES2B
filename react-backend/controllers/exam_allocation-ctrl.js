@@ -1,4 +1,3 @@
-const dbUtil = require("../db");
 const ExamAllocation = require("../models/ExamAllocation");
 
 createExamAllocation = (req, res) => {

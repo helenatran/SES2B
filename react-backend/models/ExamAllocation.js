@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-mongoose.set("debug", true);
-
 const examAllocationSchema = new Schema({
   exam_id: {
     type: Number,
