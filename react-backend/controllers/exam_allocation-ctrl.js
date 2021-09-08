@@ -1,21 +1,9 @@
 const dbUtil = require("../db");
-const ObjectId = require("mongodb").ObjectId;
-var db = dbUtil.getDb();
+const ExamAllocation = require("../models/ExamAllocation");
 
-//TODO: replace testExamAllocation with received examAllocation
 createExamAllocation = (req, res) => {
-  const testExamAllocation = {
-    exam_id: 1,
-    user_id: 1,
-    seat: 1,
-    warnings: 1,
-    break_start: Date.now(),
-    break_end: Date.now() + 1,
-    total_break: 0,
-    misconductDetectionTimes: [],
-  };
-
-  db.collection("exam_allocation").insertOne(testExamAllocation, (err, result) => {
+  const newExamAllocation = new ExamAllocation(req.body);
+  newExamAllocation.save((err, result) => {
     if (err) {
       res.status(500).json(err);
     } else {
@@ -25,32 +13,22 @@ createExamAllocation = (req, res) => {
 };
 
 getAllExamAllocations = (req, res) => {
-  db.collection("exam_allocation")
-    .find()
-    .toArray((err, results) => {
-      if (err) {
-        res.status(500).json(err);
-      } else {
-        res.json(results);
-      }
-    });
-};
-
-getExamAllocation = (req, res) => {
-  db.collection("exam_allocation").findOne({ _id: new ObjectId(req.params.id) }, (err, result) => {
+  ExamAllocation.find((err, results) => {
     if (err) {
       res.status(500).json(err);
     } else {
-      res.json(result);
+      res.json(results);
     }
   });
 };
 
-// TODO: replace $set
-updateExamAllocation = (req, res) => {
-  db.collection("exam_allocation").updateOne(
-    { _id: new ObjectId(req.params.id) },
-    { $set: { seat: 5 } },
+// Get an exam allocaton given the exam and student IDs
+getExamAllocation = (req, res) => {
+  ExamAllocation.findOne(
+    {
+      exam_id: parseInt(req.params.exam_id),
+      user_id: parseInt(req.params.user_id),
+    },
     (err, result) => {
       if (err) {
         res.status(500).json(err);
@@ -61,9 +39,37 @@ updateExamAllocation = (req, res) => {
   );
 };
 
+// Update an exam allocation given the exam and student IDs
+updateExamAllocation = (req, res) => {
+  const updatedExamAllocation = {
+    seat: req.body.seat,
+    warnings: req.body.warnings,
+    misconduct_detection_times: req.body.misconduct_detection_times,
+  };
+  ExamAllocation.findOneAndUpdate(
+    {
+      exam_id: parseInt(req.params.exam_id),
+      user_id: parseInt(req.params.user_id),
+    },
+    { $set: updatedExamAllocation },
+    { new: true },
+    (err, result) => {
+      if (err) {
+        res.status(500).json(err);
+      } else {
+        res.json(result);
+      }
+    }
+  );
+};
+
+// Delete an exam allocation given the exam and student IDs
 deleteExamAllocation = (req, res) => {
-  db.collection("exam_allocation").deleteOne(
-    { _id: new ObjectId(req.params.id) },
+  ExamAllocation.deleteOne(
+    {
+      exam_id: parseInt(req.params.exam_id),
+      user_id: parseInt(req.params.user_id),
+    },
     (err, result) => {
       if (err) {
         res.status(500).json(err);
