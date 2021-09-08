@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar.js";
 import Login from "./Components/Login.js";
 import SignUp from "./Components/Register.js";
+import WebcamTest from "./Components/WebcamTest.js";
 import Home from "./Components/Home.js";
 
 class App extends Component {
@@ -26,6 +27,9 @@ class App extends Component {
           </Route>
           <Route path="/home">
             <Home />
+          </Route>
+          <Route path="/webcam-test">
+            <WebcamTest />
           </Route>
           <Route path="/">
             <Login />
