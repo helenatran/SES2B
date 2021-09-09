@@ -3,6 +3,6 @@ var router = express.Router();
 const ChangelogCtrl = require('../controllers/change_log-ctrl');
 
 router.get('/create-change-log', ChangelogCtrl.createChangeLog);
-router.get('/get-change-log/:id', ChangelogCtrl.getChangeLogById);
+router.get('/get-change-log/:change_id', ChangelogCtrl.getChangeLogById);
 
 module.exports = router;
