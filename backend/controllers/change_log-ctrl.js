@@ -15,7 +15,7 @@ createChangeLog = (req, res) => {
 
 // Get a change log based on its ID
 getChangeLogById = (req, res) => {
-    ChangeLog.findOne({ change_id: req.params.change_id }, (err, result) => {
+    ChangeLog.findOne({ change_id: parseInt(req.params.change_id) }, (err, result) => {
         if (err) {
             res.status(500).json(err);
         }

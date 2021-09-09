@@ -1,8 +1,8 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-const ChangelogCtrl = require('../controllers/change_log-ctrl');
+const ChangelogCtrl = require("../controllers/change_log-ctrl");
 
-router.get('/create-change-log', ChangelogCtrl.createChangeLog);
-router.get('/get-change-log/:change_id', ChangelogCtrl.getChangeLogById);
+router.post("/create-change-log", ChangelogCtrl.createChangeLog);
+router.get("/get-change-log/:change_id", ChangelogCtrl.getChangeLogById);
 
 module.exports = router;
