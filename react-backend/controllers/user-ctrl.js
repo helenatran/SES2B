@@ -14,8 +14,9 @@ createUser = (req, res) => {
 		else {
 			newUser.save((err, result) => {
 				if (err) {
-				  res.status(500).json(err);
-				} else {
+					res.status(500).json(err);
+				}
+				else {
 					res.status(201).json({
 						success: true,
 						email: newUser.email,
@@ -43,9 +44,10 @@ getUsers = (req, res) => {
 getUserByEmail = (req, res) => {
 	User.findOne({ email: req.params.email }, (err, result) => {
 		if (err) {
-		  res.status(500).json(err);
-		} else {
-		  res.json(result);
+			res.status(500).json(err);
+		} 
+		else {
+			res.json(result);
 		}
 	});	
 }
@@ -61,21 +63,22 @@ updateUser = (req, res) => {
 			}
 		},
 		(err, result) => {
-		  if (err) {
-			res.status(500).json(err);
-		  } else {
-			return res.status(200).json({
-				success: true,
-				message: "User updated",
-			});
-		  }
+			if (err) {
+				res.status(500).json(err);
+			}
+			else {
+				return res.status(200).json({
+					success: true,
+					message: "User updated",
+				});
+			}
 		}
 	);
 }
 
 module.exports = {
 	createUser,
-    getUsers,
+	getUsers,
 	getUserByEmail,
 	updateUser
 }
