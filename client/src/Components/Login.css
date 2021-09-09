@@ -15,7 +15,7 @@
   letter-spacing: 0px;
   color: #28DDA0;
   opacity: 1;
-  padding-bottom: 4%;
+  padding-bottom: 3%;
 }
 
 .form-text {
@@ -24,11 +24,10 @@
   letter-spacing: 0px;
   color: #465F64;
   opacity: 1;
-  padding-bottom: 4%;
 }
 
 .form-input-headers {
-  text-align: left ;
+  text-align: left;
   font: normal normal medium 28px/34px Montserrat;
   color: #465F64;
   opacity: 1;
@@ -52,17 +51,26 @@
   padding-left: 5%;
 }
 
-
 .position {
   padding-top: 5%;
 }
 
 .button {
   background: #28DDA0 0% 0% no-repeat padding-box;
-opacity: 1;
-border: 0em;
-min-height: 57% !important;
-width: 24%;
-box-align: left;
-margin-top: 3%;
+  opacity: 1;
+  border: 0em;
+  width: 27%;
+  box-align: left;
+  font: normal normal medium 34px/40px Montserrat;
+  letter-spacing: 0px;
+  color: #FFFFFF;
+  opacity: 1;
+}
+
+.forgot-password {
+  text-decoration: underline;
+  font: normal normal normal 18px Montserrat;
+  color: #465F64;
+  opacity: 1;
+  text-align: right;
 }

@@ -91,7 +91,6 @@ class Login extends Component {
 
       <div>
         <div className="App">
-          {/* <div className="Home-header"> */}
           {this.state.loading ? (
             // This is an inline if statement from react -> 
             // https://reactjs.org/docs/conditional-rendering.html
@@ -110,23 +109,18 @@ class Login extends Component {
 
                 <div className="App">
                   <Container fluid >
-                    <Row  > <Image style={{ height: '15%', width: '15%', paddingLeft: '3%', paddingTop: '2%' }} src={Logo} fluid /></Row>
+                    <Row> <Image style={{ height: '15%', width: '15%', paddingLeft: '3%', paddingTop: '2%' }} src={Logo} fluid /></Row>
                     <Row class="col-margin" justify-content-md-center className="position " >
                       <Col className="m-auto col1-padding" ><Image src={login} fluid /></Col>
-
-
-                      {/* md = {{offset:1}}  */}
+ 
                       <Col className="m-auto col2-padding ">
-
                         <Form onSubmit={this.handleLogin}>
                           <h1 class="form-heading">Welcome Back!</h1>
-                          <div class="form-text mb-3">Log in with your organisation username and password to begin.</div>
+                          <div class="form-text mb-5">Log in with your organisation username and password to begin.</div>
                           <Form.Group className="mb-4 form-input-headers " controlId="formBasicEmail">
-
                             <Form.Label >Email</Form.Label>
-
                             <Form.Control
-                              style={{ background: "#F5F5F5 0% 0% no-repeat padding-box", opacity: "1", border: "10px", height: "64px" }}
+                              style={{ background: "#F5F5F5 0% 0% no-repeat padding-box", opacity: "1", border: "10px", height: "60px" }}
                               class=" form-input pr-5 "
                               size="lg"
                               autoFocus
@@ -138,10 +132,10 @@ class Login extends Component {
                               onChange={this.handleChange} // Calls the funcion that handles the validation check
                             />
                           </Form.Group>
-                          <Form.Group className="mb-4 form-input-headers" controlId="formBasicPassword">
+                          <Form.Group className="mb-5 form-input-headers" controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
                             <Form.Control
-                              style={{ background: "#F5F5F5 0% 0% no-repeat padding-box", opacity: "1", border: "10px", height: "64px" }}
+                              style={{ background: "#F5F5F5 0% 0% no-repeat padding-box", opacity: "1", border: "10px", height: "60px" }}
                               size="lg"
                               autoFocus
                               required
@@ -152,14 +146,12 @@ class Login extends Component {
                               onChange={this.handleChange} // Calls the funcion that handles the validation check
                             />
                           </Form.Group>
-                          <Container>
-                            <Row>
-                              <Button className="button btn-lg" type="submit">
-                                Login
-                              </Button>
-                              <Col>2 of 2</Col>
-                            </Row>
-                          </Container>
+                          <Row style={{ margin: "0px" }}>
+                            <Button style={{ height: '50px' }} className="button" type="submit">
+                              Login
+                            </Button>
+                            <Col ><div class="forgot-password">Forgot your password?</div></Col>
+                          </Row>
                         </Form>
                       </Col>
                     </Row>
