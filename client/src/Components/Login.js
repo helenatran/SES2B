@@ -3,7 +3,8 @@ import { withRouter } from 'react-router-dom';
 import "./Login.css";
 import { Container, Row, Col, Button, Form, Label, Image } from "react-bootstrap";
 import Loading from '../Utils/Loading.js'
-import login from '../Assets/login.png'
+import login from '../Assets/login.jpg'
+import Logo from '../Assets/Logo.png'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Login extends Component {
@@ -109,23 +110,24 @@ class Login extends Component {
 
                 <div className="App">
                   <Container fluid >
-                    <Row justify-content-md-center className="App " >
-                      <Col className="m-auto" ><Image src={login} fluid /></Col>
+                    <Row  > <Image style={{ height: '15%', width: '15%', paddingLeft: '3%', paddingTop: '2%' }} src={Logo} fluid /></Row>
+                    <Row class="col-margin" justify-content-md-center className="position " >
+                      <Col className="m-auto col1-padding" ><Image src={login} fluid /></Col>
 
 
                       {/* md = {{offset:1}}  */}
-                      <Col className="m-auto">
+                      <Col className="m-auto col2-padding ">
 
                         <Form onSubmit={this.handleLogin}>
                           <h1 class="form-heading">Welcome Back!</h1>
                           <div class="form-text mb-3">Log in with your organisation username and password to begin.</div>
-                          <Form.Group className="mb-3 form-input-headers " controlId="formBasicEmail">
+                          <Form.Group className="mb-4 form-input-headers " controlId="formBasicEmail">
 
-                            <Form.Label >Email address</Form.Label>
-                            
+                            <Form.Label >Email</Form.Label>
+
                             <Form.Control
-                            style={{background: "#F5F5F5 0% 0% no-repeat padding-box", opacity: "1"}}
-                              class=" form-input "
+                              style={{ background: "#F5F5F5 0% 0% no-repeat padding-box", opacity: "1", border: "10px", height: "64px" }}
+                              class=" form-input pr-5 "
                               size="lg"
                               autoFocus
                               required
@@ -136,10 +138,10 @@ class Login extends Component {
                               onChange={this.handleChange} // Calls the funcion that handles the validation check
                             />
                           </Form.Group>
-                          <Form.Group className="mb-3 form-input-headers" controlId="formBasicPassword">
+                          <Form.Group className="mb-4 form-input-headers" controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
                             <Form.Control
-                            style={{background: "#F5F5F5 0% 0% no-repeat padding-box", opacity: "1"}}
+                              style={{ background: "#F5F5F5 0% 0% no-repeat padding-box", opacity: "1", border: "10px", height: "64px" }}
                               size="lg"
                               autoFocus
                               required
@@ -150,9 +152,14 @@ class Login extends Component {
                               onChange={this.handleChange} // Calls the funcion that handles the validation check
                             />
                           </Form.Group>
-                          <Button type="submit">
-                            Login
-                          </Button>
+                          <Container>
+                            <Row>
+                              <Button className="button btn-lg" type="submit">
+                                Login
+                              </Button>
+                              <Col>2 of 2</Col>
+                            </Row>
+                          </Container>
                         </Form>
                       </Col>
                     </Row>
