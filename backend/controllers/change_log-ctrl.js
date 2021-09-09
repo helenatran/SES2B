@@ -1,6 +1,3 @@
-const dbUtil = require("../db");
-var db = dbUtil.getDb();
-var mongoose = require("mongoose");
 const ChangeLog = require("../models/change_log-model");
 
 // Creating a change log at time that change is made
@@ -31,6 +28,6 @@ getChangeLogById = (req, res) => {
 //TODO: Add a method that gets all the change logs of a specific user
 
 module.exports = {
-    getChangeLog,
+    getChangeLogById,
     createChangeLog
 }
