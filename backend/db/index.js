@@ -6,38 +6,38 @@ var _db;
 var _bucket;
 
 module.exports = {
-    connectToServer: function (callback) {
-        //Set up default mongoose connection
-        mongoose.connect(
-          url,
-          {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-          },
-          function (err, client) {
-            return callback(err);
-          }
-        );
-        _db = mongoose.connection;
-        _db.once("open", () => {
-          console.log("MongoDB connection successful");
-        });
-    },
+  connectToServer: function (callback) {
+    //Set up default mongoose connection
+    mongoose.connect(
+      url,
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      },
+      function (err, client) {
+        return callback(err);
+      }
+    );
+    _db = mongoose.connection;
+    _db.once("open", () => {
+      console.log("MongoDB connection successful");
+    });
+  },
 
-    createGridBucket: function (callback) {
-        try {
-          _bucket = new mongoose.mongo.GridFSBucket(_db, { bucketName: "videoStorageBucket" });
-          return callback(null);
-        } catch (err) {
-          return callback(err);   
-        }
-    },
+  createGridBucket: function (callback) {
+    try {
+      _bucket = new mongoose.mongo.GridFSBucket(_db, { bucketName: "videoStorageBucket" });
+      return callback(null);
+    } catch (err) {
+      return callback(err);
+    }
+  },
 
-    getDb: function() {
-        return _db;
-    },
-    
-      getBucket: function() {
-        return _bucket;
-    },
+  getDb: function() {
+    return _db;
+  },
+
+  getBucket: function () {
+    return _bucket;
+  },
 };
