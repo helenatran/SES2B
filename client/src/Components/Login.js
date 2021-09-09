@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { withRouter } from 'react-router-dom';
 import "./Login.css";
-import { Button, Form } from "react-bootstrap";
+import { Container, Row, Col, Button, Form, Label, Image } from "react-bootstrap";
 import Loading from '../Utils/Loading.js'
+import login from '../Assets/login.png'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Login extends Component {
   constructor(props) {
@@ -85,8 +87,10 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="Home-header">
+
+      <div>
+        <div className="App">
+          {/* <div className="Home-header"> */}
           {this.state.loading ? (
             // This is an inline if statement from react -> 
             // https://reactjs.org/docs/conditional-rendering.html
@@ -102,30 +106,57 @@ class Login extends Component {
                 //This is also another inline if statement
                 <div>{this.props.history.push('/home')}</div> //Pushing to error page if user not logged in
               ) : (
-                <div>
-                  <Form onSubmit={this.handleLogin}>
-                    <Form.Control
-                      autoFocus
-                      required
-                      placeholder="Email"
-                      name="email"
-                      type="email"
-                      value={this.state.email} // Appending the value to the state
-                      onChange={this.handleChange} // Calls the funcion that handles the validation check
-                    />
-                    <Form.Control
-                      autoFocus
-                      required
-                      placeholder="Password"
-                      name="password"
-                      type="password"
-                      value={this.state.password} // Appending the value to the state
-                      onChange={this.handleChange} // Calls the funcion that handles the validation check
-                    />
-                    <Button type="submit">
-                      Login
-                    </Button>
-                  </Form>
+
+                <div className="App">
+                  <Container fluid >
+                    <Row justify-content-md-center className="App " >
+                      <Col className="m-auto" ><Image src={login} fluid /></Col>
+
+
+                      {/* md = {{offset:1}}  */}
+                      <Col className="m-auto">
+
+                        <Form onSubmit={this.handleLogin}>
+                          <h1 class="form-heading">Welcome Back!</h1>
+                          <div class="form-text mb-3">Log in with your organisation username and password to begin.</div>
+                          <Form.Group className="mb-3 form-input-headers " controlId="formBasicEmail">
+
+                            <Form.Label >Email address</Form.Label>
+                            
+                            <Form.Control
+                            style={{background: "#F5F5F5 0% 0% no-repeat padding-box", opacity: "1"}}
+                              class=" form-input "
+                              size="lg"
+                              autoFocus
+                              required
+                              placeholder="name@student.uts.edu.au"
+                              name="email"
+                              type="email"
+                              value={this.state.email} // Appending the value to the state
+                              onChange={this.handleChange} // Calls the funcion that handles the validation check
+                            />
+                          </Form.Group>
+                          <Form.Group className="mb-3 form-input-headers" controlId="formBasicPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control
+                            style={{background: "#F5F5F5 0% 0% no-repeat padding-box", opacity: "1"}}
+                              size="lg"
+                              autoFocus
+                              required
+                              placeholder="..............."
+                              name="password"
+                              type="password"
+                              value={this.state.password} // Appending the value to the state
+                              onChange={this.handleChange} // Calls the funcion that handles the validation check
+                            />
+                          </Form.Group>
+                          <Button type="submit">
+                            Login
+                          </Button>
+                        </Form>
+                      </Col>
+                    </Row>
+                  </Container>
                   {this.state.errorMessage ? (
                     //This is also another inline if statement to show the error message if the state is set to true
                     <div>We encountered an error when processing your details! Please try again...</div>
@@ -136,6 +167,7 @@ class Login extends Component {
               )}
             </div>
           )}
+          {/* </div> */}
         </div>
       </div>
     )

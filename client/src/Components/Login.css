@@ -1,4 +1,4 @@
-.App-header {
+/* .App-header {
     background-color: #282c34;
     min-height: 100vh;
     display: flex;
@@ -7,4 +7,44 @@
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
+  } */
+
+  .form-heading {
+    text-align: left;
+font: normal normal 600 40px/49px Montserrat;
+letter-spacing: 0px;
+color: #28DDA0;
+opacity: 1;
   }
+
+  .form-text{
+    text-align: left ;
+font: normal normal normal 24px/29px Montserrat;
+letter-spacing: 0px;
+color: #465F64;
+opacity: 1;
+  }
+
+  .form-input-headers{
+    text-align: left !important;
+font: normal normal medium 28px/34px Montserrat;
+letter-spacing: 0px;
+color: #465F64;
+opacity: 1;
+  }
+
+ 
+.div {
+  text-align: center;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+
+.form-input {
+  background: #913737 0% 0% no-repeat padding-box !important;
+border-radius: 10px;
+opacity: 1;
+}
+  
