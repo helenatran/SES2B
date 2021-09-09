@@ -54,26 +54,36 @@ getUserByEmail = (req, res) => {
 
 //update user preferred name and/or mobile number
 updateUser = (req, res) => {
-	User.updateOne(
-		{ email: req.params.email },
-		{ $set: 
-			{
-				preferred_name: req.params.preferred_name, 
-				mobile: req.params.mobile 
-			}
-		},
-		(err, result) => {
-			if (err) {
-				res.status(500).json(err);
-			}
-			else {
-				return res.status(200).json({
-					success: true,
-					message: "User updated",
-				});
-			}
+	const updatedUser = {
+		preferred_name: req.body.preferred_name,
+		mobile: req.body.mobile,
+	};
+
+	User.find({email: req.body.email}).exec(function (err, users) {
+		if (!users.length) {
+			return res.status(400).json({
+				success: false,
+				error: 'User with that email does not exist',
+			});
 		}
-	);
+		else{
+			User.updateOne(
+				{ email: req.body.email },
+				{ $set: updatedUser },
+				(err, result) => {
+					if (err) {
+						res.status(500).json(err);
+					}
+					else {
+						return res.status(200).json({
+							success: true,
+							message: "User updated",
+						});
+					}
+				}
+			);
+		}
+	});
 }
 
 module.exports = {
