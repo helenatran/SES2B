@@ -61,33 +61,33 @@ class StudentProfile extends Component {
 
                                     <form className="form=wrapper">
                                         <div classname="FName">
-                                            <label className="label"> First Name</label>
-                                            <input className="input" type="text" placeholder="John"></input>
+                                            <label for="FName"className="label"> First Name</label>
+                                            <input id="FName"className="input" type="text" placeholder="John"></input>
                                         </div>
 
                                         <div classname="LName">
-                                            <label className="label"> Last Name</label>
-                                            <input className="input" type="text" placeholder="Smith"></input>
+                                            <label for="LName" className="label"> Last Name</label>
+                                            <input id="LName" className="input" type="text" placeholder="Smith"></input>
                                         </div>
 
                                         <div classname="PName">
-                                            <label className="label"> Preferred Name</label>
-                                            <input className="input" type="text" placeholder="Jhonny"></input>
+                                            <label for="PName" className="label"> Preferred Name</label>
+                                            <input id="PName" className="input" type="text" placeholder="Jhonny"></input>
                                         </div>
 
                                         <div classname="StudentID">
-                                            <label className="label"> Student ID</label>
-                                            <input className="input" type="text" placeholder="13543234"></input>
+                                            <label for="StudentID" className="label"> Student ID</label>
+                                            <input id ="StudentID" className="input" type="text" placeholder="13543234"></input>
                                         </div>
 
                                         <div classname="Email">
-                                            <label className="label"> Email &#8287; &#8287; &#8287;  </label>
-                                            <input className="input" type="text" placeholder="JohnSmith@gmail.com"></input>
+                                            <label for="Email" className="label"> Email &#8287; &#8287; &#8287;  </label>
+                                            <input id="Email" className="input" type="text" placeholder="JohnSmith@gmail.com"></input>
                                         </div>
 
                                         <div classname="PNumber">
-                                            <label className="label"> Phone Number</label>
-                                            <input className="input" type="text" placeholder="0404321567"></input>
+                                            <label for="PNumber" className="label"> Phone Number</label>
+                                            <input id="PNumber" className="input" type="text" placeholder="0404321567"></input>
                                         </div>
 
                                         <div>

@@ -1,3 +1,9 @@
+
+
+
+
+
+
 .App-header {
   background-color: #fff;
   width: 100%;
@@ -30,6 +36,7 @@
 
   .image-upload{
     display:flex;
+    flex-direction: row;
     text-transform:uppercase;
     text-overflow: ellipsis;
     min-width: 180px;
@@ -71,6 +78,7 @@
 
 
   .right{
+    background:fixed;
     width: 30%;
     float:left;
     background-color: #fff;
@@ -95,6 +103,8 @@
   .StudentID,
   .Email,
   .PNumber{
+    display: flex;
+    flex-direction: column;
     margin: 20px;
     color: #969292;
     font-size: 16px;
