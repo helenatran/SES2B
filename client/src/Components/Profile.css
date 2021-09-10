@@ -1,21 +1,13 @@
 
-
-
-
-
-
-.App-header {
-  background-color: #fff;
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-}
-
-
-
+  .App-header {
+    background-color: #fff;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+  }
   .Img{
     height: 70%;
     width: 70%;
@@ -59,7 +51,6 @@
   
   }
 
- 
   .Image{
     height: 70%;
     width: 70%;
@@ -84,12 +75,7 @@
     background-color: #fff;
     min-height: 100vh;
     background-color:#fff;
-   
-  
-   
-  
   }
-
 
   .title{
     color: #282c34;
@@ -149,9 +135,9 @@
     margin-left: 2%;
   }
 
-.Exit{
-  float: right;
-}
+  .Exit{
+    float: right;
+  }
   button:active{
 
     transform:translateY(2px);
@@ -165,6 +151,4 @@
 
   .Exit{
     margin-right: 2%;
-
-
   }
