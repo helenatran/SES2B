@@ -1,14 +1,3 @@
-/* .App-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-  } */
-
 .form-heading {
   text-align: left;
   font: normal normal 600 40px/49px Montserrat;
@@ -31,15 +20,6 @@
   font: normal normal medium 28px/34px Montserrat;
   color: #465F64;
   opacity: 1;
-}
-
-
-.div {
-  text-align: center;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  width: 100%;
 }
 
 .col2-padding {
@@ -69,7 +49,7 @@
 
 .forgot-password {
   text-decoration: underline;
-  font: normal normal normal 18px Montserrat;
+  font: normal normal normal 16px Montserrat;
   color: #465F64;
   opacity: 1;
   text-align: right;
