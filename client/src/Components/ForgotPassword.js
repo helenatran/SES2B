@@ -85,7 +85,8 @@ class ForgotPassword extends Component {
               height: "15%",
               width: "15%",
               paddingLeft: "3%",
-              paddingTop: "2%",}}
+              paddingTop: "2%",
+           }}
               src={Logo}
               fluid
             />
