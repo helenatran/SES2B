@@ -1,5 +1,6 @@
 const User = require("../models/user-model");
-
+const bcrypt = require('bcrypt');
+var session = require('express-session');
 //create new user -> really only for developer use at the moment
 createUser = (req, res) => {
 	const newUser = new User(req.body);
@@ -96,28 +97,26 @@ loginStatus = (req, res) => {
 }
 
 handleLogin = (req, res) => {
-	db.collection("users").findOne({ // Finding the desired record within the database
-		email: req.body.email
-	},
-		function (err, result) {
-			if (err) throw err; // Built in error handler
-			user = result; // For readability, classifying the result of the mongodb connection as a user
-			if (user === undefined) {
-				res.json({ loginStatus: false });
-			}
-			else {
-				bcrypt.compare(req.body.password, user.password, function (err, response) { // Checking the hash stored in the database with the entered value
-					// if (err) throw err; //Built in error handler
-					if (response && user.email == req.body.email) { // Check if the email is the same as the one stored in the database
-						req.session.userid = user.email; // Sets the session to the user and assigns a cookie
-						//console.log(req.session); // logging the session for development purposes
-						res.json({ loginStatus: true }); // responding with whether the user was able to login or not
-					} else {
-						res.json({ loginStatus: false }); // responding with whether the user was able to login or not
-					}
-				});
-			}
-		});
+	User.find({email: req.body.email}).exec(function (err, users) {
+		if (!users.length) {
+			return res.status(400).json({
+				loginStatus: false,
+			});
+		}
+		else{
+			user = users[0]
+			bcrypt.compare(req.body.password, user.password, function (err, response) { // Checking the hash stored in the database with the entered value
+				// if (err) throw err; //Built in error handler
+				if (response && user.email == req.body.email) { // Check if the email is the same as the one stored in the database
+					req.session.userid = user.email; // Sets the session to the user and assigns a cookie
+					//console.log(req.session); // logging the session for development purposes
+					res.json({ loginStatus: true }); // responding with whether the user was able to login or not
+				} else {
+					res.json({ loginStatus: false }); // responding with whether the user was able to login or not
+				}
+			});
+		}
+	})
 }
 
 handleLogout = (req, res) => {
