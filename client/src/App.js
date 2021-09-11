@@ -9,7 +9,7 @@ import Login from "./Components/Login.js";
 import Account from "./Components/Account.js";
 import Home from "./Components/Home.js";
 import AuthError from "./Errors/AuthError.js";
-
+import ForgotPassword from "./Components/ForgotPassword.js";
 
 class App extends Component {
   // Simple 3 page React Router Setup
@@ -19,6 +19,9 @@ class App extends Component {
         <Switch>
           <Route path="/account">
             <Account />
+          </Route>
+          <Route path="/forgotpassword">
+            <ForgotPassword />
           </Route>
           <Route path="/home">
             <Home />
