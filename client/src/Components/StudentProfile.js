@@ -5,11 +5,92 @@ import edit from "../Assets/edit.png";
 
 class StudentProfile extends Component {
   // Uses Dummy Data git
+  constructor(props){
+    super(props);
+    this.state = {
+      ProfilePic:
+        "https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png",
+      user_id: "",
+      user: {
+        first_name: "",
+        last_name:"",
+        preferred_name:"",
+        id_number:"",
+        email:"",
+        mobile:""
+      },
+      updatedPreferredName:"",
+      updatedMobile:""
+    };
 
-  state = {
-    ProfilePic:
-      "https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png",
-  };
+    this.imageHandler = this.imageHandler.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleChange = (e) => {
+    switch(e.target.id){
+      case "PName":
+        var user = this.state.user;
+        user.preferred_name = e.target.value;
+        this.setState(user)
+        this.setState({updatedPreferredName: e.target.value});
+        break;
+      case "PNumber":
+        var user = this.state.user;
+        user.mobile = e.target.value;
+        this.setState(user)
+        this.setState({updatedMobile: e.target.value})
+        break;
+    }
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    var postBody = {
+      email: this.state.user_id
+    }
+    if (this.state.updatedPreferredName !== ""){
+      postBody.preferred_name = this.state.updatedPreferredName
+    }
+    if (this.state.updatedMobile !== ""){
+      postBody.mobile = this.state.updatedMobile
+    }
+
+    const requestMetadata = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(postBody)
+    }
+
+    fetch("/users/update-user", requestMetadata)
+      .then(res => res.json())
+      .then((result) => {
+        if (result.success) {
+          window.alert("user successfully updated!")
+        }
+        else{
+          window.alert("error updating user")
+        }
+      })
+
+  }
+
+  componentDidMount = () => {
+    fetch('/users/user_id')
+      .then(res => res.json())
+      .then(user_id => this.setState({user_id: user_id.user_id}))
+  }
+
+  componentDidUpdate = () => {
+    if (this.state.user.first_name === ""){
+      fetch('/users/get-user/'+this.state.user_id)
+      .then(res => res.json())
+      .then((result) => {
+        this.setState({user: result})
+      })
+    }
+  }
 
   imageHandler = (e) => {
     const reader = new FileReader();
@@ -20,6 +101,7 @@ class StudentProfile extends Component {
     };
     reader.readAsDataURL(e.target.files[0]);
   };
+
   render() {
     const { ProfilePic } = this.state;
     return (
@@ -60,11 +142,11 @@ class StudentProfile extends Component {
 
         <div className="left">
           <div className="App-header">
-            <div class="container">
+            <div className="container">
               <div className="app-wrapper">
                 <form className="form=wrapper">
-                  <div classname="FName">
-                    <label for="FName" className="label">
+                  <div className="FName">
+                    <label htmlFor="FName" className="label">
                       {" "}
                       First Name
                     </label>
@@ -72,12 +154,13 @@ class StudentProfile extends Component {
                       id="FName"
                       className="input"
                       type="text"
-                      placeholder="John"
+                      value={this.state.user.first_name}
+                      readOnly
                     ></input>
                   </div>
 
-                  <div classname="LName">
-                    <label for="LName" className="label">
+                  <div className="LName">
+                    <label htmlFor="LName" className="label">
                       {" "}
                       Last Name
                     </label>
@@ -85,12 +168,13 @@ class StudentProfile extends Component {
                       id="LName"
                       className="input"
                       type="text"
-                      placeholder="Smith"
+                      value={this.state.user.last_name}
+                      readOnly
                     ></input>
                   </div>
 
-                  <div classname="PName">
-                    <label for="PName" className="label">
+                  <div className="PName">
+                    <label htmlFor="PName" className="label">
                       {" "}
                       Preferred Name
                     </label>
@@ -98,12 +182,13 @@ class StudentProfile extends Component {
                       id="PName"
                       className="input"
                       type="text"
-                      placeholder="Jhonny"
+                      value={this.state.user.preferred_name}
+                      onChange={this.handleChange}
                     ></input>
                   </div>
 
-                  <div classname="StudentID">
-                    <label for="StudentID" className="label">
+                  <div className="StudentID">
+                    <label htmlFor="StudentID" className="label">
                       {" "}
                       Student ID
                     </label>
@@ -111,12 +196,13 @@ class StudentProfile extends Component {
                       id="StudentID"
                       className="input"
                       type="text"
-                      placeholder="13543234"
+                      value={this.state.user.id_number}
+                      readOnly
                     ></input>
                   </div>
 
-                  <div classname="Email">
-                    <label for="Email" className="label">
+                  <div className="Email">
+                    <label htmlFor="Email" className="label">
                       {" "}
                       Email &#8287; &#8287; &#8287;{" "}
                     </label>
@@ -124,12 +210,13 @@ class StudentProfile extends Component {
                       id="Email"
                       className="input"
                       type="email"
-                      placeholder="JohnSmith@gmail.com"
+                      value={this.state.user.email}
+                      readOnly
                     ></input>
                   </div>
 
-                  <div classname="PNumber">
-                    <label for="PNumber" className="label">
+                  <div className="PNumber">
+                    <label htmlFor="PNumber" className="label">
                       {" "}
                       Phone Number
                     </label>
@@ -137,12 +224,13 @@ class StudentProfile extends Component {
                       id="PNumber"
                       className="input"
                       type="text"
-                      placeholder="0404321567"
+                      value={this.state.user.mobile}
+                      onChange={this.handleChange}
                     ></input>
                   </div>
 
                   <div>
-                    <button className="submit">Save Changes</button>
+                    <button className="submit" onClick={(e) => this.handleSubmit(e)}>Save Changes</button>
                   </div>
                 </form>
               </div>

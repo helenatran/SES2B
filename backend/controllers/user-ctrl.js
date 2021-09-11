@@ -96,6 +96,10 @@ loginStatus = (req, res) => {
 	res.json(status);
 }
 
+getUserId = (req, res) => {
+	res.json({user_id: req.session.userid});
+}
+
 handleLogin = (req, res) => {
 	User.find({email: req.body.email}).exec(function (err, users) {
 		if (!users.length) {
@@ -132,5 +136,6 @@ module.exports = {
 	updateUser,
 	handleLogout,
 	handleLogin,
-	loginStatus
+	loginStatus,
+	getUserId
 }

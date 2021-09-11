@@ -9,5 +9,5 @@ router.post('/update-user', UserCtrl.updateUser);
 router.get('/login-status', UserCtrl.loginStatus);
 router.post('/handle-login', UserCtrl.handleLogin);
 router.post('/logout', UserCtrl.handleLogout);
-
+router.get('/user_id', UserCtrl.getUserId);
 module.exports = router;
