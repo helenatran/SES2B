@@ -8,10 +8,6 @@ import ImagePW from "../Assets/forgotpw.jpg";
 import { Link } from "react-router-dom";
 import Logo from "../Assets/Logo.png";
 
-const title = {
-  pageTitle: 'Forgot Password Screen',
-};
-
 class ForgotPassword extends Component {
 
   constructor() {
@@ -103,7 +99,7 @@ class ForgotPassword extends Component {
           <Form onSubmit={this.handleLogin}>
             <h1 class="form-heading">Trouble Logging In?</h1>
             <div class="form-text mb-5">
-              We just need your registered email address to send you password reset email.
+              We just need your registered email address to send you a password reset email.
             </div>
             <Form.Group
               className="mb-4 form-input-headers "
