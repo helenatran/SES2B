@@ -19,8 +19,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "dev": "concurrently \" cd ../react-backend && npm run watch\" \"npm run start\" "
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -39,9 +38,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "concurrently": "^6.2.1"
   },
   "proxy": "http://localhost:3001"
 }

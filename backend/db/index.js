@@ -6,7 +6,6 @@ var _db;
 var _bucket;
 
 module.exports = {
-
   connectToServer: function (callback) {
     //Set up default mongoose connection
     mongoose.connect(
