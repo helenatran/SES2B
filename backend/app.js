@@ -88,5 +88,5 @@ database.connectToServer(function(err, client){
   }
 })
 
-console.log("Starting Server");
+console.log("Starting Server ");
 module.exports = app;
