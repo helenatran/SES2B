@@ -101,35 +101,35 @@ class ForgotPassword extends Component {
             <div class="form-text mb-5">
               We just need your registered email address to send you a password reset email.
             </div>
-            <Form.Group
-              className="mb-4 form-input-headers "
-              controlId="formBasicEmail"
-            >
-            <Form.Label>Email Address </Form.Label>
-            <Form.Control
-              style={{
-                background:
-                "#F5F5F5 0% 0% no-repeat padding-box",
-                opacity: "1",
-                border: "10px",
-                height: "60px",
-              }}
-              class=" form-input pr-5 "
-              size="lg"
-              autoFocus
-              required
-              placeholder="name@student.uts.edu.au"
-              name="email"
-              type="email"
-              value={this.state.email} 
-              onChange={this.handleChange('email')}
-            />
-          </Form.Group>
-          <Form.Group
-            className="mb-5 form-input-headers"
-            controlId="formBasicPassword"
-          >
-          </Form.Group>
+              <Form.Group
+                className="mb-4 form-input-headers "
+                controlId="formBasicEmail"
+              >
+                <Form.Label>Email Address </Form.Label>
+                <Form.Control
+                  style={{
+                    background:
+                    "#F5F5F5 0% 0% no-repeat padding-box",
+                    opacity: "1",
+                    border: "10px",
+                    height: "60px",
+                  }}
+                  class=" form-input pr-5 "
+                  size="lg"
+                  autoFocus
+                  required
+                  placeholder="name@student.uts.edu.au"
+                  name="email"
+                  type="email"
+                  value={this.state.email} 
+                  onChange={this.handleChange('email')}
+                />
+              </Form.Group>
+              <Form.Group
+                className="mb-5 form-input-headers"
+                controlId="formBasicPassword"
+              >
+              </Form.Group>
           <Row
             className="align-items-center"
             style={{ margin: "0px" }}
@@ -141,7 +141,6 @@ class ForgotPassword extends Component {
             >
               Send Email Link
             </Button>
-              
             <Button
               style={{ marginLeft: "2%", height: "50px", width: "200px"}}
               className="button"
@@ -150,34 +149,31 @@ class ForgotPassword extends Component {
               <Link to="/login" style={{ textDecoration: 'none', color: 'white'}}>
               Login Page
               </Link>
-            </Button>
+            </Button>            
+          </Row>
+          </Form>
+          {showNullError && (
+            <div>
+              <p>The email address cannot be null.</p>
+            </div>
+          )}
+          {showError && (
+            <div>
+              <p>
+                That email address isn&apos;t recognized. Please try again or
+                register for a new account.
+              </p>
            
-                            
-            </Row>
-            </Form>
-            {showNullError && (
-              <div>
-                <p>The email address cannot be null.</p>
-              </div>
-            )}
-            {showError && (
-              <div>
-                <p>
-                  That email address isn&apos;t recognized. Please try again or
-                  register for a new account.
-                </p>
-           
-              </div>
-            )}
-            {messageFromServer === 'recovery email sent' && (
-              <div>
-                <h3>Password Reset Email Successfully Sent!</h3>
-              </div>
-            )}
-          </Col>
+            </div>
+          )}
+          {messageFromServer === 'recovery email sent' && (
+            <div>
+              <h3>Password Reset Email Successfully Sent!</h3>
+            </div>
+          )}
+        </Col>
         </Row>
-      </Container> 
-        
+      </Container>   
       </div>
     )
   }
