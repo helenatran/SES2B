@@ -1,5 +1,3 @@
-const dbUtil = require("../db")
-var db = dbUtil.getDb();
 const ExamModel = require("../models/Exam");
 
 //Retrieve exams using the  model format
@@ -31,22 +29,6 @@ getExam = (req, res) => {
 
 //Create exam  with a list of entries that follow the schema
 createExam = (req, res) => {
-	// //gather data from client
-	// const exam_id  = req.body.exam_id
-	// const date_time  = req.body.date_time
-	// const user_ids  = req.body.user_ids
-	// const exam_name  = req.body.exam_name
-
-	// //make default model
-	// const exam= new examModel({exam_id: 12, date_time:"26/08/2021 9:30am", user_ids:[], exam_name: "test"});
-	// try {
-	// 	await exam.save(); //send data to db
-	// 	res.send("inserted data");
-	// }catch (err) {
-	// 	console.log(err);
-	// }
-
-
 	const newExamModel = new ExamModel(req.body);
 	newExamModel.save((err, result) => {
 	  if (err) {
