@@ -10,6 +10,7 @@ import Navbar from "./Components/Navbar.js";
 import Login from "./Components/Login.js";
 import SignUp from "./Components/Register.js";
 import Home from "./Components/Home.js";
+import Exam from "./Components/Exam.js";
 
 class App extends Component {
   // Simple 3 page React Router Setup
@@ -27,6 +28,9 @@ class App extends Component {
           <Route path="/home">
             <Home />
           </Route>
+          <Route path="/exam">
+            <Exam />
+          </Route>          
           <Route path="/">
             <Login />
           </Route>
