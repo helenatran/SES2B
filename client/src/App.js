@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./Components/Login.js";
 import Account from "./Components/Account.js";
 import Home from "./Components/Home.js";
+import StudentProfile from "./Components/StudentProfile.js";
 import AuthError from "./Errors/AuthError.js";
 import ForgotPassword from "./Components/ForgotPassword.js";
 
@@ -22,6 +23,9 @@ class App extends Component {
           </Route>
           <Route path="/forgotpassword">
             <ForgotPassword />
+          </Route>
+          <Route path="/StudentProfile">
+            <StudentProfile/>
           </Route>
           <Route path="/home">
             <Home />

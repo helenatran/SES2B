@@ -79,5 +79,7 @@ $ npm install
 ...
 ```
 
+Enter Misc information here - testing
+
 ##### Gif Example
 ![demo gif](demo.gif)
