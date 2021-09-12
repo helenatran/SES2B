@@ -1,6 +1,7 @@
+const Recording = require('../models/Recording')
 const dbUtil = require("../db")
-var db = dbUtil.getDb();
 var bucket = dbUtil.getBucket();
+var mongoose = require("mongoose");
 var fs = require('fs');
 var path = require("path")
 
@@ -31,9 +32,14 @@ createRecording = (req, res) => {
                     "user_id":parseInt(req.params.user_id),
                     "recording_id": req.params.fileName,
                 }
-                const result = db.collection("recording").insertOne(doc).then(() => {
-                    res.status(400).json(["Success"]);
-                });
+                const recording = new Recording(doc);
+                recording.save((err, result) => {
+                    if (err) {
+                        res.status(500).json(err)
+                    } else{
+                        res.json(result)
+                    }
+                })
                 
             })
         )
@@ -60,20 +66,24 @@ deleteRecording = async (req, res) => {
     const cursor = bucket.find({filename: req.params.fileName});
     var doc_id;
     await cursor.forEach(doc => {
-        doc_id = doc._id;
+        doc_id = new mongoose.Types.ObjectId(doc._id);
     });
     try{
         bucket.delete(doc_id);
-        const result = await db.collection("recording").deleteOne({recording_id: req.params.fileName});
-        if (result.deletedCount === 1){
-            res.json(["Success"]);
-        }
-        else{
-            res.status(500).json(["No documents found with this name"]);
-        }
+        Recording.deleteOne({
+            recording_id: req.params.fileName
+        },
+        (err, result) => {
+            if (err){
+                res.status(500).join(err);
+            }
+            else{
+                res.json(result)
+            }
+        })
     }
-    catch(err){
-        res.status(500).json(err)
+    catch(error){
+        res.status(500).json(error)
     }
 }
 

@@ -6,7 +6,6 @@ var _db;
 var _bucket;
 
 module.exports = {
-
   connectToServer: function (callback) {
     //Set up default mongoose connection
     mongoose.connect(
@@ -27,7 +26,7 @@ module.exports = {
 
   createGridBucket: function (callback) {
     try {
-      _bucket = new mongoose.mongo.GridFSBucket(_db, { bucketName: "videoStorageBucket" });
+      _bucket = new mongoose.mongo.GridFSBucket(_db.db, { bucketName: "videoStorageBucket" });
       return callback(null);
     } catch (err) {
       return callback(err);
