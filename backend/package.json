@@ -12,7 +12,12 @@
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "mongodb": "^4.1.0",
-    "mongoose": "^6.0.5",
-    "morgan": "~1.9.1"
+    "mongoose": "6.0.5",
+    "morgan": "~1.9.1",
+    "connect-livereload": "^0.6.1"
+  },
+  "devDependencies": {
+    "livereload": "^0.9.3",
+    "nodemon": "^2.0.12"
   }
 }

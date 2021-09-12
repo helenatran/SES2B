@@ -4,9 +4,22 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const livereload = require("livereload");
+const connectLivereload = require("connect-livereload");
+
 var database = require('./db')
 
+const liveReloadServer = livereload.createServer();
+liveReloadServer.watch(path.join(__dirname, 'public'));
+
+liveReloadServer.server.once("connection", () => {
+  setTimeout(() => {
+    liveReloadServer.refresh("/");
+  }, 100);
+});
+
 var app = express();
+app.use(connectLivereload());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -33,12 +46,15 @@ database.connectToServer(function(err, client){
         var recordingRouter = require('./routes/recording');
         var allocationRouter = require('./routes/exam_allocation');
         var changelogRouter = require('./routes/change_log');
-        
+        var examRouter = require('./routes/exam');
+
         app.use('/', indexRouter);
         app.use('/users', usersRouter);
         app.use('/recording', recordingRouter);
         app.use('/exam_allocation', allocationRouter)
         app.use('/change_log', changelogRouter)
+        app.use('/exam', examRouter);
+
         // catch 404 and forward to error handler
         app.use(function(req, res, next) {
           next(createError(404));
@@ -59,6 +75,5 @@ database.connectToServer(function(err, client){
   }
 })
 
-
-
+console.log("Starting Server");
 module.exports = app;
