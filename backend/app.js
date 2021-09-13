@@ -32,6 +32,7 @@ app.use(session({
   saveUninitialized: false,
   cookie: { secure: false } // for development only, set to true for https cookie setup
 }))
+app.use(connectLivereload());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -87,5 +88,5 @@ database.connectToServer(function(err, client){
   }
 })
 
-console.log("Starting Server");
+console.log("Starting Server ");
 module.exports = app;
