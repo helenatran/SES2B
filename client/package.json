@@ -9,6 +9,7 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "axios": "^0.21.4",
     "bootstrap": "^5.1.0",
     "face-api.js": "^0.22.2",
     "p5": "^1.4.0",
@@ -26,7 +27,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "concurrently \" cd ../react-backend && npm run watch\" \"npm run start\" "
+    "dev": "concurrently \" cd ../backend && npm run watch\" \"npm run start\" "
   },
   "eslintConfig": {
     "extends": [
