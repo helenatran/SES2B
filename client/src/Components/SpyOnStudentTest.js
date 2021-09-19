@@ -1,24 +1,33 @@
 import React from "react";
 import { io } from "socket.io-client";
 
+const VIDEO_ENDPOINT = `${window.location.hostname}:3001/video`;
 const SpyOnStudentTest = () => {
-  const imgFrameRef = React.useRef();
+  const [examFrames, setExamFrames] = React.useState({});
+  const testExamId = "TEST_EXAM_ID";
   React.useEffect(() => {
-    const socket = io(`${window.location.hostname}:4200`);
-    socket.emit("request-webcam-frames");
-    socket.on("send-frame", (imgSrc) => {
-      if (!imgFrameRef.current) return;
-      imgFrameRef.current.src = imgSrc;
+    const socket = io(VIDEO_ENDPOINT);
+    socket.emit("request-webcam-frames", testExamId);
+    socket.on("send-frames", (serverExamFrames) => {
+      // Merge with existing frames, since server won't repeat the same frames twice
+      setExamFrames((examFrames) => ({ ...examFrames, ...serverExamFrames }));
     });
     return () => {
       socket.close();
     };
   }, []);
   return (
-    <div>
-      <h2>Webcam feed from server</h2>
-      <img ref={imgFrameRef} />
-    </div>
+    <>
+      <h2>Webcam feeds from server for exam ID "{testExamId}"</h2>
+      <div style={{ display: "flex", flexWrap: "wrap" }}>
+        {Object.entries(examFrames).map(([userId, frame]) => (
+          <span>
+            <h3>{userId}</h3>
+            <img src={frame} alt={`Video for user ${userId}`} />
+          </span>
+        ))}
+      </div>
+    </>
   );
 };
 

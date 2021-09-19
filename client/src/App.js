@@ -7,7 +7,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 //Importing Components
 import Navbar from "./Components/Navbar.js";
 import Login from "./Components/Login.js";
-import SignUp from "./Components/Register.js";
 import WebcamTest from "./Components/WebcamTest.js";
 import SpyOnStudentTest from "./Components/SpyOnStudentTest.js";
 import Account from "./Components/Account.js";
