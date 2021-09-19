@@ -6,8 +6,9 @@ module.exports = (io) => {
   io.on("connection", (socket) => {
     // Called by students to send their current webcam frame
     socket.on("send-frame", ({ frame, userId, examId }) => {
-      if (!frame || !userId || !examId) return;
-      if (!webcamFrames.has(examId)) webcamFrames.set(examId, new Map());
+      if (!webcamFrames.has(examId)) {
+        webcamFrames.set(examId, new Map());
+      }
       const examFrames = webcamFrames.get(examId);
       examFrames.set(userId, frame);
     });
