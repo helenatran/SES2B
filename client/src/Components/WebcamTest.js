@@ -1,7 +1,7 @@
 import React from "react";
 import Webcam from "react-webcam";
 import { io } from "socket.io-client";
-import SpyOnStudentTest from "./SpyOnStudentTest";
+import SpyOnStudentsTest from "./SpyOnStudentsTest";
 
 const VIDEO_ENDPOINT = `${window.location.hostname}:3001/video`;
 const WebcamTest = () => {
@@ -36,7 +36,7 @@ const WebcamTest = () => {
         screenshotQuality={0.3}
         onUserMediaError={(e) => alert(`Could not connect to webcam: ${e}`)}
       />
-      <SpyOnStudentTest />
+      <SpyOnStudentsTest />
     </div>
   );
 };

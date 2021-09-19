@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar.js";
 import Login from "./Components/Login.js";
 import WebcamTest from "./Components/WebcamTest.js";
-import SpyOnStudentTest from "./Components/SpyOnStudentTest.js";
+import SpyOnStudentsTest from "./Components/SpyOnStudentsTest.js";
 import Account from "./Components/Account.js";
 import Home from "./Components/Home.js";
 //import Exam from "./Components/Exam.js";
@@ -38,8 +38,8 @@ class App extends Component {
           <Route path="/webcam-test">
             <WebcamTest />
           </Route>
-          <Route path="/spy-on-student-test">
-            <SpyOnStudentTest />
+          <Route path="/spy-on-students-test">
+            <SpyOnStudentsTest />
           </Route>
           <Route path="/autherr">
             <AuthError />
