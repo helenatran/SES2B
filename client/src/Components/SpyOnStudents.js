@@ -24,10 +24,10 @@ const SpyOnStudents = ({ examId }) => {
   return (
     <>
       <h2>Exam {examId}</h2>
-      <div class="student-video-grid">
+      <div className="student-video-grid">
         {Object.entries(examFrames).map(([userId, frame]) => (
-          <span>
-            <p class="student-video-name-overlay">{userId}</p>
+          <span key={userId}>
+            <p className="student-video-name-overlay">{userId}</p>
             <img src={frame} alt={`Video for user ${userId}`} />
           </span>
         ))}
