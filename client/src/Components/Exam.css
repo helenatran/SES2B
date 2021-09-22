@@ -1,10 +1,46 @@
 .App-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-  }
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.Sidebar {
+  background-color: #F8F8F8;
+  height: 100vh;
+  padding-top: 2%;
+}
+
+.Exam-colour {
+  background-color: #FFFFFF;
+}
+
+.timer-text {
+  text-align: center;
+  font: normal normal normal 16px/21px Montserrat;
+  letter-spacing: 0px;
+  color: #465F64;
+  opacity: 1;
+}
+
+.buttons {
+  opacity: 1;
+  border: 0em;
+  box-align: center;
+  font: normal normal medium 34px/40px Montserrat;
+  letter-spacing: 0px;
+  color: #FFFFFF;
+  opacity: 1;
+}
+
+.leave-button {
+  background: #FF4B4B 0% 0% no-repeat padding-box;
+}
+
+.help-button {
+  background: #28DDA0 0% 0% no-repeat padding-box;
+}
