@@ -10,6 +10,9 @@ const RESOLUTION = {
   height: 360,
 };
 
+/**
+ * Component for testing webcam client-server connection.
+ */
 const WebcamTest = ({ examId }) => {
   const webcamRef = React.useRef();
   React.useEffect(() => {
