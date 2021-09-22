@@ -84,7 +84,7 @@ writeStartTime = (req, res) => {
     exam_start_time: new Date(),
   };
   
-  ExamAllocation.findOne(
+  ExamAllocation.findOneAndUpdate(
     {
       exam_id: parseInt(req.params.exam_id),
       user_id: parseInt(req.params.user_id),
@@ -106,7 +106,7 @@ writeEndTime = (req, res) => {
     exam_end_time: new Date(),
   };
   
-  ExamAllocation.findOne(
+  ExamAllocation.findOneAndUpdate(
     {
       exam_id: parseInt(req.params.exam_id),
       user_id: parseInt(req.params.user_id),

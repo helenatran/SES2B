@@ -21,10 +21,10 @@ const examAllocationSchema = new Schema({
     type: [Date],
   },
   exam_start_time: {
-    type: [Date],
+    type: Date,
   },
   exam_end_time: {
-    type: [Date],
+    type: Date,
   },
 });
 
