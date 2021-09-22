@@ -3,7 +3,7 @@ import Webcam from "react-webcam";
 import { io } from "socket.io-client";
 import SpyOnStudentsTest from "./SpyOnStudentsTest";
 
-const VIDEO_ENDPOINT = `${window.location.hostname}:3001/video`;
+const VIDEO_ENDPOINT = "/video";
 const WebcamTest = () => {
   const webcamRef = React.useRef();
   React.useEffect(() => {

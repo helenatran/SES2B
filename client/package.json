@@ -43,7 +43,8 @@
     ]
   },
   "devDependencies": {
-    "concurrently": "^6.2.1"
+    "concurrently": "^6.2.1",
+    "http-proxy-middleware": "^2.0.1"
   },
   "proxy": "http://localhost:3001"
 }

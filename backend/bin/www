@@ -34,7 +34,7 @@ server.on('listening', onListening);
  */
 
 const startWebSocketServer = require('../ws');
-const io = require('socket.io')(server, { cors: '*' });
+const io = require('socket.io')(server);
 startWebSocketServer(io);
 
 /**

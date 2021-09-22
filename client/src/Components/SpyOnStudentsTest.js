@@ -1,7 +1,7 @@
 import React from "react";
 import { io } from "socket.io-client";
 
-const VIDEO_ENDPOINT = `${window.location.hostname}:3001/video`;
+const VIDEO_ENDPOINT = "/video";
 const SpyOnStudentsTest = () => {
   const [examFrames, setExamFrames] = React.useState({});
   const testExamId = "TEST_EXAM_ID";
