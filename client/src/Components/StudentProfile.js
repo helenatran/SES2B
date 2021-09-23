@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import "./Profile.css";
+import FaceDetect from "./FaceDetect";
+
 //import ProfilePic from "../Assets/profilepic.png";
 import edit from "../Assets/edit.png";
+
 
 class StudentProfile extends Component {
   // Uses Dummy Data git
@@ -17,7 +20,8 @@ class StudentProfile extends Component {
         preferred_name:"",
         id_number:"",
         email:"",
-        mobile:""
+        mobile:"",
+        imageUrl: ""
       },
       updatedPreferredName:"",
       updatedMobile:""
@@ -229,6 +233,13 @@ class StudentProfile extends Component {
                     ></input>
                   </div>
 
+                  <div className="PNumber">
+                    <label htmlFor="PNumber" className="label">
+                      {" "}
+                      Image
+                    </label>
+                  </div>
+
                   <div>
                     <button className="submit" onClick={(e) => this.handleSubmit(e)}>Save Changes</button>
                   </div>
@@ -237,6 +248,7 @@ class StudentProfile extends Component {
             </div>
           </div>
         </div>
+        <FaceDetect/>
       </div>
     );
   }

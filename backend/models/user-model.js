@@ -9,7 +9,7 @@ const UserSchema = new Schema(
         last_name: {type: String},
         preferred_name: {type: String},
         user_type: {type: String},
-        //face_id: fix this when face_id is figured out more
+        // face_id: {type: String},
         id_number: {type: Number},
         mobile: {type: String}, //mongo numbers do not store leading 0's, so to bypass this string has to be used
     }
