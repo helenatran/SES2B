@@ -17,7 +17,6 @@ class Exam extends Component {
 							</div>
 							<hr/>
 							<Button
-								variant="outline-primary"
                               	style={{ height: "50px" }}
                               	className="help-button buttons"
                               	type="submit"

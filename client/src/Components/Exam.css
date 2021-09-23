@@ -1,13 +1,3 @@
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
 .Sidebar {
   background-color: #F8F8F8;
@@ -29,18 +19,33 @@
 
 .buttons {
   opacity: 1;
-  border: 0em;
+  border: 1;
   box-align: center;
   font: normal normal medium 34px/40px Montserrat;
   letter-spacing: 0px;
-  color: #FFFFFF;
+  background-color: #F8F8F8;
   opacity: 1;
 }
 
-.leave-button {
-  background: #FF4B4B 0% 0% no-repeat padding-box;
+.help-button {
+  border-color: #28DDA0;
+  color: #28DDA0;
 }
 
-.help-button {
-  background: #28DDA0 0% 0% no-repeat padding-box;
+.help-button:hover {
+  color: #FFFFFF;
+  border-color: #28DDA0;
+  background-color: #28DDA0;
 }
+
+.leave-button {
+  border-color: #FF4B4B;
+  color: #FF4B4B;
+}
+
+.leave-button:hover {
+  color: #FFFFFF;
+  border-color: #FF4B4B;
+  background-color: #FF4B4B;
+}
+
