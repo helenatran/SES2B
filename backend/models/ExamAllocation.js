@@ -20,10 +20,10 @@ const examAllocationSchema = new Schema({
   misconduct_detection_times: {
     type: [Date],
   },
-  exam_start_time: {
+  started_at: {
     type: Date,
   },
-  exam_end_time: {
+  ended_at: {
     type: Date,
   },
 });

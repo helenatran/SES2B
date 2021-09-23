@@ -81,7 +81,7 @@ deleteExamAllocation = (req, res) => {
 
 writeStartTime = (req, res) => {
   var updatedExamAllocation = {
-    exam_start_time: new Date(),
+    started_at: new Date(),
   };
   
   ExamAllocation.findOneAndUpdate(
@@ -103,7 +103,7 @@ writeStartTime = (req, res) => {
 
 writeEndTime = (req, res) => {
   var updatedExamAllocation = {
-    exam_end_time: new Date(),
+    ended_at: new Date(),
   };
   
   ExamAllocation.findOneAndUpdate(
