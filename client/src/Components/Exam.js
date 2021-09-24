@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Image, Button } from "react-bootstrap"
-import Stack from 'react-bootstrap/Stack'
+import { Container, Row, Col, Image, Button, Stack } from "react-bootstrap"
+import Iframe from "react-iframe"
 import profilepic from "../Assets/profilepic.png"
 import "./Exam.css";
 
@@ -17,7 +17,6 @@ class Exam extends Component {
 							</div>
 							<hr/>
 							<Button
-								variant="outline-primary"
                               	style={{ height: "50px" }}
                               	className="help-button buttons"
                               	type="submit"
@@ -34,7 +33,14 @@ class Exam extends Component {
 						</Stack>	
 					</Col>
 					<Col className="Exam-colour" sm={10}>
-						Exam
+						<Iframe url="https://canvas.uts.edu.au/courses/16320/quizzes/19649"
+						sandbox="allow-same-origin allow-scripts allow-forms"
+						width="100%"
+						height="100%"
+						display="initial"
+        				position="relative"/>
+							
+			
 					</Col>	
   				</Row>
 			</Container>
