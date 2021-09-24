@@ -79,6 +79,50 @@ deleteExamAllocation = (req, res) => {
   );
 };
 
+writeStartTime = (req, res) => {
+  var updatedExamAllocation = {
+    started_at: new Date(),
+  };
+
+  ExamAllocation.findOneAndUpdate(
+    {
+      exam_id: parseInt(req.params.exam_id),
+      user_id: parseInt(req.params.user_id),
+    },
+    { $set: updatedExamAllocation },
+    { new: true },
+    (err, result) => {
+      if (err) {
+        res.status(500).json(err);
+      } else {
+        res.json(result);
+      }
+    }
+  );
+};
+
+writeEndTime = (req, res) => {
+  var updatedExamAllocation = {
+    ended_at: new Date(),
+  };
+
+  ExamAllocation.findOneAndUpdate(
+    {
+      exam_id: parseInt(req.params.exam_id),
+      user_id: parseInt(req.params.user_id),
+    },
+    { $set: updatedExamAllocation },
+    { new: true },
+    (err, result) => {
+      if (err) {
+        res.status(500).json(err);
+      } else {
+        res.json(result);
+      }
+    }
+  );
+};
+
 logMisconduct = (req, res) => {
   ExamAllocation.findOne(
     {
@@ -123,5 +167,7 @@ module.exports = {
   getExamAllocation,
   updateExamAllocation,
   deleteExamAllocation,
-  logMisconduct
+  logMisconduct,
+  writeStartTime,
+  writeEndTime
 };
