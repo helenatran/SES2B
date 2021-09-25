@@ -7,9 +7,10 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 //Importing Components
 import Navbar from "./Components/Navbar.js";
 import Login from "./Components/Login.js";
+import WebcamTest from "./Components/WebcamTest.js";
+import SpyOnStudents from "./Components/SpyOnStudents.js";
 import Account from "./Components/Account.js";
 import Home from "./Components/Home.js";
-//import Exam from "./Components/Exam.js";
 import StudentProfile from "./Components/StudentProfile.js";
 import AuthError from "./Errors/AuthError.js";
 import ForgotPassword from "./Components/ForgotPassword.js";
@@ -28,17 +29,20 @@ class App extends Component {
             <ForgotPassword />
           </Route>
           <Route path="/StudentProfile">
-            <StudentProfile/>
+            <StudentProfile />
           </Route>
           <Route path="/home">
             <Home />
           </Route>
+          <Route path="/webcam-test">
+            <WebcamTest examId="TEST_EXAM_ID" />
+          </Route>
+          <Route path="/spy-on-students-test">
+            <SpyOnStudents examId="TEST_EXAM_ID" />
+          </Route>
           <Route path="/autherr">
             <AuthError />
           </Route>
-          {/* {/* <Route path="/exam">
-            <Exam />
-          </Route>           */}
           <Route path="/">
             <Login />
           </Route>
