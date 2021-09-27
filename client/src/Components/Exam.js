@@ -3,7 +3,7 @@ import { Container, Row, Col, Image, Button, Stack } from "react-bootstrap";
 import Iframe from "react-iframe";
 import profilepic from "../Assets/profilepic.png";
 import "./Exam.css";
-import Modal from "./Modal";
+import Modal from "./Modal.js";
 
 function Exam() {
   const [modalOpen, setModalOpen] = useState(false);
