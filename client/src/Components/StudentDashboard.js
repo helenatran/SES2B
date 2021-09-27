@@ -1,9 +1,28 @@
 import React, { Component } from "react";
 import "./StudentDashboard.css";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+  Popover,
+  OverlayTrigger,
+} from "react-bootstrap";
 
 class StudentDashboard extends Component {
-  render() {
+  render(
+    popover = (
+      <Popover class="popover" id="popover-basic">
+        {/* <Popover.Header as="h3">Popover right</Popover.Header> */}
+        <Popover.Body>
+          <strong>
+            Having trouble starting the exam? or exam details are incorrect?{" "}
+          </strong>
+          <hr /> Contact instructor on <br /> xx xxxx xxxx
+        </Popover.Body>
+      </Popover>
+    )
+  ) {
     return (
       <div className="App ">
         <Container fluid>
@@ -16,38 +35,44 @@ class StudentDashboard extends Component {
 
                 <h2>Name</h2>
 
-                <p class = "p-bold">Software Studio - Final Exam</p>
+                <p class="p-bold">Software Studio - Final Exam</p>
                 <br />
                 <h2>Time</h2>
-                <p class = "p-bold">1st October 2021 - 2PM</p>
+                <p class="p-bold">1st October 2021 - 2PM</p>
                 <br />
                 <h2>Duration</h2>
-                <p class = "p-bold">2.5 hrs</p>
+                <p class="p-bold">2.5 hrs</p>
                 <br />
                 <div class="padding-top-button1">
-                  <Button
-                    style={{ height: "60px" }}
-                    className="  button-requestHelp"
+                  <OverlayTrigger
+                    trigger="click"
+                    placement="right"
+                    overlay={popover}
                   >
-                    Request Help
-                  </Button>
+                    <Button
+                      style={{ height: "60px" }}
+                      className="  button-requestHelp"
+                    >
+                      Request Help
+                    </Button>
+                  </OverlayTrigger>
                 </div>
               </div>
             </Col>
 
             <Col xs={7}>
-            <div class="column2-contents">
-            <h2>Instructions</h2>
-            <p>This is the instructions for the exam from the tutor</p>
-            <div class="padding-top-button2">
-            <Button
+              <div class="column2-contents">
+                <h2>Instructions</h2>
+                <p>This is the instructions for the exam from the tutor</p>
+                <div class="padding-top-button2">
+                  <Button
                     style={{ height: "60px" }}
                     className="  button-startExam"
                   >
                     Start Exam
                   </Button>
-                  </div>
-            </div>
+                </div>
+              </div>
             </Col>
           </Row>
         </Container>
