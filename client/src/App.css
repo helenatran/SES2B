@@ -41,5 +41,31 @@
   height: 100%;
   position: absolute;
   width: 100%;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+opacity: 1;
 }
 
+h1 {
+  text-align: left;
+font: normal normal 600 45px/57px Montserrat;
+letter-spacing: 0px;
+color: #465F64;
+opacity: 1;
+}
+
+h2 {
+  text-align: left;
+font: normal normal 600 25px/34px Montserrat;
+letter-spacing: 0px;
+color: #465F64;
+opacity: 1;
+}
+
+p{
+  text-align: left;
+  font:  18px/24px Montserrat;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+  line-height: 2;
+}
