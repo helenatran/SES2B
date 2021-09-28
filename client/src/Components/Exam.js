@@ -3,6 +3,7 @@ import { Container, Row, Col, Image, Button } from "react-bootstrap"
 import Stack from 'react-bootstrap/Stack'
 import profilepic from "../Assets/profilepic.png"
 import "./Exam.css";
+import Badge from 'react-bootstrap/Badge'
 
 class Exam extends Component {
 	render() {
@@ -30,6 +31,10 @@ class Exam extends Component {
                             >
                             	Leave Exam
                             </Button>
+							<Button variant="outline-danger" disabled>
+  								Misconduct Alert <Badge bg="danger">0</Badge>
+  								<span className="visually-hidden">unread messages</span>
+							</Button>
 						</Stack>	
 					</Col>
 					<Col className="Exam-colour" sm={10}>
