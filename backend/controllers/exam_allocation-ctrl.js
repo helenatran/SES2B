@@ -92,10 +92,18 @@ logMisconduct = (req, res) => {
         var array = result.misconduct_detection_times
         var temp = new Date()
         array.push(temp)
-        
-        const updatedExamAllocation = {
-          misconduct_detection_times: array,
-        };
+
+        if(array.length == 2) {
+          var updatedExamAllocation = {
+            misconduct_detection_times: array,
+            ended_at: new Date(),
+          };
+
+        } else {
+          const updatedExamAllocation = {
+            misconduct_detection_times: array,
+          };
+        }
         ExamAllocation.findOneAndUpdate(
           {
             exam_id: parseInt(req.params.exam_id),
@@ -114,7 +122,7 @@ logMisconduct = (req, res) => {
       }
     }
   )
-  
+
 }
 
 module.exports = {
