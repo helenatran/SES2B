@@ -48,6 +48,7 @@ const StudentWebcam = ({ examId, userId }) => {
       });
       const deltaTime = performance.now() - startTime;
       const timestep = 1000 / SEGMENTING_FPS;
+      // Queue next update, taking into account how long this update took to complete
       window.setTimeout(updateSegment, Math.max(timestep - deltaTime, 0));
     };
 
@@ -78,6 +79,7 @@ const StudentWebcam = ({ examId, userId }) => {
       }
       const deltaTime = performance.now() - startTime;
       const timestep = 1000 / UPLOAD_FPS;
+      // Queue next update, taking into account how long this update took to complete
       window.setTimeout(
         updateAndUploadVideoFrame,
         Math.max(timestep - deltaTime, 0)
