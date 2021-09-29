@@ -58,7 +58,7 @@ getUserByEmail = (req, res) => {
 }
 
 //update user preferred name and/or mobile number and add to change log
-updateUser = async (req, res) => {
+updateUser = (req, res) => {
 	const updatedUser = {
 		preferred_name: req.body.preferred_name,
 		mobile: req.body.mobile,
@@ -161,7 +161,7 @@ updateUser = async (req, res) => {
 							};
 
 							createChangeLog(req, res);
-							
+
 							res.status(200).json({
 								success: true,
 								message: "Change Log Has Been Updated",
