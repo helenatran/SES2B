@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "axios": "^0.21.4",
     "bootstrap": "^5.1.0",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.0-beta.6",
@@ -13,6 +14,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-webcam": "^6.0.0",
+    "socket.io-client": "^4.2.0",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -20,7 +22,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "concurrently \" cd ../react-backend && npm run watch\" \"npm run start\" "
+    "dev": "concurrently \" cd ../backend && npm run watch\" \"npm run start\" "
   },
   "eslintConfig": {
     "extends": [
@@ -41,7 +43,8 @@
     ]
   },
   "devDependencies": {
-    "concurrently": "^6.2.1"
+    "concurrently": "^6.2.1",
+    "http-proxy-middleware": "^2.0.1"
   },
   "proxy": "http://localhost:3001"
 }
