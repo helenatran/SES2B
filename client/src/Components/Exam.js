@@ -33,7 +33,7 @@ class Exam extends Component {
                             </Button>
 							<Button variant="outline-danger" disabled>
   								Misconduct Alert <Badge bg="danger">0</Badge>
-  								<span className="visually-hidden">unread messages</span>
+  								<span className="visually-hidden">misconduct alerts</span>
 							</Button>
 						</Stack>	
 					</Col>
