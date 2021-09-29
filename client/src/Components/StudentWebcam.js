@@ -95,7 +95,6 @@ const StudentWebcam = ({ examId, userId }) => {
   }, [examId, userId, net]);
   return (
     <div>
-      <h2>Direct webcam feed</h2>
       {/* Invisible canvas for rendering raw webcam image offscreen */}
       <Webcam
         ref={webcamRef}
