@@ -64,8 +64,6 @@ updateUser = async (req, res) => {
 		mobile: req.body.mobile,
 	};
 
-	var count = 1;
-
 	User.find({email: req.body.email}).exec(function (err, users) {
 		if (!users.length) {
 			return res.status(400).json({
@@ -75,7 +73,7 @@ updateUser = async (req, res) => {
 		}
 		else {
 			if (users[0].mobile != updatedUser.mobile || users[0].preferred_name != updatedUser.preferred_name) {
-				console.log("Mobile or Preferred Name Changed: Updating User");
+				console.log("Mobile and/or Preferred Name Changed: Updating User");
 				User.updateOne(
 				{ email: req.body.email },
 				{ $set: updatedUser }, (err, result) => {
@@ -87,33 +85,34 @@ updateUser = async (req, res) => {
 						var changeLogName;
 						if (users[0].mobile != updatedUser.mobile && users[0].preferred_name != updatedUser.preferred_name) {
 							changeLogMobile = new ChangeLog({
-								change_id: count,
 								user_id: users[0].id_number,
 								date_time: now(),
 								field_changed: "mobile",
 								original_value: users[0].mobile,
 								new_value: updatedUser.mobile,
-							}); 
+							});
+
 							const reqMobile = {
 								method: "POST",
 								headers: { "Content-Type": "application/json" },
 								body: changeLogMobile
-							  };
+							};
+
 							createChangeLog(reqMobile, res);
-							count++;
+
 							changeLogName = new ChangeLog({
-								change_id: count,
 								user_id: users[0].id_number,
 								date_time: now(),
 								field_changed: "preferred_name",
 								original_value: users[0].preferred_name,
 								new_value: updatedUser.preferred_name,
 							});
+
 							const reqName = {
 								method: "POST",
 								headers: { "Content-Type": "application/json" },
 								body: changeLogName
-							  };
+							};
 							
 							createChangeLog(reqName, res);
 							
@@ -125,18 +124,19 @@ updateUser = async (req, res) => {
 						}
 						else if (users[0].mobile != updatedUser.mobile) {
 							changeLogMobile = new ChangeLog({
-								change_id: count,
 								user_id: users[0].id_number,
 								date_time: now(),
 								field_changed: "Mobile",
 								original_value: users[0].mobile,
 								new_value: updatedUser.mobile,
 							}); 
+
 							const req = {
 								method: "POST",
 								headers: { "Content-Type": "application/json" },
 								body: changeLogMobile
 							};
+
 							createChangeLog(req, res);
 
 							res.status(200).json({
@@ -147,19 +147,21 @@ updateUser = async (req, res) => {
 						}
 						else {
 							changeLogName = new ChangeLog({
-								change_id: count,
 								user_id: users[0].id_number,
 								date_time: now(),
 								field_changed: "Preferred Name",
 								original_value: users[0].preferred_name,
 								new_value: updatedUser.preferred_name,
 							});
+
 							const req = {
 								method: "POST",
 								headers: { "Content-Type": "application/json" },
 								body: changeLogName
 							};
+
 							createChangeLog(req, res);
+							
 							res.status(200).json({
 								success: true,
 								message: "Change Log Has Been Updated",
