@@ -97,7 +97,7 @@ loginStatus = (req, res) => {
 }
 
 getUserId = (req, res) => {
-	res.json({user_id: req.session.userid});
+	res.json({user_id: req.session.userid, id: req.session.id_number});
 }
 
 handleLogin = (req, res) => {
@@ -113,6 +113,7 @@ handleLogin = (req, res) => {
 				// if (err) throw err; //Built in error handler
 				if (response && user.email == req.body.email) { // Check if the email is the same as the one stored in the database
 					req.session.userid = user.email; // Sets the session to the user and assigns a cookie
+					req.session.id_number = user.id_number
 					//console.log(req.session); // logging the session for development purposes
 					res.json({ loginStatus: true }); // responding with whether the user was able to login or not
 				} else {
