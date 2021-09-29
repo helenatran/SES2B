@@ -18,7 +18,8 @@ const BLUR_BACKGROUND_AMT = 12;
 const BLUR_EDGES_AMT = 10;
 
 /**
- * Component for testing webcam client-server connection.
+ * Component that renders the client's webcam feed with the background blurred, and uploads
+ * frames from that feed to the backend.
  */
 const StudentWebcam = ({ examId, userId }) => {
   const webcamRef = React.useRef();
