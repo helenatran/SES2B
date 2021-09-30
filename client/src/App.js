@@ -13,6 +13,7 @@ import Home from "./Components/Home.js";
 import StudentProfile from "./Components/StudentProfile.js";
 import AuthError from "./Errors/AuthError.js";
 import ForgotPassword from "./Components/ForgotPassword.js";
+import StudentDashboard from "./Components/StudentDashboard";
 
 class App extends Component {
   // Simple 3 page React Router Setup
@@ -26,6 +27,9 @@ class App extends Component {
           </Route>
           <Route path="/forgotpassword">
             <ForgotPassword />
+          </Route>
+          <Route path="/studentDashboard">
+            <StudentDashboard />
           </Route>
           <Route path="/StudentProfile">
             <StudentProfile/>
