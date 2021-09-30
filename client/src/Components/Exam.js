@@ -7,15 +7,13 @@ import { io } from "socket.io-client";
 
 function Exam(){
   const MISCONDUCT_ENDPOINT = "/misconduct"
-  var userId;
 
   React.useEffect(() => {
   const socket = io(MISCONDUCT_ENDPOINT);
   fetch('/users/user_id')
     .then(res => res.json())
     .then(user => {
-	userId = user.id
-	socket.emit("start-listening", userId);
+	socket.emit("start-listening", user.id);
 	socket.on("misconduct", (data) => {
 	// Sukhpreet do what you need here
 	  console.log(data);
