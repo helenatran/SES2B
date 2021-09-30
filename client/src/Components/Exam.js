@@ -5,6 +5,8 @@ import profilepic from "../Assets/profilepic.png"
 import "./Exam.css";
 import Badge from 'react-bootstrap/Badge'
 
+var misconductAlert = 2;
+
 class Exam extends Component {
 	render() {
 		return (
@@ -32,7 +34,7 @@ class Exam extends Component {
                             	Leave Exam
                             </Button>
 							<Button variant="outline-danger" disabled>
-  								Misconduct Alert <Badge bg="danger">0</Badge>
+  								Misconduct Alert <Badge bg="danger">{ misconductAlert } </Badge>
   								<span className="visually-hidden">misconduct alerts</span>
 							</Button>
 						</Stack>	
