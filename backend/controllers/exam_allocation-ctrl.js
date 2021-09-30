@@ -89,19 +89,19 @@ logMisconduct = (req, res) => {
       if (err) {
         res.status(500).json(err);
       } else {
-        var array = result.misconduct_detection_times
-        var temp = new Date()
-        array.push(temp)
+        let misConductArray = result.misconduct_detection_times
+        let tempDate = new Date()
+        array.push(tempDate)
 
-        if(array.length == 2) {
-          var updatedExamAllocation = {
-            misconduct_detection_times: array,
+        if(misConductArray.length == 2) {
+          let updatedExamAllocation = {
+            misconduct_detection_times: misConductArray,
             ended_at: new Date(),
           };
 
         } else {
-          const updatedExamAllocation = {
-            misconduct_detection_times: array,
+          let updatedExamAllocation = {
+            misconduct_detection_times: misConductArray,
           };
         }
         ExamAllocation.findOneAndUpdate(
