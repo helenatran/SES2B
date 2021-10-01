@@ -1,5 +1,14 @@
 import React, { Component, useState } from "react";
-import { Container, Row, Col, Image, Button, Stack } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Image,
+  Button,
+  Stack,
+  Popover,
+  OverlayTrigger,
+} from "react-bootstrap";
 import Iframe from "react-iframe";
 import profilepic from "../Assets/profilepic.png";
 import "./Exam.css";
@@ -10,20 +19,32 @@ import Modal from "./Modal";
 function Exam() {
   const [modalOpen, setModalOpen] = useState(false);
   const [triggerModal, setTriggerModal] = useState(true);
-  const MISCONDUCT_ENDPOINT = "/misconduct"
+  const MISCONDUCT_ENDPOINT = "/misconduct";
+
+  const popover = (
+    <Popover class="popover" id="popover-basic">
+      {/* <Popover.Header as="h3">Popover right</Popover.Header> */}
+      <Popover.Body>
+        <strong>
+          Having trouble during the exam? or exam details are incorrect?{" "}
+        </strong>
+        <hr /> Contact instructor on <br /> xx xxxx xxxx
+      </Popover.Body>
+    </Popover>
+  );
 
   React.useEffect(() => {
     const socket = io(MISCONDUCT_ENDPOINT);
-    fetch('/users/user_id')
-      .then(res => res.json())
-      .then(user => {
+    fetch("/users/user_id")
+      .then((res) => res.json())
+      .then((user) => {
         socket.emit("start-listening", user.id);
         socket.on("misconduct", (data) => {
-        // Sukhpreet do what you need here
+          // Sukhpreet do what you need here
           console.log(data);
-        })
-      })
-  },[]);
+        });
+      });
+  }, []);
   return (
     <Container fluid>
       <Row>
@@ -32,13 +53,15 @@ function Exam() {
             <Image src={profilepic} fluid /* Replace with live video */ />
             <div className="timer-text">Time Left: 00:00:00</div>
             <hr />
-            <Button
-              style={{ height: "50px" }}
-              className="help-button buttons"
-              type="submit"
-            >
-              Request Help
-            </Button>
+            <OverlayTrigger trigger="click" placement="right" overlay={popover}>
+              <Button
+                style={{ height: "50px" }}
+                className="help-button buttons"
+                type="submit"
+              >
+                Request Help
+              </Button>
+            </OverlayTrigger>
             <Button
               style={{ height: "50px" }}
               className="leave-button buttons"
