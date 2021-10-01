@@ -11,6 +11,7 @@
 
 .timer-text {
   text-align: center;
+  align-items: center;
   font: normal normal normal 16px/21px Montserrat;
   letter-spacing: 0px;
   color: #465F64;
