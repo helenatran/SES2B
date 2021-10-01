@@ -79,49 +79,10 @@ deleteExamAllocation = (req, res) => {
   );
 };
 
-logMisconduct = (req, res) => {
-  ExamAllocation.findOne(
-    {
-      exam_id: parseInt(req.params.exam_id),
-      user_id: parseInt(req.params.user_id),
-    },
-    (err, result) => {
-      if (err) {
-        res.status(500).json(err);
-      } else {
-        var array = result.misconduct_detection_times
-        var temp = new Date()
-        array.push(temp)
-        
-        const updatedExamAllocation = {
-          misconduct_detection_times: array,
-        };
-        ExamAllocation.findOneAndUpdate(
-          {
-            exam_id: parseInt(req.params.exam_id),
-            user_id: parseInt(req.params.user_id),
-          },
-          { $set: updatedExamAllocation },
-          { new: true },
-          (err, result) => {
-            if (err) {
-              res.status(500).json(err);
-            } else {
-              res.json(result.misconduct_detection_times.length);
-            }
-          }
-        );
-      }
-    }
-  )
-  
-}
-
 module.exports = {
   createExamAllocation,
   getAllExamAllocations,
   getExamAllocation,
   updateExamAllocation,
   deleteExamAllocation,
-  logMisconduct
 };
