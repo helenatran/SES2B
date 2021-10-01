@@ -7,11 +7,13 @@ import Badge from 'react-bootstrap/Badge'
 import { io } from "socket.io-client";
 
 import Modal from "./Modal";
+// var misconductAlert = 0;
 
 function Exam() {
   const [modalOpen, setModalOpen] = useState(false);
   const [triggerModal, setTriggerModal] = useState(true);
   const MISCONDUCT_ENDPOINT = "/misconduct"
+  const [misconductAlert, setMisconductAlert] = useState("0");
 
   React.useEffect(() => {
     const socket = io(MISCONDUCT_ENDPOINT);
@@ -22,11 +24,11 @@ function Exam() {
         socket.on("misconduct", (data) => {
         // Sukhpreet do what you need here
           console.log(data);
+          setMisconductAlert(data);
         })
       })
   },[]);
 
-  var misconductAlert = 2;
   
   return (
     <Container fluid>
