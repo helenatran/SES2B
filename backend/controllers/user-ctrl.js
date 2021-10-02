@@ -96,7 +96,20 @@ loginStatus = (req, res) => {
 	res.json(status);
 }
 
-getUserId = (req, res) => {
+// Get the currently logged-in user
+getLoggedInUser = (req, res) => {
+	const userEmail = req.session.userid;
+	User.findOne({ email: userEmail }, (err, result) => {
+    if (err) {
+      res.status(500).json(err);
+    } else {
+      res.json(result);
+    }
+  });
+}
+
+// Get the email of the currently logged-in user
+getLoggedInUserEmail = (req, res) => {
 	res.json({user_id: req.session.userid});
 }
 
@@ -130,12 +143,13 @@ handleLogout = (req, res) => {
 }
 
 module.exports = {
-	createUser,
-	getUsers,
-	getUserByEmail,
-	updateUser,
-	handleLogout,
-	handleLogin,
-	loginStatus,
-	getUserId
-}
+  createUser,
+  getUsers,
+  getUserByEmail,
+  updateUser,
+  handleLogout,
+  handleLogin,
+  loginStatus,
+  getLoggedInUser,
+  getLoggedInUserEmail,
+};
