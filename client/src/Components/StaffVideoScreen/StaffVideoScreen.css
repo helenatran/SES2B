@@ -6,7 +6,7 @@
 .students-cards {
   padding: 1%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 
@@ -18,11 +18,25 @@
 
 .student-card {
   width: 33%;
+  margin: 1% 0%;
 }
 
 .student-video {
   width: 100%;
   height: 240px;
+}
+
+.zoom-view {
+  padding: 3%;
+}
+
+.zoom-student-card {
+  width: 100%;
+}
+
+.zoom-student-video {
+  width: 100%;
+  height: 500px;
 }
 
 .student-details {
@@ -88,4 +102,39 @@
   color: #28dda0;
   font-weight: bold;
   margin-left: 10%;
+}
+
+.carousel {
+  width: 100%;
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  background-color: #3a3a3c;
+  width: 50%;
+  height: 10%;
+}
+
+.carousel-control-next {
+  width: 5%;
+  justify-content: flex-end;
+}
+
+.carousel-control-prev {
+  width: 5%;
+  justify-content: flex-start;
+}
+
+.exclamation-triangle {
+  color: #ff4b4b;
+  position: absolute;
+  right: 5%;
+  top: 5%;
+}
+
+.x-icon {
+  color: #707070;
+  position: absolute;
+  right: 2.5%;
+  top: 2.5%;
 }

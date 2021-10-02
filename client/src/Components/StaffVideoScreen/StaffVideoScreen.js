@@ -1,15 +1,22 @@
 import React, { useState } from "react";
 import "./StaffVideoScreen.css";
 import profilepic from "../../Assets/profilepic.png";
-import { Card, Button, Container, Stack, Row, Col } from "react-bootstrap";
+import { Button, Container, Stack, Row, Col, Carousel } from "react-bootstrap";
+import StudentsCards from "./Sub-Components/StudentCards";
+import StudentCard from "./Sub-Components/StudentCard";
 
 const mockStudents = [
-  { firstName: "John", lastName: "Smith", videoSrc: profilepic },
-  { firstName: "John", lastName: "Smith", videoSrc: profilepic },
-  { firstName: "John", lastName: "Smith", videoSrc: profilepic },
-  { firstName: "John", lastName: "Smith", videoSrc: profilepic },
-  { firstName: "John", lastName: "Smith", videoSrc: profilepic },
-  { firstName: "John", lastName: "Smith", videoSrc: profilepic },
+  { firstName: "John", lastName: "Smith", videoSrc: profilepic, id: 1 },
+  { firstName: "Sarah", lastName: "Smith", videoSrc: profilepic, id: 2 },
+  { firstName: "Marc", lastName: "Smith", videoSrc: profilepic, id: 3 },
+  { firstName: "Marie", lastName: "Smith", videoSrc: profilepic, id: 4 },
+  { firstName: "Fred", lastName: "Smith", videoSrc: profilepic, id: 5 },
+  { firstName: "Susan", lastName: "Smith", videoSrc: profilepic, id: 6 },
+  { firstName: "Carl", lastName: "Smith", videoSrc: profilepic, id: 7 },
+  { firstName: "Jennifer", lastName: "Smith", videoSrc: profilepic, id: 8 },
+  { firstName: "Paul", lastName: "Smith", videoSrc: profilepic, id: 9 },
+  { firstName: "Laura", lastName: "Smith", videoSrc: profilepic, id: 10 },
+  { firstName: "Max", lastName: "Smith", videoSrc: profilepic, id: 11 },
 ];
 
 const mockExam = {
@@ -19,17 +26,26 @@ const mockExam = {
 };
 
 const StaffVideoScreen = () => {
-  const [students, setStudents] = useState([]);
-  const [exam, setExam] = useState({
-    name: "",
-    date: "",
-    duration: "",
+  const [students, setStudents] = useState(mockStudents);
+  const [exam, setExam] = useState(mockExam);
+  const [zoomView, setZoomView] = useState(false);
+  const [zoomedStudent, setZoomedStudent] = useState({
+    firstName: "",
+    lastName: "",
+    videoSrc: "",
+    id: 0,
   });
+  const STUDENTS_PER_SLIDE = 6;
+  const numberOfSlides = [];
 
-  React.useEffect(() => {
-    setStudents(mockStudents);
-    setExam(mockExam);
-  });
+  for (let i = 1; i <= Math.ceil(students.length / STUDENTS_PER_SLIDE); i++) {
+    numberOfSlides.push(i);
+  }
+
+  const handleZoomView = (zoomView, student) => {
+    setZoomView(zoomView);
+    setZoomedStudent(student);
+  };
 
   return (
     <div className="App">
@@ -39,27 +55,28 @@ const StaffVideoScreen = () => {
             {exam.name} | {exam.date} | {exam.duration} Hours
           </div>
         </div>
-        <div className="bg-light border students-cards">
-          {students.map((student) => (
-            <Card className="student-card">
-              <Card.Img
-                className="student-video"
-                variant="top"
-                src={student.videoSrc}
-                alt="student-video"
-              />
-              <Card.Body className="student-details">
-                <div className="student-name">
-                  {student.firstName} {student.lastName}
-                </div>
-                <Button variant="outline-danger" className="flag-button">
-                  Flag
-                </Button>
-              </Card.Body>
-            </Card>
-          ))}
-        </div>
-
+        {zoomView ? (
+          <div className="bg-light border zoom-view">
+            <StudentCard
+              student={zoomedStudent}
+              isInZoomView={true}
+              updateZoomView={handleZoomView}
+            />
+          </div>
+        ) : (
+          <Carousel indicators={false} interval={null}>
+            {numberOfSlides.map((i) => (
+              <Carousel.Item key={i}>
+                <StudentsCards
+                  students={students}
+                  slideNumber={i}
+                  studentsPerSlide={STUDENTS_PER_SLIDE}
+                  updateZoomView={handleZoomView}
+                />
+              </Carousel.Item>
+            ))}
+          </Carousel>
+        )}
         <div className="bottom-stack">
           <Container fluid>
             <Row className="row">
