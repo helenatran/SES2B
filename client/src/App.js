@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 //Importing Components
 import Navbar from "./Components/Navbar.js";
 import Login from "./Components/Login.js";
-import WebcamTest from "./Components/WebcamTest.js";
+import StudentWebcam from "./Components/StudentWebcam.js";
 import SpyOnStudents from "./Components/SpyOnStudents.js";
 import Account from "./Components/Account.js";
 import Home from "./Components/Home.js";
@@ -35,7 +35,10 @@ class App extends Component {
             <Home />
           </Route>
           <Route path="/webcam-test">
-            <WebcamTest examId="TEST_EXAM_ID" />
+            <StudentWebcam
+              examId="TEST_EXAM_ID"
+              userId={Math.floor(Math.random() * 1000)}
+            />
           </Route>
           <Route path="/spy-on-students-test">
             <SpyOnStudents examId="TEST_EXAM_ID" />
