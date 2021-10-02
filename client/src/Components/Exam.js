@@ -11,13 +11,16 @@ const Exam = () => {
     exam_id: null,
     exam_name: "",
     exam_duration: "",
+    exam_url: "",
+    exam_instructions: ""
   };
   const [exam, setExam] = useState(initialExamState);
   const id = document.URL.substring(document.URL.lastIndexOf('/') + 1);
   console.log(id);
+  console.log(exam);
 
   if (exam.exam_id == null) {
-      fetch('/exam/get-exam/' + id) // TODO: Change to get current exam.
+      fetch('/exam/get-exam/' + id)
       .then(res => res.json())
       .then((result) => {
         setExam(result);
@@ -94,15 +97,23 @@ const Exam = () => {
           </Stack>
         </Col>
         <Col style={{ position: "relative" }} className="Exam-colour" sm={10}>
-          <Iframe
-            style={{ height: "100%", width: "100%" }}
-            url="https://canvas.uts.edu.au/courses/16320/quizzes/19649"
-            sandbox="allow-same-origin allow-scripts allow-forms"
-            width="100%"
-            height="100%"
-            display="initial"
-            position="relative"
-          ></Iframe>
+          <Stack gap={1} style={{ height: "100vh"}}>
+            <div className="exam-name">
+              {exam.exam_name}
+            </div>
+            <div className="exam-instructions">
+              Instructions: {exam.exam_instructions}
+            </div>
+            <Iframe
+              style={{ height: "100%", width: "100%" }}
+              url={exam.exam_url}
+              sandbox="allow-same-origin allow-scripts allow-forms"
+              width="100%"
+              height="100%"
+              display="initial"
+              position="relative"
+            ></Iframe>
+          </Stack>
           <div style={{ position: "absolute", top: "21%", left: "30%" }}>
             {modalOpen && <Modal triggerModal={!triggerModal} />}
           </div>

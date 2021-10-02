@@ -50,3 +50,17 @@
   background-color: #FF4B4B;
 }
 
+.exam-name {
+  color: #465F64;
+  font: normal normal normal 23px/28px Montserrat;
+  letter-spacing: 0px;
+  padding: 0.5%;
+}
+
+.exam-instructions {
+  color: #465F64;
+  font: normal normal normal 14px/19px Montserrat;
+  letter-spacing: 0px;
+  padding: 0.5%;
+}
+
