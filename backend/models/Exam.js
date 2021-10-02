@@ -26,6 +26,7 @@ const examSchema = new Schema({
     type: String,
     default: 0,
   },
+
 });
 
 const ExamModel = mongoose.model("ExamModel", examSchema, "exam");
