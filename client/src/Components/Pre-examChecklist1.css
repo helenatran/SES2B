@@ -18,7 +18,7 @@
   padding-top: 22%;
 }
 
-.button-startExam {
+.button-continue {
   background: #28dda0 0% 0% no-repeat padding-box;
   opacity: 1;
   font: bold 18px/24px Montserrat;
@@ -36,6 +36,7 @@
   color: #465f64;
   opacity: 1;
   padding-top: 5%;
+  cursor: pointer;
 }
 
 ul {
@@ -50,6 +51,10 @@ ul {
 
 ul.blackCheck {
   list-style-image: url("../Assets/black_check.svg");
+}
+
+ul.greenCheck :first-child {
+  list-style-image: url("../Assets/green_check.svg");
 }
 
 .PlaceHolderImage {
