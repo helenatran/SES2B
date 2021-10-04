@@ -15,7 +15,7 @@ import StudentProfile from "./Components/StudentProfile.js";
 import AuthError from "./Errors/AuthError.js";
 import ForgotPassword from "./Components/ForgotPassword.js";
 
-import PreExamChecklist1 from "./Components/Pre-examChecklist1";
+import PreExamChecklist1 from "./Components/Pre-examChecklist";
 
 import StudentDashboard from "./Components/StudentDashboard";
 
@@ -39,7 +39,7 @@ class App extends Component {
           <Route path="/StudentProfile">
             <StudentProfile />
           </Route>
-          <Route path="/Pre-examChecklist1">
+          <Route path="/Pre-examChecklist">
             <PreExamChecklist1/>
           </Route>
           <Route path="/home">

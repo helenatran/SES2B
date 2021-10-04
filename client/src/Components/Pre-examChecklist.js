@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import "./Pre-examChecklist1.css";
+import "./Pre-examChecklist.css";
 import { Container, Row, Col, Button, Image } from "react-bootstrap";
 import PlaceHolderImage from "../Assets/profile.png";
 
-class PreExamChecklist1 extends Component {
+class PreExamChecklist extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -123,4 +123,4 @@ class PreExamChecklist1 extends Component {
   }
 }
 
-export default PreExamChecklist1;
+export default PreExamChecklist;
