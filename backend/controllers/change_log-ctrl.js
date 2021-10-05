@@ -2,7 +2,6 @@ const ChangeLog = require("../models/change_log-model");
 
 // Creating a change log at time that change is made
 createChangeLog = (req, res) => {
-    console.log(req.body);
     const newChangeLog = new ChangeLog(req.body);
     newChangeLog.save((err, result) => {
         if (err) {
