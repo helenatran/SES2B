@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as faceapi from "face-api.js";
 import Webcam from "react-webcam";
+import {WebCamera} from "../Utils/WebCamera"
 
 
 const MODEL_URL = './models';
@@ -24,15 +25,19 @@ class FaceDetect extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user_id: "",
-            image: null,
+            boxColor: "",
             canvas: null,
+            facesDetected: 0,
+            outcome: 0,
             screenshot: null,
             showScreenshotButton: true,
-            outcome: 0,
-            boxColor: "",
-            facesDetected: 0
+            user_id: ""
         };
+
+        // const faceDetecion()
+        //
+        // faceDetection() =>
+
         this.faceDetection = this.faceDetection.bind(this); //TODO - convert to arrow function
     }
 
@@ -52,18 +57,14 @@ class FaceDetect extends Component {
 
         tracks.forEach(track => track.stop());
         this.webcam.video.srcObject = null;
-    }
+    };
     capture = () => {
         this.setState({screenshot: this.webcam.getScreenshot()});
         this.stopWebCameraStream();
-        this.setState( {disabled: !this.state.disabled} )
     };
 
-    faceDetection = async event => {
-        if(img) img.remove(); //TODO - remove this
-        if(canvas) canvas.remove(); //TODO - remove this
-
-        const labeledFaceDescriptors = await loadLableImages(this.state.user_id);
+    faceDetection = async () => {
+        const labeledFaceDescriptors = await loadLabelImages(this.state.user_id);
         const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, 0.6);
 
         let b64 = await fetch(this.state.screenshot); //TODO - Double check fetch purpose
@@ -83,7 +84,6 @@ class FaceDetect extends Component {
         container.append(canvas);
 
         faceapi.matchDimensions(canvas, displaySize);
-        this.setState({image: img}); //TODO - could remove this
         const detections = await faceapi.detectAllFaces(img).withFaceLandmarks().withFaceDescriptors(); //TODO - could remove this
         this.setState({facesDetected: detections.length});
         document.body.append(detections.length + ": Face(s)");
@@ -125,23 +125,23 @@ class FaceDetect extends Component {
                     videoConstraints={videoConstraints}
                 />
                 <div>
-                    <br></br>
-                    <br></br>
-
-                {this.state.showScreenshotButton && <button onClick={(e) => {
-                    e.preventDefault();
-                    this.toggle();
-                    this.capture();
-                    this.faceDetection()}}>
-                Capture Image {this.state.showScreenshotButton}
-                </button>}
-                {!this.state.showScreenshotButton &&
-                <div>
-                    <button onClick={(event) => {
-                        event.preventDefault();
-                        document.location.reload();}}>
-                    Retake Image</button>
-                </div>}
+                    <br/>
+                    <br/>
+                    {this.state.showScreenshotButton && <button onClick={(e) => {
+                        e.preventDefault();
+                        this.toggle();
+                        this.capture();
+                        this.faceDetection()}}>
+                        Capture Image {this.state.showScreenshotButton}
+                    </button>}
+                    {!this.state.showScreenshotButton &&
+                        <div>
+                            <button onClick={(event) => {
+                                event.preventDefault();
+                                document.location.reload();}}>
+                            Retake Image</button>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
@@ -152,19 +152,17 @@ class FaceDetect extends Component {
 async function start() {
 }
 
-
-function loadLableImages(user_id){
-    console.log(user_id)
+let loadLabelImages = (user_id) => {
     const labels = [user_id];
     const descriptions = [];
     return Promise.all(labels.map(async label => {
        for(let i = 1; i <= 1; i++){
            const img = await faceapi.fetchImage(`https://res.cloudinary.com/ddf9aci82/image/upload/v1632402873/students/${label}/${1}.jpg`);
-           const detections = await faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor()
+           const detections = await faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor();
            descriptions.push(detections.descriptor)
        }
        return new faceapi.LabeledFaceDescriptors(label, descriptions)
     }))
-}
+};
 
 export default FaceDetect;
