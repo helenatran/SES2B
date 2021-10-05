@@ -73,8 +73,6 @@ updateUser = (req, res) => {
 		}
 		else {
 			if (users[0].mobile != updatedUser.mobile || users[0].preferred_name != updatedUser.preferred_name) {
-				console.log(updatedUser.mobile, users[0].mobile);
-				console.log(updatedUser.preferred_name, users[0].preferred_name);
 				console.log("Updating User");
 				User.updateOne(
 				{ email: req.body.email },
