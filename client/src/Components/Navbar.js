@@ -5,9 +5,15 @@ import { Link, withRouter } from "react-router-dom";
 
 //Importing Assets
 import logo from "../Assets/logoA.png";
-import enter from "../Assets/enter.svg";
-import follow from "../Assets/follow.svg";
-import profile from "../Assets/profile.png";
+import enter from "../Assets/logout.svg";
+import profile from "../Assets/profileicon.png";
+
+/* <img
+              src={enter}
+              className="App-logo"
+              alt="Logout"
+              onClick={this.handleLogout} //Calling the logout function which also handles the redirect
+            /> */
 
 class Navbar extends Component {
   constructor(props) {
@@ -50,25 +56,17 @@ class Navbar extends Component {
             <img src={logo} className="App-logo-left" alt="Atlas Logo" />
           </Link>
           <nav>
-            <Link to="/signup">
-              <img src={follow} className="App-logo" alt="Sign Up"/>
-            </Link>
-            {/* <Link to="/account">
-              <img src={follow} className="App-logo" alt="Account" />
-            </Link> */}
             <Link to="/StudentProfile">
-              <img src={profile} className="App-logo" alt="Student Profile"/>
-            </Link>
-            <Link to="/login">
-              <img src={enter} className="App-logo" alt="about"/>
-            </Link>            
-            <img
+              <img  styles={{backgroundColor:'grey'}} src={profile} className="App-logo" alt="Student Profile"/>
+            </Link> 
+             <img
               src={enter}
               className="App-logo"
               alt="Logout"
               onClick={this.handleLogout} //Calling the logout function which also handles the redirect
-            />
+            /> 
           </nav>
+
         </div>
 
       </div>
