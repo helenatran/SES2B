@@ -12,14 +12,17 @@ import {
 import Iframe from "react-iframe";
 import profilepic from "../Assets/profilepic.png";
 import "./Exam.css";
+import Badge from 'react-bootstrap/Badge'
 import { io } from "socket.io-client";
 
 import Modal from "./Modal";
+// var misconductAlert = 0;
 
 function Exam() {
   const [modalOpen, setModalOpen] = useState(false);
   const [triggerModal, setTriggerModal] = useState(true);
   const MISCONDUCT_ENDPOINT = "/misconduct";
+  const [misconductAlert, setMisconductAlert] = useState("0");
 
   const popover = (
     <Popover class="popover" id="popover-basic">
@@ -41,7 +44,7 @@ function Exam() {
         socket.emit("start-listening", user.id);
         socket.on("misconduct", (data) => {
           // Sukhpreet do what you need here
-          console.log(data);
+          setMisconductAlert(data);
         });
       });
   }, []);
@@ -73,6 +76,10 @@ function Exam() {
             >
               Leave Exam
             </Button>
+            <Button variant="outline-danger" disabled>
+  								Misconduct Alert <Badge bg="danger">{ misconductAlert } </Badge>
+  								<span className="visually-hidden">misconduct alerts</span>
+							</Button>
           </Stack>
         </Col>
         <Col style={{ position: "relative" }} className="Exam-colour" sm={10}>
