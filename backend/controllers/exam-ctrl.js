@@ -67,6 +67,8 @@ updateExam = (req, res) => {
 	  user_ids: req.body.user_ids,
 	  exam_name: req.body.exam_name,
 	  date_time: req.body.date_time,
+      exam_instructions: req.body.exam_instructions,
+      exam_duration: req.body.exam_duration,
 	};
 	ExamModel.findOneAndUpdate(
 	  {
