@@ -6,8 +6,6 @@ import Loading from "../Utils/Loading.js";
 import login from "../Assets/login.jpg";
 import Logo from "../Assets/Logo.png";
 import "bootstrap/dist/css/bootstrap.min.css";
-import FaceDetect from "./FaceDetect";
-
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -89,9 +87,6 @@ class Login extends Component {
     return (
       <div>
         <div className="App">
-          <div>
-            <FaceDetect/>
-          </div>
           {this.state.loading ? (
             // This is an inline if statement from react ->
             // https://reactjs.org/docs/conditional-rendering.html
@@ -105,7 +100,7 @@ class Login extends Component {
               */}
               {this.state.status ? (
                 //This is also another inline if statement
-                <div>{this.props.history.push("/home")}</div> //Pushing to error page if user not logged in
+                <div>{this.props.history.push("/studentDashboard")}</div> //Pushing to error page if user not logged in
               ) : (
                 <div className="App">
                   <Container fluid>

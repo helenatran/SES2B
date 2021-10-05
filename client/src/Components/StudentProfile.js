@@ -2,10 +2,6 @@ import React, { Component } from "react";
 import "./Profile.css";
 import FaceDetect from "./FaceDetect";
 
-//import ProfilePic from "../Assets/profilepic.png";
-import edit from "../Assets/edit.png";
-
-
 class StudentProfile extends Component {
   // Uses Dummy Data git
   constructor(props){
@@ -13,7 +9,6 @@ class StudentProfile extends Component {
     this.state = {
       ProfilePic:
         "https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png",
-      user_id: "",
       user: {
         first_name: "",
         last_name:"",
@@ -52,7 +47,7 @@ class StudentProfile extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     var postBody = {
-      email: this.state.user_id
+      email: this.state.user.email
     }
     if (this.state.updatedPreferredName !== ""){
       postBody.preferred_name = this.state.updatedPreferredName
@@ -77,23 +72,12 @@ class StudentProfile extends Component {
           window.alert("error updating user")
         }
       })
-
   }
 
   componentDidMount = () => {
-    fetch('/users/user_id')
+    fetch('/users/get-current-user')
       .then(res => res.json())
-      .then(user_id => this.setState({user_id: user_id.user_id}))
-  }
-
-  componentDidUpdate = () => {
-    if (this.state.user.first_name === ""){
-      fetch('/users/get-user/'+this.state.user_id)
-      .then(res => res.json())
-      .then((result) => {
-        this.setState({user: result})
-      })
-    }
+      .then(user => this.setState({user}))
   }
 
   imageHandler = (e) => {
@@ -107,7 +91,6 @@ class StudentProfile extends Component {
   };
 
   render() {
-    const { ProfilePic } = this.state;
     return (
       <div className="page">
         <div className="right">
@@ -116,7 +99,7 @@ class StudentProfile extends Component {
               <div className="Image">
                 <div className="profile-wrapper">
                   <img
-                    src={ProfilePic}
+                    src={`https://res.cloudinary.com/ddf9aci82/image/upload/v1633439587/students/${this.state.user.email}/1.jpg`}
                     id="img"
                     alt="img"
                     className="Img"

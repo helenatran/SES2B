@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as faceapi from "face-api.js";
 import Webcam from "react-webcam";
-import {WebCamera} from "../Utils/WebCamera"
+// import {WebCamera} from "../Utils/WebCamera" -> Put this in a utils class 
 
 
 const MODEL_URL = './models';
@@ -33,10 +33,6 @@ class FaceDetect extends Component {
             showScreenshotButton: true,
             user_id: ""
         };
-
-        // const faceDetecion()
-        //
-        // faceDetection() =>
 
         this.faceDetection = this.faceDetection.bind(this); //TODO - convert to arrow function
     }

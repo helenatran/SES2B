@@ -88,7 +88,8 @@
   .LName,
   .StudentID,
   .Email,
-  .PNumber{
+  .PNumber,
+  .PName{
     display: flex;
     flex-direction: column;
     margin: 20px;
@@ -146,7 +147,7 @@
   .profile-wrapper{
     max-width: 500px;
     max-height: 500px;
-    
+    border-radius: 50%;
   }
 
   .Exit{
