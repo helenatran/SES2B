@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Pre-examChecklist.css";
 import { Container, Row, Col, Button, Image } from "react-bootstrap";
 import PlaceHolderImage from "../Assets/profile.png";
+import FaceDetect from "./FaceDetect";
 
 class PreExamChecklist extends Component {
   constructor(props) {
@@ -57,7 +58,7 @@ class PreExamChecklist extends Component {
               </div>
             </Col>
 
-            <Col className="  col2 ">
+            <Col className="col2 ">
               <div class="column2-contents ">
                 <Image className="PlaceHolderImage" src={PlaceHolderImage} />
 
@@ -98,8 +99,10 @@ class PreExamChecklist extends Component {
                 </ul>
                 <p>
                   Adjust your camera so full face can be seen then click
-                  continue.
+                  continue. Please ensure there is good lighting for face 
+                  detection system to recognise your face.
                 </p>
+                <FaceDetect/>
               </div>
             </Col>
 

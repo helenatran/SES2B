@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as faceapi from "face-api.js";
 import Webcam from "react-webcam";
+import "./FaceDetect.css";
 // import {WebCamera} from "../Utils/WebCamera" -> Put this in a utils class 
 
 
@@ -111,7 +112,7 @@ class FaceDetect extends Component {
     render(){
         return(
         <div>
-            <div className="webcam-container">
+            <div className="exam-container">
                 <Webcam
                     audio={false}
                     height={200}
@@ -119,11 +120,14 @@ class FaceDetect extends Component {
                     screenshotFormat="image/jpeg"
                     width={220}
                     videoConstraints={videoConstraints}
+                    border-radius="25px"
                 />
-                <div>
+                <div className="vertical-center">
                     <br/>
                     <br/>
-                    {this.state.showScreenshotButton && <button onClick={(e) => {
+                    {this.state.showScreenshotButton && <button className="button-continue" 
+                    style={{ width: "220px", borderRadius: "5px" }}
+                    onClick={(e) => {
                         e.preventDefault();
                         this.toggle();
                         this.capture();
@@ -132,7 +136,9 @@ class FaceDetect extends Component {
                     </button>}
                     {!this.state.showScreenshotButton &&
                         <div>
-                            <button onClick={(event) => {
+                            <button className="button-continue" 
+                            style={{ width: "220px", borderRadius: "5px", color: "white" }}
+                            onClick={(event) => {
                                 event.preventDefault();
                                 document.location.reload();}}>
                             Retake Image</button>

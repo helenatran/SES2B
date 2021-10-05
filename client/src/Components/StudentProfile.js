@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import "./Profile.css";
-import FaceDetect from "./FaceDetect";
-
 class StudentProfile extends Component {
   // Uses Dummy Data git
   constructor(props){
@@ -231,7 +229,6 @@ class StudentProfile extends Component {
             </div>
           </div>
         </div>
-        <FaceDetect/>
       </div>
     );
   }
