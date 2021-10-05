@@ -15,6 +15,7 @@ import StudentProfile from "./Components/StudentProfile.js";
 import AuthError from "./Errors/AuthError.js";
 import ForgotPassword from "./Components/ForgotPassword.js";
 import StudentDashboard from "./Components/StudentDashboard";
+import StaffVideoScreen from "./Components/StaffVideoScreen/StaffVideoScreen";
 
 class App extends Component {
   // Simple 3 page React Router Setup
@@ -43,6 +44,9 @@ class App extends Component {
           </Route>
           <Route path="/spy-on-students-test">
             <SpyOnStudents examId="TEST_EXAM_ID" />
+          </Route>
+          <Route path="/staff-video-screen">
+            <StaffVideoScreen />
           </Route>
           <Route path="/autherr">
             <AuthError />

@@ -26,7 +26,10 @@ const examSchema = new Schema({
     type: String,
     default: 0,
   },
-
+  exam_url: {
+    type: String,
+    required: true
+  }
 });
 
 const ExamModel = mongoose.model("ExamModel", examSchema, "exam");

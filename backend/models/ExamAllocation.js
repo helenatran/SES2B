@@ -20,6 +20,12 @@ const examAllocationSchema = new Schema({
   misconduct_detection_times: {
     type: [Date],
   },
+  started_at: {
+    type: Date,
+  },
+  ended_at: {
+    type: Date,
+  },
 });
 
 const ExamAllocation = mongoose.model("ExamAllocation", examAllocationSchema, "exam_allocation");
