@@ -7,27 +7,22 @@ createChangeLog = (req, res) => {
         if (err) {
             res.status(500).json(err);
         }
-        else {
-            res.json(result);
-        }
     }); 
 };
 
-// Get a change log based on its ID
-getChangeLogById = (req, res) => {
-    ChangeLog.findOne({ change_id: parseInt(req.params.change_id) }, (err, result) => {
+// A method that gets all the change logs of a specific user (can be used for filtering/ordering later)
+getChangeLogByUserId = (req, res) => {
+    ChangeLog.find({ user_id: parseInt(req.params.user_id) }, (err, results) => {
         if (err) {
             res.status(500).json(err);
         }
         else {
-            res.json(result);
+            res.json(results);
         }
     });
 };
 
-//TODO: Add a method that gets all the change logs of a specific user
-
 module.exports = {
-    getChangeLogById,
+    getChangeLogByUserId,
     createChangeLog
 }
