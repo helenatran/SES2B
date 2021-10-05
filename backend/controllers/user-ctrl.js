@@ -73,7 +73,9 @@ updateUser = (req, res) => {
 		}
 		else {
 			if (users[0].mobile != updatedUser.mobile || users[0].preferred_name != updatedUser.preferred_name) {
-				console.log("Mobile and/or Preferred Name Changed: Updating User");
+				console.log(updatedUser.mobile, users[0].mobile);
+				console.log(updatedUser.preferred_name, users[0].preferred_name);
+				console.log("Updating User");
 				User.updateOne(
 				{ email: req.body.email },
 				{ $set: updatedUser }, (err, result) => {
@@ -81,9 +83,59 @@ updateUser = (req, res) => {
 						res.status(500).json(err);
 					}
 					else {
-						var changeLogMobile;
-						var changeLogName;
-						if (users[0].mobile != updatedUser.mobile && users[0].preferred_name != updatedUser.preferred_name) {
+						//Name updated - mobile == undef on first change 
+						if (updatedUser.mobile == undefined || (updatedUser.mobile != undefined && users[0].preferred_name != updatedUser.preferred_name && users[0].mobile == updatedUser.mobile)){
+							console.log("Just Name Changed");
+							changeLogName = new ChangeLog({
+								user_id: users[0].id_number,
+								date_time: now(),
+								field_changed: "Preferred Name",
+								original_value: users[0].preferred_name,
+								new_value: updatedUser.preferred_name,
+							});
+
+							const req = {
+								method: "POST",
+								headers: { "Content-Type": "application/json" },
+								body: changeLogName
+							};
+
+							createChangeLog(req, res);
+
+							res.status(200).json({
+								success: true,
+								message: "Change Log Has Been Updated",
+								field_changed: "preferred_name",
+							});
+						}
+						//if mobile changed on first go name is undefined
+						else if (updatedUser.preferred_name == undefined || (updatedUser.preferred_name != undefined && users[0].preferred_name == updatedUser.preferred_name && users[0].mobile != updatedUser.mobile)){
+							console.log("Just Mobile Changed");
+							changeLogName = new ChangeLog({
+								user_id: users[0].id_number,
+								date_time: now(),
+								field_changed: "mobile",
+								original_value: users[0].mobile,
+								new_value: updatedUser.mobile,
+							});
+
+							const req = {
+								method: "POST",
+								headers: { "Content-Type": "application/json" },
+								body: changeLogName
+							};
+
+							createChangeLog(req, res);
+
+							res.status(200).json({
+								success: true,
+								message: "Change Log Has Been Updated",
+								field_changed: "mobile",
+							});
+						} 
+						//both updated - nothing undefined
+						else if (users[0].mobile != updatedUser.mobile && users[0].preferred_name != updatedUser.preferred_name){
+							console.log("Both");
 							changeLogMobile = new ChangeLog({
 								user_id: users[0].id_number,
 								date_time: now(),
@@ -122,56 +174,11 @@ updateUser = (req, res) => {
 								field_changed: "Both",
 							});
 						}
-						else if (users[0].mobile != updatedUser.mobile) {
-							changeLogMobile = new ChangeLog({
-								user_id: users[0].id_number,
-								date_time: now(),
-								field_changed: "Mobile",
-								original_value: users[0].mobile,
-								new_value: updatedUser.mobile,
-							}); 
-
-							const req = {
-								method: "POST",
-								headers: { "Content-Type": "application/json" },
-								body: changeLogMobile
-							};
-
-							createChangeLog(req, res);
-
-							res.status(200).json({
-								success: true,
-								message: "Change Log Has Been Updated",
-								field_changed: "mobile",
-							});
-						}
-						else {
-							changeLogName = new ChangeLog({
-								user_id: users[0].id_number,
-								date_time: now(),
-								field_changed: "Preferred Name",
-								original_value: users[0].preferred_name,
-								new_value: updatedUser.preferred_name,
-							});
-
-							const req = {
-								method: "POST",
-								headers: { "Content-Type": "application/json" },
-								body: changeLogName
-							};
-
-							createChangeLog(req, res);
-
-							res.status(200).json({
-								success: true,
-								message: "Change Log Has Been Updated",
-								field_changed: "preferred_name",
-							});
-						}
 					}
 				});
 			}
 			else {
+				console.log("No Change");
 				res.status(200).json({
 					success: true,
 					message: "No Change",
