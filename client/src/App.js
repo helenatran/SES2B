@@ -15,6 +15,8 @@ import AuthError from "./Errors/AuthError.js";
 import ForgotPassword from "./Components/ForgotPassword.js";
 import StudentDashboard from "./Components/StudentDashboard";
 import StaffVideoScreen from "./Components/StaffVideoScreen/StaffVideoScreen";
+import WebcamTest from './Components/WebcamTest';
+import SpyOnStudents from "./Components/SpyOnStudents";
 
 class App extends Component {
   // Simple 3 page React Router Setup
