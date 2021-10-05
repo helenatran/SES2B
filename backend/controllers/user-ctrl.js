@@ -255,4 +255,5 @@ module.exports = {
   loginStatus,
   getLoggedInUser,
   getLoggedInUserEmail,
+  getUserId
 };
