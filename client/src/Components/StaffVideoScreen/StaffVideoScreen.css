@@ -1,0 +1,140 @@
+.App {
+  padding: 2%;
+  font: 18px/24px Montserrat;
+}
+
+.students-cards {
+  padding: 1%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.exam-title {
+  font-size: larger;
+  font-weight: bold;
+  padding: 1.5%;
+}
+
+.student-card {
+  width: 33%;
+  margin: 1% 0%;
+}
+
+.student-video {
+  width: 100%;
+  height: 240px;
+}
+
+.zoom-view {
+  padding: 3%;
+}
+
+.zoom-student-card {
+  width: 100%;
+}
+
+.zoom-student-video {
+  width: 100%;
+  height: 500px;
+}
+
+.student-details {
+  background-color: #3a3a3c;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.student-name {
+  color: white;
+  font-weight: bold;
+  margin-left: 5%;
+}
+
+.flag-button {
+  border-color: #fd4b4b;
+  width: 25%;
+}
+
+.flag-button:hover {
+  color: #ffffff;
+  border-color: #ff4b4b;
+  background-color: #ff4b4b;
+}
+
+.col1 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.col2 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.bottom-stack {
+  background-color: #3a3a3c;
+}
+
+.row {
+  padding: 1%;
+}
+
+.end-recording-button {
+  width: 33%;
+  font-weight: bold;
+  background-color: #ff4b4b;
+  margin-right: 10%;
+  border-color: #fd4b4b;
+}
+
+.end-recording-button:hover {
+  color: #ffffff;
+  border-color: #ff4b4b;
+  background-color: #ff4b4b;
+}
+
+.time-left {
+  color: #28dda0;
+  font-weight: bold;
+  margin-left: 10%;
+}
+
+.carousel {
+  width: 100%;
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  background-color: #3a3a3c;
+  width: 50%;
+  height: 10%;
+}
+
+.carousel-control-next {
+  width: 5%;
+  justify-content: flex-end;
+}
+
+.carousel-control-prev {
+  width: 5%;
+  justify-content: flex-start;
+}
+
+.exclamation-triangle {
+  color: #ff4b4b;
+  position: absolute;
+  right: 5%;
+  top: 5%;
+}
+
+.x-icon {
+  color: #707070;
+  position: absolute;
+  right: 2.5%;
+  top: 2.5%;
+}
