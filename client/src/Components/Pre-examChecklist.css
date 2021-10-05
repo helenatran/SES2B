@@ -1,0 +1,63 @@
+.col2 {
+  background: #f8f8f8 0% 0% no-repeat padding-box;
+  opacity: 1;
+  height: 100vh;
+  text-align: center;
+}
+
+.column1-contents {
+  padding: 12%;
+}
+
+.padding-top-button {
+  padding-top: 17%;
+}
+
+.column2-contents {
+  padding: 12%;
+  padding-top: 22%;
+}
+
+.button-continue {
+  background: #28dda0 0% 0% no-repeat padding-box;
+  opacity: 1;
+  font: bold 18px/24px Montserrat;
+  letter-spacing: 0px;
+  width: 37%;
+  text-align: center;
+  border: 2px solid #28dda0;
+}
+
+.go-back-link {
+  text-align: center;
+  text-decoration: underline;
+  font: normal normal normal 16px/20px Montserrat;
+  letter-spacing: 0px;
+  color: #465f64;
+  opacity: 1;
+  padding-top: 5%;
+  cursor: pointer;
+}
+
+ul {
+  padding-top: 10%;
+  padding-bottom: 16%;
+}
+
+.li-bold {
+  font: bold 18px/24px Montserrat;
+  line-height: 0.2;
+}
+
+ul.blackCheck {
+  list-style-image: url("../Assets/black_check.svg");
+}
+
+ul.greenCheck :first-child {
+  list-style-image: url("../Assets/green_check.svg");
+}
+
+.PlaceHolderImage {
+  height: 50%;
+  width: 50%;
+}

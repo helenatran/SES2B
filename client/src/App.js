@@ -13,10 +13,14 @@ import Exam from "./Components/Exam.js";
 import StudentProfile from "./Components/StudentProfile.js";
 import AuthError from "./Errors/AuthError.js";
 import ForgotPassword from "./Components/ForgotPassword.js";
+
+import PreExamChecklist1 from "./Components/Pre-examChecklist";
+
 import StudentDashboard from "./Components/StudentDashboard";
 import StaffVideoScreen from "./Components/StaffVideoScreen/StaffVideoScreen";
 import WebcamTest from './Components/WebcamTest';
 import SpyOnStudents from "./Components/SpyOnStudents";
+
 
 class App extends Component {
   // Simple 3 page React Router Setup
@@ -36,6 +40,9 @@ class App extends Component {
           </Route>
           <Route path="/StudentProfile">
             <StudentProfile/>
+          </Route>
+          <Route path="/Pre-examChecklist">
+            <PreExamChecklist1/>
           </Route>
           <Route path="/home">
             <Home />
