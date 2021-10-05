@@ -51,15 +51,28 @@ createRecording = (req, res) => {
     
 }
 
-getRecording = (req, res) => {
-    const file = path.join(tempFolder, req.params.fileName)
-    // Downloads from database to temp/recordings folder for fetching from front end. When the user stops interacting,
-    // the front end code will need to delete it from storage.
-    bucket.openDownloadStreamByName(req.params.fileName).pipe(
-        fs.createWriteStream(file).once("finish", function(){
-            res.json([file])
-        })
-    )
+getRecording = async (req, res) => {
+    const cursor = bucket.find({filename: req.params.fileName});
+    var doc_id = undefined;
+    await cursor.forEach(doc => {
+        doc_id = new mongoose.Types.ObjectId(doc._id);
+    });
+    if (doc_id != undefined){
+        const file = path.join(tempFolder, req.params.fileName)
+        // Downloads from database to temp/recordings folder for fetching from front end. When the user stops interacting,
+        // the front end code will need to delete it from storage.
+        bucket.openDownloadStreamByName(req.params.fileName).pipe(
+            fs.createWriteStream(file).once("finish", function(){
+                res.json([file])
+            })
+        )
+    }
+    else{
+        return res.status(400).json({
+            error: 'This file does not exist in the server.',
+        });
+    }
+    
 }
 
 deleteRecording = async (req, res) => {
