@@ -101,8 +101,10 @@ class StudentDashboard extends Component {
                   <Button
                     style={{ height: "60px" }}
                     className="  button-startExam"
+
                   >
-                    Start Exam
+                    <a href="/exam"> Start Exam</a>
+                   
                   </Button>
                 </div>
               </div>

@@ -87,24 +87,12 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <Navbar />
         <div className="App">
-          <div className="Home-header">
-            {/* 
-              Simple rendering of the loading menu while the server updates 
-              the state of the application
-            */}
+          <div >
             {this.state.loading ? (
-              // This is an inline if statement from react -> 
-              // https://reactjs.org/docs/conditional-rendering.html
               <Loading Loading={this.state.loading} />
             ) : (
               <div>
-                {/* 
-                  Handles logon states and returns the auth error 
-                  page if user is not logged in, else returns the 
-                  home screen
-                */}
                 {this.state.status ? (
                   //This is also another inline if statement
                   <div className="App">

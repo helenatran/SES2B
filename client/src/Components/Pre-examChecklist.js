@@ -15,6 +15,10 @@ class PreExamChecklist extends Component {
     this.setState({
       isFaceRecognitionSuccesful: true,
     });
+    console.log(this.state.isFaceRecognitionSuccesful)
+    // if (this.state.isFaceRecognitionSuccesful){
+    //   this.props.history.push("/exam")
+    // }
   };
 
   onClickGoBack = () => {
@@ -61,6 +65,7 @@ class PreExamChecklist extends Component {
                   <Button
                     style={{ height: "60px" }}
                     className="  button-continue"
+                    onClick={this.onContinueClick}
                   >
                     Continue
                   </Button>
