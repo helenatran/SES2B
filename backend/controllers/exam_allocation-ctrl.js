@@ -115,7 +115,7 @@ writeStartTime = (req, res) => {
   var updatedExamAllocation = {
     started_at: new Date(),
   };
-  
+
   ExamAllocation.findOneAndUpdate(
     {
       exam_id: parseInt(req.params.exam_id),
@@ -137,7 +137,7 @@ writeEndTime = (req, res) => {
   var updatedExamAllocation = {
     ended_at: new Date(),
   };
-  
+
   ExamAllocation.findOneAndUpdate(
     {
       exam_id: parseInt(req.params.exam_id),
@@ -155,6 +155,68 @@ writeEndTime = (req, res) => {
   );
 };
 
+logMisconduct = (req, res) => {
+  ExamAllocation.findOne(
+    {
+      exam_id: parseInt(req.params.exam_id),
+      user_id: parseInt(req.params.user_id),
+    },
+    (err, result) => {
+      if (err) {
+        res.status(500).json(err);
+      } else {
+        let misConductArray = result.misconduct_detection_times
+        let tempDate = new Date();
+        misConductArray.push(tempDate);
+
+        if(misConductArray.length >= 2) {
+          let updatedExamAllocation = {
+            misconduct_detection_times: misConductArray,
+            ended_at: new Date(),
+          };
+          ExamAllocation.findOneAndUpdate(
+            {
+              exam_id: parseInt(req.params.exam_id),
+              user_id: parseInt(req.params.user_id),
+            },
+            { $set: updatedExamAllocation },
+            { new: true },
+            (err, result) => {
+              if (err) {
+                res.status(500).json(err);
+              } else {
+                res.json(result.misconduct_detection_times.length);
+              }
+            }
+          );
+
+        } else {
+          let updatedExamAllocation = {
+            misconduct_detection_times: misConductArray,
+          };
+          ExamAllocation.findOneAndUpdate(
+            {
+              exam_id: parseInt(req.params.exam_id),
+              user_id: parseInt(req.params.user_id),
+            },
+            { $set: updatedExamAllocation },
+            { new: true },
+            (err, result) => {
+              if (err) {
+                res.status(500).json(err);
+              } else {
+                res.json(result.misconduct_detection_times.length);
+              }
+            }
+          );
+        }
+
+      }
+    }
+  )
+
+}
+
 module.exports = {
   createExamAllocation,
   getAllExamAllocations,
@@ -163,6 +225,7 @@ module.exports = {
   deleteExamAllocation,
   getAllExamAllocationsByStudent,
   getAllExamAllocationsByExam,
+  logMisconduct,
   writeStartTime,
   writeEndTime
 };

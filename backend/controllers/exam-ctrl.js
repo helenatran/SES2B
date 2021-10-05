@@ -64,12 +64,12 @@ deleteExam = (req, res) => {
   //update the fields stated in examModel that are required
 updateExam = (req, res) => {
 	const updatedExamModel = {
-	  user_ids: req.body.user_ids,
-	  exam_name: req.body.exam_name,
-	  date_time: req.body.date_time,
-    exam_instructions: req.body.exam_instructions,
-    exam_duration: req.body.exam_duration,
-	  exam_url: req.body.exam_url
+		user_ids: req.body.user_ids,
+		exam_name: req.body.exam_name,
+		date_time: req.body.date_time,
+    	exam_instructions: req.body.exam_instructions,
+    	exam_duration: req.body.exam_duration,
+	  	exam_url: req.body.exam_url
 	};
 	ExamModel.findOneAndUpdate(
 	  {
@@ -85,7 +85,7 @@ updateExam = (req, res) => {
 		}
 	  }
 	);
-  };
+};
 
 module.exports = {
     getAllExams,
@@ -93,5 +93,4 @@ module.exports = {
     getExam,
     deleteExam,
     updateExam
-
 }

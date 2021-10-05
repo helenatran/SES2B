@@ -1,0 +1,62 @@
+
+.Sidebar {
+  background-color: #F8F8F8;
+  height: 100vh;
+  padding-top: 2%;
+}
+
+.Exam-colour {
+  background-color: #FFFFFF;
+}
+
+.timer-text {
+  text-align: center;
+  font: normal normal normal 16px/21px Montserrat;
+  letter-spacing: 0px;
+  color: #465F64;
+  opacity: 1;
+}
+
+.buttons {
+  opacity: 1;
+  border: 1;
+  box-align: center;
+  font: normal normal medium 34px/40px Montserrat;
+  letter-spacing: 0px;
+  background-color: #F8F8F8;
+  opacity: 1;
+}
+
+.help-button {
+  border-color: #28DDA0;
+  color: #28DDA0;
+}
+
+.help-button:hover {
+  color: #FFFFFF;
+  border-color: #28DDA0;
+  background-color: #28DDA0;
+}
+
+.leave-button {
+  border-color: #FF4B4B;
+  color: #FF4B4B;
+}
+
+.leave-button:hover {
+  color: #FFFFFF;
+  border-color: #FF4B4B;
+  background-color: #FF4B4B;
+}
+
+.popover {
+  height: 30%;
+  width: 170%;
+  text-align: left;
+  font: 16px/14px Montserrat;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+  line-height: 2;
+}
+
