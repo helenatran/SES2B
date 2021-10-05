@@ -14,6 +14,7 @@ import Home from "./Components/Home.js";
 import StudentProfile from "./Components/StudentProfile.js";
 import AuthError from "./Errors/AuthError.js";
 import ForgotPassword from "./Components/ForgotPassword.js";
+import StudentDashboard from "./Components/StudentDashboard";
 import StaffVideoScreen from "./Components/StaffVideoScreen/StaffVideoScreen";
 
 class App extends Component {
@@ -28,6 +29,9 @@ class App extends Component {
           </Route>
           <Route path="/forgotpassword">
             <ForgotPassword />
+          </Route>
+          <Route path="/studentDashboard">
+            <StudentDashboard />
           </Route>
           <Route path="/StudentProfile">
             <StudentProfile />

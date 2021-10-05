@@ -28,4 +28,4 @@ module.exports = (io) => {
     });
     webcamFrames.clear();
   }, 1000.0 / 20.0);
-}
+};

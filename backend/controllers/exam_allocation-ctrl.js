@@ -38,6 +38,38 @@ getExamAllocation = (req, res) => {
   );
 };
 
+// Get all exam allocations for one student (given their ID)
+getAllExamAllocationsByStudent = (req, res) => {
+  ExamAllocation.find(
+    {
+      user_id: parseInt(req.params.user_id),
+    },
+    (err, result) => {
+      if (err) {
+        res.status(500).json(err);
+      } else {
+        res.json(result);
+      }
+    }
+  );
+};
+
+// Get all exam allocations for one exam (given the exam ID)
+getAllExamAllocationsByExam = (req, res) => {
+  ExamAllocation.find(
+    {
+      exam_id: parseInt(req.params.exam_id),
+    },
+    (err, result) => {
+      if (err) {
+        res.status(500).json(err);
+      } else {
+        res.json(result);
+      }
+    }
+  );
+};
+
 // Update an exam allocation given the exam and student IDs
 updateExamAllocation = (req, res) => {
   const updatedExamAllocation = {
@@ -129,6 +161,8 @@ module.exports = {
   getExamAllocation,
   updateExamAllocation,
   deleteExamAllocation,
+  getAllExamAllocationsByStudent,
+  getAllExamAllocationsByExam,
   writeStartTime,
   writeEndTime
 };
