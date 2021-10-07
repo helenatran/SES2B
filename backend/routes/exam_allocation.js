@@ -12,5 +12,6 @@ router.get("/delete-exam-allocation/:user_id/:exam_id", ExamAllocationCtrl.delet
 router.get("/log-misconduct/:user_id/:exam_id", ExamAllocationCtrl.logMisconduct)
 router.patch("/write-start-time/:user_id/:exam_id", ExamAllocationCtrl.writeStartTime);
 router.patch("/write-end-time/:user_id/:exam_id", ExamAllocationCtrl.writeEndTime);
+router.get("/get-users/:exam_id", ExamAllocationCtrl.getUserByExamId);
 
 module.exports = router;

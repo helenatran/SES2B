@@ -70,6 +70,18 @@ getAllExamAllocationsByExam = (req, res) => {
   );
 };
 
+//Get list of student IDs taking exam based on exam ID
+getUserByExamId = (req, res) => {
+  ExamAllocation.find({exam_id: parseInt(req.params.exam_id)}, (err, result) => {
+    if(err) {
+      res.status(500).json(err);
+    }
+    else {
+      res.json(result);
+    }
+  }).project({user_id: 1, _id: 0});
+}; 
+
 // Update an exam allocation given the exam and student IDs
 updateExamAllocation = (req, res) => {
   const updatedExamAllocation = {
@@ -225,6 +237,7 @@ module.exports = {
   deleteExamAllocation,
   getAllExamAllocationsByStudent,
   getAllExamAllocationsByExam,
+  getUserByExamId,
   logMisconduct,
   writeStartTime,
   writeEndTime
