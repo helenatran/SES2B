@@ -9,7 +9,6 @@ import Navbar from "./Components/Navbar.js";
 import Login from "./Components/Login.js";
 import StudentWebcam from "./Components/StudentWebcam.js";
 import SpyOnStudents from "./Components/SpyOnStudents.js";
-import Account from "./Components/Account.js";
 import Home from "./Components/Home.js";
 import Exam from "./Components/Exam.js";
 import StudentProfile from "./Components/StudentProfile.js";
@@ -20,9 +19,6 @@ import PreExamChecklist1 from "./Components/Pre-examChecklist";
 
 import StudentDashboard from "./Components/StudentDashboard";
 import StaffVideoScreen from "./Components/StaffVideoScreen/StaffVideoScreen";
-import WebcamTest from './Components/WebcamTest';
-import SpyOnStudents from "./Components/SpyOnStudents";
-
 
 class App extends Component {
   // Simple 3 page React Router Setup
@@ -38,10 +34,10 @@ class App extends Component {
             <StudentDashboard />
           </Route>
           <Route path="/StudentProfile">
-            <StudentProfile/>
+            <StudentProfile />
           </Route>
           <Route path="/Pre-examChecklist">
-            <PreExamChecklist1/>
+            <PreExamChecklist1 />
           </Route>
           <Route path="/home">
             <Home />
@@ -63,7 +59,7 @@ class App extends Component {
           </Route>
           <Route path="/exam">
             <Exam />
-          </Route>           
+          </Route>
           <Route path="/">
             <Login />
           </Route>
