@@ -11,9 +11,18 @@ import StudentWebcam from "./Components/StudentWebcam.js";
 import SpyOnStudents from "./Components/SpyOnStudents.js";
 import Account from "./Components/Account.js";
 import Home from "./Components/Home.js";
+import Exam from "./Components/Exam.js";
 import StudentProfile from "./Components/StudentProfile.js";
 import AuthError from "./Errors/AuthError.js";
 import ForgotPassword from "./Components/ForgotPassword.js";
+
+import PreExamChecklist1 from "./Components/Pre-examChecklist";
+
+import StudentDashboard from "./Components/StudentDashboard";
+import StaffVideoScreen from "./Components/StaffVideoScreen/StaffVideoScreen";
+import WebcamTest from './Components/WebcamTest';
+import SpyOnStudents from "./Components/SpyOnStudents";
+
 
 class App extends Component {
   // Simple 3 page React Router Setup
@@ -22,14 +31,17 @@ class App extends Component {
       <Router>
         <Navbar />
         <Switch>
-          <Route path="/account">
-            <Account />
-          </Route>
           <Route path="/forgotpassword">
             <ForgotPassword />
           </Route>
+          <Route path="/studentDashboard">
+            <StudentDashboard />
+          </Route>
           <Route path="/StudentProfile">
-            <StudentProfile />
+            <StudentProfile/>
+          </Route>
+          <Route path="/Pre-examChecklist">
+            <PreExamChecklist1/>
           </Route>
           <Route path="/home">
             <Home />
@@ -43,9 +55,15 @@ class App extends Component {
           <Route path="/spy-on-students-test">
             <SpyOnStudents examId="TEST_EXAM_ID" />
           </Route>
+          <Route path="/staff-video-screen">
+            <StaffVideoScreen />
+          </Route>
           <Route path="/autherr">
             <AuthError />
           </Route>
+          <Route path="/exam">
+            <Exam />
+          </Route>           
           <Route path="/">
             <Login />
           </Route>

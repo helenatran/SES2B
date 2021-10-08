@@ -101,7 +101,7 @@ class Login extends Component {
               */}
               {this.state.status ? (
                 //This is also another inline if statement
-                <div>{this.props.history.push("/home")}</div> //Pushing to error page if user not logged in
+                <div>{this.props.history.push("/studentDashboard")}</div> //Pushing to error page if user not logged in
               ) : (
                 <div className="App">
                   <Container fluid>
