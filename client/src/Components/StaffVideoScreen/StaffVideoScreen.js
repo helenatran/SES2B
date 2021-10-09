@@ -48,7 +48,7 @@ const StaffVideoScreen = () => {
   };
 
   return (
-    <div className="App">
+    <div className="staff-video-screen">
       <Stack>
         <div className="bg-light border">
           <div className="exam-title">
@@ -80,10 +80,10 @@ const StaffVideoScreen = () => {
         <div className="bottom-stack">
           <Container fluid>
             <Row className="row">
-              <Col className="col1">
+              <Col className="staff-video-screen-col1">
                 <div className="time-left">Time left: 1:59:35</div>
               </Col>
-              <Col className="col2">
+              <Col className="staff-video-screen-col2">
                 <Button variant="danger" className="end-recording-button">
                   End Recording
                 </Button>
