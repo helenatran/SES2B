@@ -1,4 +1,4 @@
-.App {
+.staff-video-screen {
   padding: 2%;
   font: 18px/24px Montserrat;
 }
@@ -64,13 +64,13 @@
   background-color: #ff4b4b;
 }
 
-.col1 {
+.staff-video-screen-col1 {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
 
-.col2 {
+.staff-video-screen-col2 {
   display: flex;
   justify-content: flex-end;
   align-items: center;
