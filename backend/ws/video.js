@@ -4,9 +4,8 @@ ffmpeg.setFfmpegPath(ffmpegPath);
 
 const fs = require("fs-extra");
 const VIDEO_STORAGE_FOLDER = "./video_storage";
-const VIDEO_FPS = 20.0;
-
 const VIDEO_RECORDING_SEGMENT_SECONDS = 60.0;
+const VIDEO_FPS = 20.0;
 
 // Transmits and receives video from clients
 module.exports = (io) => {
@@ -31,7 +30,7 @@ module.exports = (io) => {
   });
 
   // Key: `${examId}__${userId}`, Value: frameNumber
-  const frameNumbers = new Map();
+  const frameNumbers = new Map(); // FFMPEG is picky and wants all the frames to be numbered
   let lastSegmentTime = Date.now();
   // Send frames to subscribed clients 20 times a second
   setInterval(() => {
@@ -58,6 +57,7 @@ module.exports = (io) => {
     });
   }, 1000.0 / VIDEO_FPS);
 
+  // Stitch together saved frames to create a video file
   setInterval(() => {
     openFolders.forEach((dir) => {
       const framesFolder = `${dir}/tmp/${lastSegmentTime}`;
@@ -66,6 +66,7 @@ module.exports = (io) => {
         .withInputFPS(VIDEO_FPS)
         .withOutputFPS(VIDEO_FPS)
         .on("end", () => {
+          // Video segment has been saved successfully, so we can delete the stored frames
           fs.remove(framesFolder);
         })
         .on("error", (e) => {
