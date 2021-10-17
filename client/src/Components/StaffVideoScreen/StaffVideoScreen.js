@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { io } from "socket.io-client";
 import "./StaffVideoScreen.css";
 import profilepic from "../../Assets/profilepic.png";
 import { Button, Container, Stack, Row, Col, Carousel } from "react-bootstrap";
 import StudentsCards from "./Sub-Components/StudentCards";
 import StudentCard from "./Sub-Components/StudentCard";
+
+const VIDEO_ENDPOINT = "/video";
 
 const mockStudents = [
   { firstName: "John", lastName: "Smith", videoSrc: profilepic, id: 1 },
@@ -20,6 +23,7 @@ const mockStudents = [
 ];
 
 const mockExam = {
+  id: "TEST_EXAM_ID",
   name: "Software Studio 2B - Final Exam",
   date: "1st October 2021 - 2:00 PM",
   duration: "2.5",
@@ -35,6 +39,28 @@ const StaffVideoScreen = () => {
     videoSrc: "",
     id: 0,
   });
+
+  // Request and listen to webcam frames being sent from server
+  React.useEffect(() => {
+    const socket = io(VIDEO_ENDPOINT);
+    socket.emit("request-webcam-frames", exam.id);
+    socket.on("send-frames", (serverExamFrames) => {
+      setStudents((students) =>
+        students.map((student) => ({
+          ...student,
+          videoSrc: serverExamFrames[student.id] || student.videoSrc,
+        }))
+      );
+      setZoomedStudent((student) => ({
+        ...student,
+        videoSrc: serverExamFrames[student.id] || student.videoSrc,
+      }));
+    });
+    return () => {
+      socket.close();
+    };
+  }, [exam.id]);
+
   const STUDENTS_PER_SLIDE = 6;
   const numberOfSlides = [];
 
