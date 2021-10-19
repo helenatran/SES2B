@@ -10,6 +10,8 @@ const StudentCard = ({ student, updateZoomView, isInZoomView }) => {
       setFlagCount(1);
     } else if (flagCount === 1) {
       setFlagCount(2);
+
+      // Replace this with method to terminate the student's exam
       alert(
         student.firstName +
           " " +
