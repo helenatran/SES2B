@@ -12,6 +12,7 @@ import Exam from "./Components/Exam.js";
 import StudentProfile from "./Components/StudentProfile.js";
 import AuthError from "./Errors/AuthError.js";
 import ForgotPassword from "./Components/ForgotPassword.js";
+import ExaminerViewRecordings from "./Components/ExaminerViewRecordings.js"
 
 import PreExamChecklist1 from "./Components/Pre-examChecklist";
 
@@ -57,7 +58,10 @@ class App extends Component {
           </Route>
           <Route path="/exam">
             <Exam />
-          </Route>           
+          </Route>      
+          <Route path="/ExaminerRecordings">
+            <ExaminerViewRecordings />
+          </Route>      
           <Route path="/">
             <Login />
           </Route>
