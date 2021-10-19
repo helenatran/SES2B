@@ -47,7 +47,8 @@ const StudentCard = ({ student, updateZoomView, isInZoomView }) => {
         )}
         {flagCount == 2 && (
           <ExclamationTriangleFill
-            className="second-exclamation-triangle"
+            className="exclamation-triangle"
+            style={{ right: isInZoomView ? "8.5%" : "14.5%" }}
             size={25}
           />
         )}
