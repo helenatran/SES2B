@@ -3,10 +3,20 @@ import { Card, Button } from "react-bootstrap";
 import { ExclamationTriangleFill, XLg } from "react-bootstrap-icons";
 
 const StudentCard = ({ student, updateZoomView, isInZoomView }) => {
-  const [flag, setFlag] = useState(false);
+  const [flagCount, setFlagCount] = useState(0);
 
   const handleFlag = () => {
-    setFlag(flag ? false : true);
+    if (flagCount === 0) {
+      setFlagCount(1);
+    } else if (flagCount === 1) {
+      setFlagCount(2);
+      alert(
+        student.firstName +
+          " " +
+          student.lastName +
+          "'s exam has been terminated!"
+      );
+    }
   };
 
   const handleCardClick = () => {
@@ -30,8 +40,14 @@ const StudentCard = ({ student, updateZoomView, isInZoomView }) => {
           alt="student-video"
           onClick={handleCardClick}
         />
-        {flag && (
+        {(flagCount == 1 || flagCount == 2) && (
           <ExclamationTriangleFill className="exclamation-triangle" size={25} />
+        )}
+        {flagCount == 2 && (
+          <ExclamationTriangleFill
+            className="second-exclamation-triangle"
+            size={25}
+          />
         )}
         {isInZoomView && (
           <XLg className="x-icon" onClick={handleCloseZoomView} />
