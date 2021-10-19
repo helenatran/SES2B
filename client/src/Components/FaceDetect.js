@@ -16,13 +16,15 @@ const videoConstraints = {
 let img;
 let canvas;
 
+let test = null
+
 Promise.all([
     faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL),
     faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL),
     faceapi.nets.ssdMobilenetv1.loadFromUri(MODEL_URL)
 ]).then(start);
 
-class FaceDetect extends Component {
+class FaceDetect extends Component ({test}) {
     constructor(props) {
         super(props);
         this.state = {
@@ -32,9 +34,9 @@ class FaceDetect extends Component {
             outcome: 0,
             screenshot: null,
             showScreenshotButton: true,
-            user_id: ""
+            user_id: "",
+            faceSuccess: null
         };
-
         this.faceDetection = this.faceDetection.bind(this); //TODO - convert to arrow function
     }
 
@@ -60,6 +62,7 @@ class FaceDetect extends Component {
         this.stopWebCameraStream();
     };
 
+
     faceDetection = async () => {
         const labeledFaceDescriptors = await loadLabelImages(this.state.user_id);
         const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, 0.6);
@@ -69,6 +72,8 @@ class FaceDetect extends Component {
 
         img = await faceapi.bufferToImage(blob);
         img.style.position = 'absolute';
+        img.style.left = '18.7%'
+        img.style.bottom = '-5%'
         container.append(img);
 
         const displaySize = {
@@ -78,6 +83,8 @@ class FaceDetect extends Component {
 
         canvas = faceapi.createCanvasFromMedia(img);
         canvas.style.position = 'absolute';
+        canvas.style.left = '18.7%'
+        canvas.style.bottom = '-5%'
         container.append(canvas);
 
         faceapi.matchDimensions(canvas, displaySize);
@@ -103,9 +110,9 @@ class FaceDetect extends Component {
         document.body.append(container);
 
         if(this.state.outcome <= faceMatcher.distanceThreshold && detections.length !== 0) {
-            //TODO - Approve User
+            this.setState({faceSuccess: true})
         }else{
-            //TODO - Reject User
+            this.setState({faceSuccess: false})
         }
     };
 
