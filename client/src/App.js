@@ -4,9 +4,12 @@ import React, { Component } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+
 //Importing Components
 import Navbar from "./Components/Navbar.js";
 import Login from "./Components/Login.js";
+import StudentWebcam from "./Components/StudentWebcam.js";
+import SpyOnStudents from "./Components/SpyOnStudents.js";
 import Home from "./Components/Home.js";
 import Exam from "./Components/Exam.js";
 import StudentProfile from "./Components/StudentProfile.js";
@@ -14,13 +17,11 @@ import AuthError from "./Errors/AuthError.js";
 import ForgotPassword from "./Components/ForgotPassword.js";
 import ExaminerViewRecordings from "./Components/ExaminerViewRecordings.js"
 
-import PreExamChecklist1 from "./Components/Pre-examChecklist";
+import PreExamChecklist from "./Components/Pre-examChecklist";
 
 import StudentDashboard from "./Components/StudentDashboard";
 import StaffVideoScreen from "./Components/StaffVideoScreen/StaffVideoScreen";
-import WebcamTest from './Components/WebcamTest';
-import SpyOnStudents from "./Components/SpyOnStudents";
-
+import ViewRecording from "./Components/ViewRecording";
 
 class App extends Component {
   // Simple 3 page React Router Setup
@@ -36,16 +37,22 @@ class App extends Component {
             <StudentDashboard />
           </Route>
           <Route path="/StudentProfile">
-            <StudentProfile/>
+            <StudentProfile />
           </Route>
           <Route path="/Pre-examChecklist">
-            <PreExamChecklist1/>
+            <PreExamChecklist />
+          </Route>
+          <Route path="/view-recording">
+            <ViewRecording />
           </Route>
           <Route path="/home">
             <Home />
           </Route>
           <Route path="/webcam-test">
-            <WebcamTest examId="TEST_EXAM_ID" />
+            <StudentWebcam
+              examId="TEST_EXAM_ID"
+              userId={Math.floor(Math.random() * 1000)}
+            />
           </Route>
           <Route path="/spy-on-students-test">
             <SpyOnStudents examId="TEST_EXAM_ID" />
@@ -58,10 +65,14 @@ class App extends Component {
           </Route>
           <Route path="/exam">
             <Exam />
+
           </Route>      
           <Route path="/ExaminerRecordings">
             <ExaminerViewRecordings />
           </Route>      
+
+
+
           <Route path="/">
             <Login />
           </Route>
