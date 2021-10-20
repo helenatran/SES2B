@@ -24,7 +24,7 @@ Promise.all([
     faceapi.nets.ssdMobilenetv1.loadFromUri(MODEL_URL)
 ]).then(start);
 
-class FaceDetect extends Component ({test}) {
+class FaceDetect extends Component {
     constructor(props) {
         super(props);
         this.state = {

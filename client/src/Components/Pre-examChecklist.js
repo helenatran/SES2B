@@ -16,7 +16,6 @@ class PreExamChecklist extends Component {
     this.setState({
       isFaceRecognitionSuccesful: true,
     });
-    console.log(this.state.isFaceRecognitionSuccesful)
     // if (this.state.isFaceRecognitionSuccesful){
     //   this.props.history.push("/exam")
     // }
@@ -27,6 +26,13 @@ class PreExamChecklist extends Component {
       isFaceRecognitionSuccesful: false,
     });
   };
+
+  // checkLoginSuccess = (loginOutcome) => {
+
+  //   this.setState({isFaceRecognitionSuccesful: loginOutcome})
+  //   console.log("isFaceRecognitionSuccesful: " + this.state.isFaceRecognitionSuccesful)
+  // }
+
 
   render() {
     return this.state.isFaceRecognitionSuccesful ? (
@@ -103,6 +109,7 @@ class PreExamChecklist extends Component {
                   detection system to recognise your face.
                 </p>
                 <FaceDetect/>
+                {/* <FaceDetect checkLoginSuccess={this.checkLoginSuccess()}/> */}
               </div>
             </Col>
 
