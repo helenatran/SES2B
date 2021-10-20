@@ -72,7 +72,7 @@ updateUser = (req, res) => {
 			});
 		}
 		else {
-			if (users[0].mobile != updatedUser.mobile || users[0].preferred_name != updatedUser.preferred_name) {
+			if ((users[0].mobile != updatedUser.mobile && updatedUser.mobile !=undefined) || (users[0].preferred_name != updatedUser.preferred_name && updatedUser.preferred_name != undefined )) {
 				console.log("Updating User");
 				User.updateOne(
 				{ email: req.body.email },
@@ -82,6 +82,10 @@ updateUser = (req, res) => {
 					}
 					else {
 						//Name updated - mobile == undef on first change 
+						console.log(users[0].mobile);
+						console.log(updatedUser.mobile);
+						console.log(users[0].preferred_name);
+						console.log(updatedUser.preferred_name);
 						if (updatedUser.mobile == undefined || (updatedUser.mobile != undefined && users[0].preferred_name != updatedUser.preferred_name && users[0].mobile == updatedUser.mobile)){
 							console.log("Just Name Changed");
 							changeLogName = new ChangeLog({
@@ -170,6 +174,13 @@ updateUser = (req, res) => {
 								success: true,
 								message: "Change Log Has Been Updated",
 								field_changed: "Both",
+							});
+						}
+						else {
+							console.log("Just Mobile Changed");
+							res.status(200).json({
+								success: true,
+								message: "No change",
 							});
 						}
 					}
