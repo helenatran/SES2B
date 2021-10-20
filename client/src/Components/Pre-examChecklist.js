@@ -27,11 +27,11 @@ class PreExamChecklist extends Component {
     });
   };
 
-  // checkLoginSuccess = (loginOutcome) => {
-
-  //   this.setState({isFaceRecognitionSuccesful: loginOutcome})
-  //   console.log("isFaceRecognitionSuccesful: " + this.state.isFaceRecognitionSuccesful)
-  // }
+  checkLoginSuccess = (loginState) => {
+    console.log("Login State: " + loginState);
+    this.setState({isFaceRecognitionSuccesful: loginState});
+    //console.log("isFaceRecognitionSuccesful: " + this.state.isFaceRecognitionSuccesful)
+  }
 
 
   render() {
@@ -77,7 +77,7 @@ class PreExamChecklist extends Component {
                     Continue
                   </Button>
                   <div class="go-back-link">
-                    <a onClick={this.onClickGoBack}>Go back</a>
+                    <button onClick={this.onClickGoBack}>Go back</button>
                   </div>
                 </div>
               </div>
@@ -108,8 +108,7 @@ class PreExamChecklist extends Component {
                   continue. Please ensure there is good lighting for face 
                   detection system to recognise your face.
                 </p>
-                <FaceDetect/>
-                {/* <FaceDetect checkLoginSuccess={this.checkLoginSuccess()}/> */}
+                <FaceDetect checkLoginSuccess={this.checkLoginSuccess}/>
               </div>
             </Col>
 

@@ -110,9 +110,9 @@ class FaceDetect extends Component {
         document.body.append(container);
 
         if(this.state.outcome <= faceMatcher.distanceThreshold && detections.length !== 0) {
-            this.setState({faceSuccess: true})
+            this.props.checkLoginSuccess(true);
         }else{
-            this.setState({faceSuccess: false})
+            this.props.checkLoginSuccess(false);
         }
     };
 
