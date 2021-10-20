@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+
 //Importing Components
 import Navbar from "./Components/Navbar.js";
 import Login from "./Components/Login.js";
@@ -15,10 +16,11 @@ import StudentProfile from "./Components/StudentProfile.js";
 import AuthError from "./Errors/AuthError.js";
 import ForgotPassword from "./Components/ForgotPassword.js";
 
-import PreExamChecklist1 from "./Components/Pre-examChecklist";
+import PreExamChecklist from "./Components/Pre-examChecklist";
 
 import StudentDashboard from "./Components/StudentDashboard";
 import StaffVideoScreen from "./Components/StaffVideoScreen/StaffVideoScreen";
+import ViewRecording from "./Components/ViewRecording";
 
 class App extends Component {
   // Simple 3 page React Router Setup
@@ -37,7 +39,10 @@ class App extends Component {
             <StudentProfile />
           </Route>
           <Route path="/Pre-examChecklist">
-            <PreExamChecklist1 />
+            <PreExamChecklist />
+          </Route>
+          <Route path="/view-recording">
+            <ViewRecording />
           </Route>
           <Route path="/home">
             <Home />
