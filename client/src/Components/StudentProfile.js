@@ -66,10 +66,10 @@ class StudentProfile extends Component {
       .then(res => res.json())
       .then((result) => {
         if (result.success) {
-          window.alert("user successfully updated!")
+          window.alert("Details updated!")
         }
         else{
-          window.alert("error updating user")
+          window.alert("Error updating details")
         }
       })
 
