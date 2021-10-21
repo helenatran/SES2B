@@ -82,7 +82,7 @@ updateUser = (req, res) => {
 					}
 					else {
 						//Name updated - mobile == undef on first change 
-						if (updatedUser.mobile == undefined || (updatedUser.mobile != undefined && users[0].preferred_name != updatedUser.preferred_name && users[0].mobile == updatedUser.mobile)){
+						if ((updatedUser.mobile == undefined && updatedUser.password == undefined) || (updatedUser.mobile != undefined && users[0].preferred_name != updatedUser.preferred_name && users[0].mobile == updatedUser.mobile)){
 							console.log("Just Name Changed");
 							changeLogName = new ChangeLog({
 								user_id: users[0].id_number,
@@ -107,7 +107,7 @@ updateUser = (req, res) => {
 							});
 						}
 						//if mobile changed on first go name is undefined
-						else if (updatedUser.preferred_name == undefined || (updatedUser.preferred_name != undefined && users[0].preferred_name == updatedUser.preferred_name && users[0].mobile != updatedUser.mobile)){
+						else if ((updatedUser.preferred_name == undefined && updatedUser.password == undefined) || (updatedUser.preferred_name != undefined && users[0].preferred_name == updatedUser.preferred_name && users[0].mobile != updatedUser.mobile)){
 							console.log("Just Mobile Changed");
 							changeLogName = new ChangeLog({
 								user_id: users[0].id_number,
@@ -131,6 +131,21 @@ updateUser = (req, res) => {
 								field_changed: "mobile",
 							});
 						} 
+						if ((updatedUser.mobile == undefined && updatedUser.preferred_name == undefined) || (updatedUser.password != undefined && users[0].preferred_name != updatedUser.preferred_name && users[0].mobile == updatedUser.mobile)){
+							console.log("Just Password Changed");
+							bcrypt.hash(updatedUser.password, 10, function(err, hash) {
+								updatedUser.password = hash;
+							});
+							changeLogName = new ChangeLog({
+								user_id: users[0].id_number,
+								date_time: now(),
+								field_changed: "mobile",
+								original_value: users[0].password,
+								new_value: updatedUser.password,
+							});
+
+							
+						}
 						//both updated - nothing undefined
 						else if (users[0].mobile != updatedUser.mobile && users[0].preferred_name != updatedUser.preferred_name){
 							console.log("Both");
