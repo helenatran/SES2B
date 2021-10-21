@@ -19,7 +19,8 @@ class StudentProfile extends Component {
         mobile:""
       },
       updatedPreferredName:"",
-      updatedMobile:""
+      updatedMobile:"",
+      updatedPassword: ""
     };
 
     this.imageHandler = this.imageHandler.bind(this)
@@ -41,6 +42,14 @@ class StudentProfile extends Component {
         this.setState(user)
         this.setState({updatedMobile: e.target.value})
         break;
+      case "password":
+        var user = this.state.user;
+        user.password = e.target.value;
+        this.setState(user)
+        this.setState({updatedPassword: e.target.value});
+        break;
+      default:
+
     }
   }
 
@@ -214,6 +223,20 @@ class StudentProfile extends Component {
                       className="input"
                       type="text"
                       value={this.state.user.mobile}
+                      onChange={this.handleChange}
+                    ></input>
+                  </div>
+
+                  <div className="PNumber">
+                    <label htmlFor="PNumber" className="label">
+                      {" "}
+                      Password
+                    </label>
+                    <input
+                      id="password"
+                      className="input"
+                      type="password"
+                      value={this.state.updatedPassword}
                       onChange={this.handleChange}
                     ></input>
                   </div>
