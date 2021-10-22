@@ -4,7 +4,6 @@ import React, { Component } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-
 //Importing Components
 import Navbar from "./Components/Navbar.js";
 import Login from "./Components/Login.js";
@@ -15,7 +14,7 @@ import Exam from "./Components/Exam.js";
 import StudentProfile from "./Components/StudentProfile.js";
 import AuthError from "./Errors/AuthError.js";
 import ForgotPassword from "./Components/ForgotPassword.js";
-import ExaminerViewRecordings from "./Components/ExaminerViewRecordings.js"
+import ExaminerViewRecordings from "./Components/ExaminerViewRecordings.js";
 
 import PreExamChecklist from "./Components/Pre-examChecklist";
 
@@ -65,14 +64,10 @@ class App extends Component {
           </Route>
           <Route path="/exam">
             <Exam />
-
-          </Route>      
+          </Route>
           <Route path="/ExaminerRecordings">
             <ExaminerViewRecordings />
-          </Route>      
-
-
-
+          </Route>
           <Route path="/">
             <Login />
           </Route>

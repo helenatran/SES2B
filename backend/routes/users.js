@@ -5,6 +5,7 @@ const UserCtrl = require('../controllers/user-ctrl')
 router.post('/create-user', UserCtrl.createUser);
 router.get('/get-users', UserCtrl.getUsers);
 router.get('/get-user/:email', UserCtrl.getUserByEmail);
+router.get('/get-user-by-id/:user_id', UserCtrl.getUserByID);
 router.post('/update-user', UserCtrl.updateUser);
 router.get('/login-status', UserCtrl.loginStatus);
 router.post('/handle-login', UserCtrl.handleLogin);

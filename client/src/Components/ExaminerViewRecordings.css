@@ -1,15 +1,18 @@
-
-.col-centered{
-    float: none;
-    margin: 0 auto;
-    width: 80%;
-    height: auto;
-    background-color: #F8F8F8;
+.col-centered {
+  float: none;
+  margin: 0 auto;
+  width: 80%;
+  height: auto;
+  background-color: #f8f8f8;
 }
 
-.title{
-    font: bold 45px/60px Montserrat;
-    color: #465F64;
-    padding-left: 3%;
+.title {
+  font: bold 45px/60px Montserrat;
+  color: #465f64;
+  padding-left: 3%;
+}
 
+.spinner {
+  color: #28dda0;
+  margin: 5% 50%;
 }
