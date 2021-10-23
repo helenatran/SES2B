@@ -64,3 +64,14 @@
   padding: 0.5%;
 }
 
+.popover {
+  height: 30%;
+  width: 170%;
+  text-align: left;
+  font: 16px/14px Montserrat;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+  line-height: 2;
+}
+
