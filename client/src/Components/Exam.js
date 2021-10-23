@@ -15,7 +15,7 @@ import "./Exam.css";
 import Badge from 'react-bootstrap/Badge'
 import { io } from "socket.io-client";
 import Timer from "react-compound-timer";
-import Modal from "./Modal";
+import Modal from "./Modal.js";
 // var misconductAlert = 0;
 
 const Exam = () => {
@@ -41,6 +41,11 @@ const Exam = () => {
  
   const examCompleted = () => {
     console.log("Exam completed")
+    // TODO: End the exam.
+  }
+
+  const examEndingSoon = () => {
+    console.log("5 minutes remaining")
   }
   
   const [modalOpen, setModalOpen] = useState(false);
@@ -79,7 +84,7 @@ const Exam = () => {
   if (timeleft === 0) {
     return (
       <div>
-        Exam not loaded.
+        Exam loading...
       </div>
     );
   }
@@ -89,7 +94,7 @@ const Exam = () => {
       <Row>
         <Col className="Sidebar" sm={2}>
           <Stack gap={4} className="mx-auto">
-            <Image src={profilepic} fluid /* Replace with live video */ />
+            <Image src={profilepic} fluid /* TODO: Replace with live video */ />
             <div className="timer-text">Time Left:&nbsp;
               <Timer formatValue={(value) => `${(value < 10 ? `0${value}` : value)} `}
                 initialTime={timeleft}
@@ -98,7 +103,7 @@ const Exam = () => {
                 checkpoints={[
                   {
                       time: 300000,
-                      callback: () => console.log('5 minutes left'),
+                      callback: () => examEndingSoon(),
                   },
                   {
                       time: 0,
