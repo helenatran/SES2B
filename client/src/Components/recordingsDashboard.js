@@ -121,20 +121,6 @@ class RecordingsDashboard extends Component {
                     })}
                   </tbody>
                 </Table>
-                {/* <h2>Name</h2>
-                <p class="p-bold">{this.state.examDetails.exam_name}</p>
-                <br />
-                <h2>Time</h2>
-                <p class="p-bold date">
-                  {dayjs(this.state.examAllocation.started_at).format(
-                    "DD MMM YYYY - h:mm A"
-                  )}
-                </p>
-                <br />
-                <h2>Duration</h2>
-                <p class="p-bold">
-                  {this.state.examDetails.exam_duration} hours
-                </p> */}
                 <br />
               </div>
             </Col>
