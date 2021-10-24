@@ -20,6 +20,7 @@ import StaffVideoScreen from "./Components/StaffVideoScreen/StaffVideoScreen";
 import WebcamTest from './Components/WebcamTest';
 import SpyOnStudents from "./Components/SpyOnStudents";
 
+import RecordingsDashboard from "./Components/recordingsDashboard";
 
 class App extends Component {
   // Simple 3 page React Router Setup
@@ -33,6 +34,9 @@ class App extends Component {
           </Route>
           <Route path="/studentDashboard">
             <StudentDashboard />
+          </Route>
+          <Route path="/adminDashboard">
+            <RecordingsDashboard />
           </Route>
           <Route path="/StudentProfile">
             <StudentProfile/>
