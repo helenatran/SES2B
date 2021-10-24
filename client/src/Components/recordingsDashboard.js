@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import moment from 'moment';
+import 'moment-timezone';
 import "./StudentDashboard.css";
 import {
   Container,
@@ -18,6 +20,8 @@ class RecordingsDashboard extends Component {
     user: null,
     examAllocation: null,
     examDetails: "",
+    upcomingExams:[],
+    pastExams:[]
   };
 
   async componentDidMount() {
@@ -32,6 +36,18 @@ class RecordingsDashboard extends Component {
       .then((data) =>
         this.setState({ examAllocation: data[0], loading: false })
       );
+
+    await fetch(
+      "exam/get-exams"
+    )
+      .then(response => response.json())
+      .then(results => 
+        { 
+          var hasPast = results.filter(result => moment(result.date_time,"DD/MM/YYYY").locale('en-au').isBefore(moment(), "day"));
+          var upcoming = results.filter(result => moment(result.date_time,"DD/MM/YYYY").locale('en-au').isAfter(moment(), "day"));
+          this.setState({upcomingExams: upcoming, pastExams: hasPast, loading: false})
+        }
+      )
 
     await fetch("/exam/get-exam/" + this.state.examAllocation.exam_id)
       .then((response) => response.json())
@@ -64,24 +80,22 @@ class RecordingsDashboard extends Component {
                 <br />
                 <br />
                 <Table borderless>
-  <thead>
-    <tr>
-      <th>Exam</th>
-     
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <Link to="/home"> <td>Engineering Economics & Finance </td></Link>
-    </tr>
-    <tr>
-    <Link to="/home"> <td>Network Fundamentals</td></Link>
-    </tr>
-    <tr>
-    <Link to="/home"> <td>Network Fundamentals Supplementary</td></Link>
-    </tr>
-  </tbody>
-</Table>
+                  <thead>
+                    <tr>
+                      <th>Exam</th>
+                    
+                    </tr>
+                  </thead>
+                  <tbody>
+                    { this.state.pastExams.map(exam => {
+                      return (
+                        <tr>
+                          <Link to="/home"> <td>{exam.exam_name}</td></Link>
+                        </tr>
+                      )
+                    })}
+                  </tbody>
+                </Table>
                 <br />
               </div>
             </Col>
@@ -91,24 +105,22 @@ class RecordingsDashboard extends Component {
                 <br />
                 <br />
                 <Table borderless>
-  <thead>
-    <tr>
-      <th>Exam</th>
-     
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-    <Link to="/home"> <td>Engineering Economics & Finance </td></Link>
-    </tr>
-    <tr>
-    <Link to="/home"> <td>Engineering Economics & Finance </td></Link>
-    </tr>
-    <tr>
-    <Link to="/home"> <td>Engineering Economics & Finance </td></Link>
-    </tr>
-  </tbody>
-</Table>
+                  <thead>
+                    <tr>
+                      <th>Exam</th>
+                    
+                    </tr>
+                  </thead>
+                  <tbody>
+                  { this.state.upcomingExams.map(exam => {
+                      return (
+                        <tr>
+                          <Link to="/home"> <td>{exam.exam_name}</td></Link>
+                        </tr>
+                      )
+                    })}
+                  </tbody>
+                </Table>
                 {/* <h2>Name</h2>
                 <p class="p-bold">{this.state.examDetails.exam_name}</p>
                 <br />
