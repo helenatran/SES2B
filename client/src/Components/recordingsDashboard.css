@@ -1,0 +1,11 @@
+.col-content {
+  padding: 30% 10% 10% 10%;
+}
+
+.col-admin-dashboard {
+  display: flex;
+  justify-content: flex-start;
+  background: #f8f8f8 0% 0% no-repeat padding-box;
+  opacity: 1;
+  height: 100vh;
+}

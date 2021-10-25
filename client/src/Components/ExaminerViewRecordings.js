@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { Container, Col, Spinner } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Button, Container, Col, Spinner } from "react-bootstrap";
+import { Link, useHistory, withRouter } from "react-router-dom";
 import "./ExaminerViewRecordings.css";
 
-function ExaminerViewRecordings() {
-  // Mock data to replace
-  const exam_id = 41096;
+const ExaminerViewRecordings = (props) => {
+  let history = useHistory();
+  const exam_id = props.location.state.examId;
 
   const [exam, setExam] = useState({
     exam_name: "",
-    date_time: "",
+    date_to_display: "",
   });
   const [examAllocations, setExamAllocations] = useState([
     {
@@ -62,6 +62,10 @@ function ExaminerViewRecordings() {
     fetchData();
   }, []);
 
+  const handleBackToDashboard = () => {
+    history.push("/adminDashboard");
+  };
+
   if (loading) {
     return (
       <Spinner animation="border" role="status" className="spinner">
@@ -76,7 +80,7 @@ function ExaminerViewRecordings() {
         <div className="col-lg-1 col-centered">
           <div className="title">
             <h1>{exam.exam_name}</h1>
-            <h2> {exam.date_time}</h2>
+            <h2> {exam.date_to_display}</h2>
           </div>
           <Col className=" col " style={{ padding: "3%" }}>
             <div className="column-contents ">
@@ -118,11 +122,18 @@ function ExaminerViewRecordings() {
                   <hr />
                 </div>
               ))}
+              <Button
+                className="back-button"
+                variant="light"
+                onClick={handleBackToDashboard}
+              >
+                Back to dashboard
+              </Button>
             </div>
           </Col>
         </div>
       </div>
     </Container>
   );
-}
-export default ExaminerViewRecordings;
+};
+export default withRouter(ExaminerViewRecordings);

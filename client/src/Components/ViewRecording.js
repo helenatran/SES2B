@@ -20,7 +20,10 @@ const ViewRecording = (props) => {
   const misconducts = props.location.state.misconducts;
 
   const handleClose = () => {
-    history.push("/ExaminerRecordings");
+    history.push({
+      pathname: "/ExaminerRecordings",
+      state: { examId: props.location.state.exam.exam_id },
+    });
   };
 
   return (

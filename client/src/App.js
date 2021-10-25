@@ -21,8 +21,6 @@ import PreExamChecklist from "./Components/Pre-examChecklist";
 import StudentDashboard from "./Components/StudentDashboard";
 import StaffVideoScreen from "./Components/StaffVideoScreen/StaffVideoScreen";
 import ViewRecording from "./Components/ViewRecording";
-import SpyOnStudents from "./Components/SpyOnStudents";
-
 import RecordingsDashboard from "./Components/recordingsDashboard";
 
 class App extends Component {
