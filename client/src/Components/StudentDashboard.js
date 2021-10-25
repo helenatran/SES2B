@@ -39,18 +39,29 @@ class StudentDashboard extends Component {
   }
 
   handleClick = () => {
-    var started_at = null;
     var current_user = this.state.user;
     var exam = this.state.examDetails.exam_id;
+    var currentTime = new Date().toISOString();
 
-    axios
-      .post("exam-allocation/write-start-time/" + current_user + "/" + exam, started_at)
-      .then(() => console.log("Start Time recorded to database."))
-      .catch(err => {
-        console.error(err);
+    fetch("exam_allocation/write-start-time/" + current_user + "/" + exam, {
+      method: "PATCH",
+      headers: {
+        "Contents-Type": "application/json"
+      },
+      body: JSON.stringify(
+        {
+          "started_at": currentTime
+        }
+      )
+    })
+      .then(res => res.json())
+      .then((res) =>{
+        console.log(res);
+        window.location.href="/exam";
+      },
+      (err) => {
+        console.log(err);
       });
-
-      window.location.href="/exam";
   };
 
   render(
@@ -116,7 +127,7 @@ class StudentDashboard extends Component {
                   <Button
                     style={{ height: "60px" }}
                     className="button-startExam"
-                    onClick={this.handleClick}
+                    onClick={this.handleClick.bind(this)}
                   >
                     <a>Start Exam</a>
                   </Button>

@@ -113,9 +113,9 @@ deleteExamAllocation = (req, res) => {
 
 writeStartTime = (req, res) => {
   var updatedExamAllocation = {
-    started_at: new Date(),
-  };
-
+    started_at: req.body,
+  }
+  
   ExamAllocation.findOneAndUpdate(
     {
       exam_id: parseInt(req.params.exam_id),
