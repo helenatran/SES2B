@@ -1,6 +1,5 @@
 const User = require("../models/user-model");
 const bcrypt = require('bcrypt');
-var session = require('express-session');
 const ChangeLog = require("../models/change_log-model");
 const { createChangeLog } = require("./change_log-ctrl");
 const { now } = require("mongoose");
@@ -55,6 +54,17 @@ getUserByEmail = (req, res) => {
 			res.json(result);
 		}
 	});	
+}
+
+//Get specific user by ID
+getUserByID = (req, res) => {
+	User.findOne({ id_number: parseInt(req.params.user_id) }, (err, result) => {
+    if (err) {
+      res.status(500).json(err);
+    } else {
+      res.json(result);
+    }
+  });	
 }
 
 //update user preferred name and/or mobile number and add to change log
@@ -248,7 +258,8 @@ handleLogout = (req, res) => {
 module.exports = {
   createUser,
   getUsers,
-  getUserByEmail,
+	getUserByEmail,
+	getUserByID,
   updateUser,
   handleLogout,
   handleLogin,
