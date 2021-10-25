@@ -9,6 +9,8 @@ import {
   OverlayTrigger,
 } from "react-bootstrap";
 import dayjs from "dayjs";
+import { applyActivation } from "@tensorflow/tfjs-core/dist/ops/fused_util";
+import axios from "axios";
 
 class StudentDashboard extends Component {
   state = {
@@ -35,6 +37,21 @@ class StudentDashboard extends Component {
       .then((response) => response.json())
       .then((data) => this.setState({ examDetails: data, loading: false }));
   }
+
+  handleClick = () => {
+    var started_at = null;
+    var current_user = this.state.user;
+    var exam = this.state.examDetails.exam_id;
+
+    axios
+      .post("exam-allocation/write-start-time/" + current_user + "/" + exam, started_at)
+      .then(() => console.log("Start Time recorded to database."))
+      .catch(err => {
+        console.error(err);
+      });
+
+      window.location.href="/exam";
+  };
 
   render(
     popover = (
@@ -64,11 +81,9 @@ class StudentDashboard extends Component {
                 <h2>Name</h2>
                 <p class="p-bold">{this.state.examDetails.exam_name}</p>
                 <br />
-                <h2>Time</h2>
+                <h2>Date</h2>
                 <p class="p-bold date">
-                  {dayjs(this.state.examAllocation.started_at).format(
-                    "DD MMM YYYY - h:mm A"
-                  )}
+                  {this.state.examDetails.date_time}
                 </p>
                 <br />
                 <h2>Duration</h2>
@@ -100,11 +115,10 @@ class StudentDashboard extends Component {
                 <div class="padding-top-button2">
                   <Button
                     style={{ height: "60px" }}
-                    className="  button-startExam"
-
+                    className="button-startExam"
+                    onClick={this.handleClick}
                   >
-                    <a href="/exam"> Start Exam</a>
-                   
+                    <a>Start Exam</a>
                   </Button>
                 </div>
               </div>
