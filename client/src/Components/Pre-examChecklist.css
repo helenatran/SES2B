@@ -3,6 +3,7 @@
   opacity: 1;
   height: 100vh;
   text-align: center;
+  justify-content: space-evenly !important;
 }
 
 .column1-contents {
@@ -53,7 +54,7 @@ ul.blackCheck {
   list-style-image: url("../Assets/black_check.svg");
 }
 
-ul.greenCheck :first-child {
+ul.greenCheck :first-child, ul.objFaceGreenCheck :nth-last-child(2) {
   list-style-image: url("../Assets/green_check.svg");
 }
 
