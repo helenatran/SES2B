@@ -135,7 +135,7 @@ writeStartTime = (req, res) => {
 
 writeEndTime = (req, res) => {
   var updatedExamAllocation = {
-    ended_at: new Date(),
+    ended_at: req.body,
   };
 
   ExamAllocation.findOneAndUpdate(

@@ -8,9 +8,6 @@ import {
   Popover,
   OverlayTrigger,
 } from "react-bootstrap";
-import dayjs from "dayjs";
-import { applyActivation } from "@tensorflow/tfjs-core/dist/ops/fused_util";
-import axios from "axios";
 
 class StudentDashboard extends Component {
   state = {

@@ -9,6 +9,52 @@ function Modal(props) {
     setModalOpen(true);
   }, [props.triggerModal]);
 
+  async function handleClick() {
+    var user = null;
+    var examAllocation = null;
+    var examDetails = "";
+
+    await fetch("users/get-current-user")
+      .then((response) => response.json())
+      .then((data) => {
+        user = data.id_number;
+      });
+    
+    await fetch("exam_allocation/get-exam-allocations-by-user/" + user)
+      .then((response) => response.json())
+      .then((data) => {
+        examAllocation = data[0];
+      });
+    
+    await fetch("/exam/get-exam/" + examAllocation.exam_id)
+      .then((response) => response.json())
+      .then((data) => { 
+        examDetails = data;
+      });
+
+    var currentTime = new Date().toISOString();
+
+    fetch("exam_allocation/write-end-time/" + user + "/" + examDetails.exam_id, {
+      method: "PATCH",
+      headers: {
+        "Contents-Type": "application/json"
+      },
+      body: JSON.stringify(
+        {
+          "ended_at": currentTime
+        }
+      )
+    })
+      .then(res => res.json())
+      .then((res) =>{
+        console.log(res);
+        window.location.href="/home";
+      },
+      (err) => {
+        console.log(err);
+      });
+    };
+
   return (
     <div>
       {modalOpen && (
@@ -45,17 +91,15 @@ function Modal(props) {
                 Cancel
               </button>
               {/* Need to link it to dashboard when it is merged */}
-              <Link  to="/Home"> 
               <button
                 style={{ backgroundColor: "#28DDA0", color: "white" }}
                 onClick={() => {
                   setModalOpen(false);
-                 
+                  handleClick();
                 }}
               >
                 Confirm
               </button>
-              </Link>
             </div>
           </div>
         </div>

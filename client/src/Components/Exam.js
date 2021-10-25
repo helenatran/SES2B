@@ -15,7 +15,7 @@ import "./Exam.css";
 import Badge from 'react-bootstrap/Badge'
 import { io } from "socket.io-client";
 
-import Modal from "./Modal";
+import Modal from "./Modal.js";
 // var misconductAlert = 0;
 
 function Exam() {
