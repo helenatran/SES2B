@@ -1,37 +1,23 @@
 import React, { useState } from "react";
 import { io } from "socket.io-client";
 import "./StaffVideoScreen.css";
-import profilepic from "../../Assets/profilepic.png";
 import { Button, Container, Stack, Row, Col, Carousel } from "react-bootstrap";
 import StudentsCards from "./Sub-Components/StudentCards";
 import StudentCard from "./Sub-Components/StudentCard";
+import { useParams } from "react-router";
 
 const VIDEO_ENDPOINT = "/video";
 
-const mockStudents = [
-  { firstName: "John", lastName: "Smith", videoSrc: profilepic, id: 1 },
-  { firstName: "Sarah", lastName: "Smith", videoSrc: profilepic, id: 2 },
-  { firstName: "Marc", lastName: "Smith", videoSrc: profilepic, id: 3 },
-  { firstName: "Marie", lastName: "Smith", videoSrc: profilepic, id: 4 },
-  { firstName: "Fred", lastName: "Smith", videoSrc: profilepic, id: 5 },
-  { firstName: "Susan", lastName: "Smith", videoSrc: profilepic, id: 6 },
-  { firstName: "Carl", lastName: "Smith", videoSrc: profilepic, id: 7 },
-  { firstName: "Jennifer", lastName: "Smith", videoSrc: profilepic, id: 8 },
-  { firstName: "Paul", lastName: "Smith", videoSrc: profilepic, id: 9 },
-  { firstName: "Laura", lastName: "Smith", videoSrc: profilepic, id: 10 },
-  { firstName: "Max", lastName: "Smith", videoSrc: profilepic, id: 11 },
-];
-
 const mockExam = {
-  id: "TEST_EXAM_ID",
   name: "Software Studio 2B - Final Exam",
   date: "1st October 2021 - 2:00 PM",
   duration: "2.5",
 };
 
 const StaffVideoScreen = () => {
-  const [students, setStudents] = useState(mockStudents);
-  const [exam, setExam] = useState(mockExam);
+  const { examId } = useParams();
+  const [students, setStudents] = useState([]);
+  const [exam] = useState(mockExam);
   const [zoomView, setZoomView] = useState(false);
   const [zoomedStudent, setZoomedStudent] = useState({
     firstName: "",
@@ -39,18 +25,27 @@ const StaffVideoScreen = () => {
     videoSrc: "",
     id: 0,
   });
-
   // Request and listen to webcam frames being sent from server
   React.useEffect(() => {
     const socket = io(VIDEO_ENDPOINT);
-    socket.emit("request-webcam-frames", exam.id);
+    let prevExamFrames = {};
+    socket.emit("request-webcam-frames", examId);
     socket.on("send-frames", (serverExamFrames) => {
-      setStudents((students) =>
-        students.map((student) => ({
-          ...student,
-          videoSrc: serverExamFrames[student.id] || student.videoSrc,
-        }))
-      );
+      setStudents(() => {
+        // Merge with previous set of frames, so that skipped frames don't make feeds disappear temporarily
+        const examFrames = {
+          ...prevExamFrames,
+          ...serverExamFrames,
+        };
+        const students = Object.entries(examFrames).map(([userId, frame]) => ({
+          id: userId,
+          firstName: `Student ${userId}`,
+          lastName: "",
+          videoSrc: frame,
+        }));
+        prevExamFrames = examFrames;
+        return students;
+      });
       setZoomedStudent((student) => ({
         ...student,
         videoSrc: serverExamFrames[student.id] || student.videoSrc,
@@ -59,7 +54,7 @@ const StaffVideoScreen = () => {
     return () => {
       socket.close();
     };
-  }, [exam.id]);
+  }, [examId]);
 
   const STUDENTS_PER_SLIDE = 6;
   const numberOfSlides = [];
@@ -85,6 +80,7 @@ const StaffVideoScreen = () => {
           <div className="bg-light border zoom-view">
             <StudentCard
               student={zoomedStudent}
+              examId={examId}
               isInZoomView={true}
               updateZoomView={handleZoomView}
             />
@@ -95,6 +91,7 @@ const StaffVideoScreen = () => {
               <Carousel.Item key={i}>
                 <StudentsCards
                   students={students}
+                  examId={examId}
                   slideNumber={i}
                   studentsPerSlide={STUDENTS_PER_SLIDE}
                   updateZoomView={handleZoomView}

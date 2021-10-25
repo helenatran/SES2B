@@ -3,6 +3,7 @@ import StudentCard from "./StudentCard";
 
 const StudentsCards = ({
   students,
+  examId,
   slideNumber,
   studentsPerSlide,
   updateZoomView,
@@ -17,7 +18,9 @@ const StudentsCards = ({
     <div className="bg-light border students-cards">
       {currentStudents.map((student) => (
         <StudentCard
+          key={student.id}
           student={student}
+          examId={examId}
           updateZoomView={updateZoomView}
           isInZoomView={false}
         />
