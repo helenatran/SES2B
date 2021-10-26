@@ -1,23 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import StudentCard from "./StudentCard";
 
 const StudentsCards = ({
   students,
+  examId,
   slideNumber,
   studentsPerSlide,
   updateZoomView,
 }) => {
   const indexOfLastStudent = slideNumber * studentsPerSlide;
   const indexOfFirstStudent = indexOfLastStudent - studentsPerSlide;
-  const [currentStudents] = useState(
-    students.slice(indexOfFirstStudent, indexOfLastStudent)
+  const currentStudents = students.slice(
+    indexOfFirstStudent,
+    indexOfLastStudent
   );
-
   return (
     <div className="bg-light border students-cards">
       {currentStudents.map((student) => (
         <StudentCard
+          key={student.id}
           student={student}
+          examId={examId}
           updateZoomView={updateZoomView}
           isInZoomView={false}
         />

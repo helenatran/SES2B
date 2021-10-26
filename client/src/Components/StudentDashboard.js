@@ -31,9 +31,11 @@ class StudentDashboard extends Component {
         this.setState({ examAllocation: data[0], loading: false })
       );
 
-    await fetch("/exam/get-exam/" + this.state.examAllocation.exam_id)
-      .then((response) => response.json())
-      .then((data) => this.setState({ examDetails: data, loading: false }));
+    if (this.state.examAllocation) {
+      await fetch("/exam/get-exam/" + this.state.examAllocation.exam_id)
+        .then((response) => response.json())
+        .then((data) => this.setState({ examDetails: data, loading: false }));
+    }
   }
 
   render(
@@ -101,10 +103,8 @@ class StudentDashboard extends Component {
                   <Button
                     style={{ height: "60px" }}
                     className="  button-startExam"
-
                   >
                     <a href="/exam"> Start Exam</a>
-                   
                   </Button>
                 </div>
               </div>

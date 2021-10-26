@@ -3,17 +3,16 @@ import {
   Container,
   Row,
   Col,
-  Image,
   Button,
   Stack,
   Popover,
   OverlayTrigger,
 } from "react-bootstrap";
 import Iframe from "react-iframe";
-import profilepic from "../Assets/profilepic.png";
 import "./Exam.css";
-import Badge from 'react-bootstrap/Badge'
+import Badge from "react-bootstrap/Badge";
 import { io } from "socket.io-client";
+import StudentWebcam from "./StudentWebcam.js";
 
 import Modal from "./Modal";
 // var misconductAlert = 0;
@@ -23,6 +22,8 @@ function Exam() {
   const [triggerModal, setTriggerModal] = useState(true);
   const MISCONDUCT_ENDPOINT = "/misconduct";
   const [misconductAlert, setMisconductAlert] = useState("0");
+  const [userId, setuserId] = useState("0");
+  const [examId, setExamId] = useState("");
 
   const popover = (
     <Popover class="popover" id="popover-basic">
@@ -47,14 +48,35 @@ function Exam() {
           setMisconductAlert(data);
         });
       });
+
+    fetch("users/get-current-user")
+      .then((res) => res.json())
+      .then((data) => {
+        setuserId(data.id_number);
+        fetch("exam_allocation/get-exam-allocations-by-user/" + userId)
+          .then((response) => response.json())
+          .then((data) => {
+            setExamId(data[0].exam_id);
+          })
+          .catch(() => {
+            setExamId("123123123232");
+          });
+      })
+      .catch(() => {
+        return <h1>Loading...</h1>;
+      });
   }, []);
+
   return (
     <Container fluid>
       <Row>
         <Col className="Sidebar" sm={2}>
           <Stack gap={4} className="mx-auto">
-            <Image src={profilepic} fluid /* Replace with live video */ />
-            <div className="timer-text">Time Left: 00:00:00</div>
+            <StudentWebcam examId={userId} userId={examId} />
+
+            <div className="timer-text">
+              Time Left: 00:00:00{" "}
+            </div>
             <hr />
             <OverlayTrigger trigger="click" placement="right" overlay={popover}>
               <Button
@@ -77,9 +99,9 @@ function Exam() {
               Leave Exam
             </Button>
             <Button variant="outline-danger" disabled>
-  								Misconduct Alert <Badge bg="danger">{ misconductAlert } </Badge>
-  								<span className="visually-hidden">misconduct alerts</span>
-							</Button>
+              Misconduct Alert <Badge bg="danger">{misconductAlert} </Badge>
+              <span className="visually-hidden">misconduct alerts</span>
+            </Button>
           </Stack>
         </Col>
         <Col style={{ position: "relative" }} className="Exam-colour" sm={10}>

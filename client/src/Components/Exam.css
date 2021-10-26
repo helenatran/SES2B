@@ -60,3 +60,9 @@
   line-height: 2;
 }
 
+
+canvas {
+  width: 100% !important;
+  height: 15rem !important;
+  /* height: 100% !important */
+}

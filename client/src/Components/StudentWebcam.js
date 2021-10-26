@@ -4,6 +4,7 @@ import { io } from "socket.io-client";
 import "@tensorflow/tfjs-backend-webgl";
 import * as bodyPix from "@tensorflow-models/body-pix";
 import loadingSVG from "../Assets/loading-buffering.svg";
+import { useParams } from "react-router";
 
 const VIDEO_ENDPOINT = "/video";
 
@@ -22,6 +23,11 @@ const BLUR_EDGES_AMT = 10;
  * frames from that feed to the backend.
  */
 const StudentWebcam = ({ examId, userId }) => {
+  const { examId: routeExamId } = useParams();
+  // If exam ID isn't provided in props, try to get exam ID from route params (for demo purposes)
+  if (examId == null) {
+    examId = routeExamId;
+  }
   const webcamRef = React.useRef();
   const canvasRef = React.useRef();
   const [net, setNet] = React.useState();

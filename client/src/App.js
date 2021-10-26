@@ -14,11 +14,13 @@ import Exam from "./Components/Exam.js";
 import StudentProfile from "./Components/StudentProfile.js";
 import AuthError from "./Errors/AuthError.js";
 import ForgotPassword from "./Components/ForgotPassword.js";
+import ExaminerViewRecordings from "./Components/ExaminerViewRecordings.js";
 
-import PreExamChecklist1 from "./Components/Pre-examChecklist";
+import PreExamChecklist from "./Components/Pre-examChecklist";
 
 import StudentDashboard from "./Components/StudentDashboard";
 import StaffVideoScreen from "./Components/StaffVideoScreen/StaffVideoScreen";
+import ViewRecording from "./Components/ViewRecording";
 
 class App extends Component {
   // Simple 3 page React Router Setup
@@ -37,21 +39,21 @@ class App extends Component {
             <StudentProfile />
           </Route>
           <Route path="/Pre-examChecklist">
-            <PreExamChecklist1 />
+            <PreExamChecklist />
+          </Route>
+          <Route path="/view-recording">
+            <ViewRecording />
           </Route>
           <Route path="/home">
             <Home />
           </Route>
-          <Route path="/webcam-test">
-            <StudentWebcam
-              examId="TEST_EXAM_ID"
-              userId={Math.floor(Math.random() * 1000)}
-            />
+          <Route path="/webcam-test/:examId">
+            <StudentWebcam userId={Math.floor(Math.random() * 1000)} />
           </Route>
           <Route path="/spy-on-students-test">
-            <SpyOnStudents examId="TEST_EXAM_ID" />
+            <SpyOnStudents examId={100} />
           </Route>
-          <Route path="/staff-video-screen">
+          <Route path="/staff-video-screen/:examId">
             <StaffVideoScreen />
           </Route>
           <Route path="/autherr">
@@ -59,6 +61,9 @@ class App extends Component {
           </Route>
           <Route path="/exam">
             <Exam />
+          </Route>
+          <Route path="/ExaminerRecordings">
+            <ExaminerViewRecordings />
           </Route>
           <Route path="/">
             <Login />
