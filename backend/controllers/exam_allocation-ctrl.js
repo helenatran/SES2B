@@ -164,12 +164,14 @@ logMisconduct = (req, res) => {
     (err, result) => {
       if (err) {
         res.status(500).json(err);
+      } else if (!result) {
+        res.status(400).json({ message: "Allocation does not exist" });
       } else {
-        let misConductArray = result.misconduct_detection_times
+        let misConductArray = result.misconduct_detection_times;
         let tempDate = new Date();
         misConductArray.push(tempDate);
 
-        if(misConductArray.length >= 2) {
+        if (misConductArray.length >= 2) {
           let updatedExamAllocation = {
             misconduct_detection_times: misConductArray,
             ended_at: new Date(),
@@ -189,7 +191,6 @@ logMisconduct = (req, res) => {
               }
             }
           );
-
         } else {
           let updatedExamAllocation = {
             misconduct_detection_times: misConductArray,
@@ -210,12 +211,10 @@ logMisconduct = (req, res) => {
             }
           );
         }
-
       }
     }
-  )
-
-}
+  );
+};
 
 module.exports = {
   createExamAllocation,
@@ -227,5 +226,5 @@ module.exports = {
   getAllExamAllocationsByExam,
   logMisconduct,
   writeStartTime,
-  writeEndTime
+  writeEndTime,
 };

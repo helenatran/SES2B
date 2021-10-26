@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { Card, Button } from "react-bootstrap";
 import { ExclamationTriangleFill, XLg } from "react-bootstrap-icons";
+import axios from "axios";
 
-const StudentCard = ({ student, updateZoomView, isInZoomView }) => {
+const ALLOCATION_ENDPOINT = "/exam_allocation";
+
+const StudentCard = ({ student, examId, updateZoomView, isInZoomView }) => {
   const [flag, setFlag] = useState(false);
 
   const handleFlag = () => {
+    axios.get(`${ALLOCATION_ENDPOINT}/log-misconduct/${student.id}/${examId}`);
     setFlag(flag ? false : true);
   };
 
