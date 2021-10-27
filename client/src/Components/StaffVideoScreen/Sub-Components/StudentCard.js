@@ -9,7 +9,7 @@ const StudentCard = ({ student, examId, updateZoomView, isInZoomView }) => {
   const [flag, setFlag] = useState(false);
 
   const handleFlag = () => {
-    axios.get(`${ALLOCATION_ENDPOINT}/log-misconduct/${student.id}/${examId}`);
+    axios.get(`${ALLOCATION_ENDPOINT}/log-misconduct/${examId}/${student.id}`);
     setFlag(flag ? false : true);
   };
 

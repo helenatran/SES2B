@@ -53,7 +53,7 @@ function Exam() {
       .then((res) => res.json())
       .then((data) => {
         setuserId(data.id_number);
-        fetch("exam_allocation/get-exam-allocations-by-user/" + userId)
+        fetch("exam_allocation/get-exam-allocations-by-user/" + data.id_number)
           .then((response) => response.json())
           .then((data) => {
             setExamId(data[0].exam_id);
@@ -74,9 +74,7 @@ function Exam() {
           <Stack gap={4} className="mx-auto">
             <StudentWebcam examId={userId} userId={examId} />
 
-            <div className="timer-text">
-              Time Left: 00:00:00{" "}
-            </div>
+            <div className="timer-text">Time Left: 00:00:00 </div>
             <hr />
             <OverlayTrigger trigger="click" placement="right" overlay={popover}>
               <Button

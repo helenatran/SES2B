@@ -48,7 +48,9 @@ class App extends Component {
             <Home />
           </Route>
           <Route path="/webcam-test/:examId">
-            <StudentWebcam userId={Math.floor(Math.random() * 1000)} />
+            <div style={{ width: 450 }}>
+              <StudentWebcam userId={Math.floor(Math.random() * 1000)} />
+            </div>
           </Route>
           <Route path="/spy-on-students-test">
             <SpyOnStudents examId={100} />
